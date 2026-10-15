@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+</head>
+<body>
+<title>짐승특공대 깨비노트</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* layout: 상단 바 + 탭, 본문 1열(최대 1040px) */
+:root{
+  --bg:#f3f5f3; --surface:#ffffff; --sunk:#e8ece9; --line:#d5dcd8;
+  --ink:#16201c; --ink2:#46534d; --ink3:#66736d;
+  --jade:#0f7a63; --jade-soft:#d9efe8; --vermil:#c4472b; --vermil-soft:#f8e1da;
+  --gold:#9a6b12; --gold-soft:#f5ead2; --sky:#2c5f9e; --sky-soft:#e0eaf6; --purple:#7446c9; --purple-soft:#ece4fa;
+  --ad:#eef0ee; --ad-line:#b9c2bd;
+  --f-display:"Black Han Sans","IBM Plex Sans KR",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1513; --surface:#161e1b; --sunk:#1d2723; --line:#2b3833;
+  --ink:#eef3f0; --ink2:#bfcac5; --ink3:#9aa8a2;
+  --jade:#3fc0a0; --jade-soft:#14332b; --vermil:#ef7b5e; --vermil-soft:#3a1f18;
+  --gold:#e0b25a; --gold-soft:#33280f; --sky:#79a8e6; --sky-soft:#18273a; --purple:#b996ff; --purple-soft:#2a2040;
+  --ad:#1a2320; --ad-line:#3a4a43; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1513; --surface:#161e1b; --sunk:#1d2723; --line:#2b3833;
+  --ink:#eef3f0; --ink2:#bfcac5; --ink3:#9aa8a2;
+  --jade:#3fc0a0; --jade-soft:#14332b; --vermil:#ef7b5e; --vermil-soft:#3a1f18;
+  --gold:#e0b25a; --gold-soft:#33280f; --sky:#79a8e6; --sky-soft:#18273a; --purple:#b996ff; --purple-soft:#2a2040;
+  --ad:#1a2320; --ad-line:#3a4a43; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
+a{color:var(--sky)}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--jade);outline-offset:2px}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top-in{max-width:1040px;margin:0 auto;display:flex;align-items:center;gap:14px;padding-block:10px;flex-wrap:wrap}
+.brand{font-family:var(--f-display);font-size:24px;letter-spacing:.01em;line-height:1;display:flex;align-items:baseline;gap:8px}
+.brand small{font-family:var(--f-body);font-size:12px;color:var(--ink3);font-weight:500}
+.brand .mark{color:var(--jade)}
+nav.tabs{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+nav.tabs button{border:0;background:none;padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--ink2);font-weight:600;font-size:14px}
+nav.tabs button[aria-selected="true"]{background:var(--jade-soft);color:var(--jade)}
+.plan{display:flex;border:1px solid var(--line);border-radius:999px;padding:2px;font-size:13px}
+.plan button{border:0;background:none;padding:4px 10px;border-radius:999px;cursor:pointer;color:var(--ink2);font-weight:600}
+.plan button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+
+.frame{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;max-width:1040px;margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:18px 48px}
+
+main{min-width:0;display:grid;gap:18px;align-content:start}
+
+
+
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+h1,h2,h3{text-wrap:balance;margin:0}
+h2{font-size:20px;font-weight:700}
+h3{font-size:15px;font-weight:700}
+.lede{color:var(--ink2);margin:6px 0 0;max-width:68ch}
+.eyebrow{font-size:12px;letter-spacing:.08em;color:var(--ink3);font-weight:600}
+.src{font-size:12px;color:var(--ink3)}
+.src a{color:var(--ink3)}
+.notice-strip{background:var(--gold-soft);color:var(--gold);border-radius:8px;padding:8px 12px;font-size:13px;font-weight:500}
+
+/* 패치노트 */
+.hl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:860px){.hl{grid-template-columns:minmax(0,1fr)}}
+.hl .card{border-left:4px solid var(--jade);background:var(--sunk);border-radius:8px;padding:12px 14px;min-width:0}
+.hl .card.warn{border-left-color:var(--vermil)}
+.hl .card h3{margin-bottom:4px}
+.hl .card p{margin:0;color:var(--ink2);font-size:14px}
+.dl{display:grid;gap:0}
+.dl .row{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
+.dl .row:first-child{border-top:0}
+.dday{font-family:var(--f-mono);font-weight:500;font-size:13px;text-align:center;border-radius:6px;padding:3px 0;background:var(--jade-soft);color:var(--jade)}
+.dday.soon{background:var(--vermil-soft);color:var(--vermil)}
+.dday.past{background:var(--sunk);color:var(--ink3)}
+.dl .when{font-size:13px;color:var(--ink3);white-space:nowrap}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 11px;font-size:13px;cursor:pointer;color:var(--ink2)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.tl{display:grid;gap:14px}
+.entry{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px}
+@media (max-width:640px){.entry{grid-template-columns:minmax(0,1fr);gap:6px}}
+.entry .date{font-family:var(--f-mono);font-size:13px;color:var(--ink2);padding-top:3px}
+.entry .date b{display:block;font-family:var(--f-display);font-size:22px;color:var(--ink);font-weight:400;line-height:1.1}
+.kind{display:inline-block;font-size:12px;font-weight:700;border-radius:4px;padding:1px 7px;margin-bottom:6px}
+.k-예정{background:var(--sky-soft);color:var(--sky)}.k-점검{background:var(--gold-soft);color:var(--gold)}
+.k-업데이트{background:var(--jade-soft);color:var(--jade)}.k-보상,.k-라이브,.k-오픈{background:var(--sunk);color:var(--ink2)}
+.entry ul{list-style:none;margin:8px 0 6px;padding:0;display:grid;gap:7px}
+.entry li{display:grid;grid-template-columns:70px minmax(0,1fr);gap:10px;align-items:start;font-size:14px}
+.tag{font-size:12px;font-weight:600;text-align:center;border-radius:4px;padding:1px 0;background:var(--sunk);color:var(--ink2)}
+.t-사냥,.t-성장{background:var(--jade-soft);color:var(--jade)}.t-밸런스,.t-주의{background:var(--vermil-soft);color:var(--vermil)}
+.t-보상,.t-재화·상점{background:var(--gold-soft);color:var(--gold)}.t-신규,.t-예정,.t-확률{background:var(--sky-soft);color:var(--sky)}
+
+/* 옵션 평가 */
+.form-row{display:flex;gap:10px;flex-wrap:wrap;align-items:end}
+.field{display:grid;gap:4px;min-width:0}
+.field label{font-size:12px;color:var(--ink3);font-weight:600}
+select,input[type=number],input[type=text]{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+input[type=number]{width:110px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:var(--surface);padding:8px 14px;cursor:pointer;font-weight:600;color:var(--ink2)}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--jade);color:#fff}
+.lines{display:grid;gap:10px;margin-top:14px}
+.line{display:grid;grid-template-columns:28px minmax(0,1.3fr) 120px minmax(0,2fr);gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:8px}
+@media (max-width:720px){.line{grid-template-columns:20px minmax(0,2fr) minmax(64px,1fr);gap:8px}.line .res{grid-column:1/-1}.line input{width:100%}}
+.line .n{font-family:var(--f-mono);color:var(--ink3);font-size:13px}
+.res{display:grid;gap:5px;min-width:0}
+.res .top{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.tier{font-size:12px;font-weight:700;border-radius:4px;padding:1px 7px}
+.tier0{background:var(--sunk);color:var(--ink2)}.tier1{background:var(--sky-soft);color:var(--sky)}
+.tier2{background:var(--jade-soft);color:var(--jade)}.tier3{background:var(--gold-soft);color:var(--gold)}
+.tierx{background:var(--vermil-soft);color:var(--vermil)}
+.pct{font-family:var(--f-mono);font-size:18px;font-weight:500}
+.bar{position:relative;height:8px;background:var(--sunk);border-radius:4px;overflow:hidden}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--jade);border-radius:4px}
+.bar .tick{position:absolute;top:0;bottom:0;width:1px;background:var(--line)}
+.res small{color:var(--ink3);font-size:12px}
+.score{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:14px;padding:14px;border-radius:8px;background:var(--sunk)}
+.score .big{font-family:var(--f-display);font-size:40px;line-height:1}
+.score p{margin:0;color:var(--ink2);max-width:60ch}
+.ex{font-size:12px;font-weight:700;color:var(--gold);background:var(--gold-soft);border-radius:4px;padding:1px 6px}
+
+/* 드랍률 */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:9px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line)}
+th{font-size:12px;color:var(--ink3);font-weight:600;background:var(--sunk)}
+th:first-child,td:first-child{text-align:left}
+tr:last-child td{border-bottom:0}
+td .ci{color:var(--ink3);font-size:12px}
+.flag{font-size:12px;font-weight:700;color:var(--vermil);background:var(--vermil-soft);border-radius:4px;padding:1px 6px;margin-left:6px}
+.btn{border:0;background:var(--jade);color:#fff;font-weight:700;border-radius:8px;padding:9px 16px;cursor:pointer}
+.btn.ghost{background:none;color:var(--jade);border:1px solid var(--jade)}
+.btn:disabled{opacity:.5;cursor:default}
+.lock{position:relative}
+
+
+
+
+.steps{margin:8px 0 0;padding-left:20px;display:grid;gap:6px;color:var(--ink2)}
+.out{white-space:pre-wrap;background:var(--sunk);border-radius:8px;padding:14px;font-size:14px;min-height:60px}
+.hidden{display:none}
+/* 아이콘 규격: 본문 1.2em(최소 14px) · 제목 1.1em · 간격 .4em · 텍스트 중앙 정렬 */
+:root{--ic:1.2em;--ic-gap:.4em}
+/* 글자 규격: 12 캡션 · 13 보조/칩 · 14 표 · 15 본문 · 16 모바일 본문 · 18 강조 · 20 제목 · 22/24 브랜드 · 40 지표 */
+.ic{width:max(14px,var(--ic));height:max(14px,var(--ic));stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-0.24em;flex:none}
+.emblem{width:32px;height:32px;border-radius:7px;image-rendering:pixelated;align-self:center;box-shadow:0 0 0 1px var(--line)}
+nav.tabs button{display:inline-flex;align-items:center;gap:var(--ic-gap)}
+.hl .card h3{display:flex;gap:var(--ic-gap);align-items:center}
+.hl .card h3 .ic{color:var(--jade);--ic:1.2em}.hl .card.warn h3 .ic{color:var(--vermil)}
+.tag{display:inline-flex;align-items:center;justify-content:center;gap:.3em;padding:2px 7px;white-space:nowrap}
+.tag .ic{width:14px;height:14px}
+.entry li{grid-template-columns:92px minmax(0,1fr)}
+.chip{display:inline-flex;align-items:center;gap:var(--ic-gap)}.chip .ic{color:var(--jade)}.chip[aria-pressed="true"] .ic{color:inherit}
+.g-희귀{color:var(--sky);font-weight:700}.g-영웅{color:var(--purple);font-weight:700}.g-전설{color:var(--gold);font-weight:700}
+.dl .row .t{display:flex;gap:var(--ic-gap);align-items:flex-start}.dl .row .t .ic{margin-top:calc((1lh - max(14px,var(--ic)))/2)}.dl .row .t .ic{color:var(--ink3)}
+h2 .ic{color:var(--jade);margin-right:var(--ic-gap);--ic:1.1em;vertical-align:-0.18em}
+th .ic{color:var(--ink3);margin-right:.35em}
+td .ic{color:var(--ink3);margin-right:var(--ic-gap)}td .chip .ic{margin-right:0}
+.panel,.panel>*,.view>*{min-width:0}
+.panel{grid-template-columns:minmax(0,1fr)}
+.panel div[style*="display:grid"]{grid-template-columns:minmax(0,1fr)}
+.line select{width:100%;min-width:0}
+.lock{min-width:0}
+
+details.more summary{cursor:pointer;color:var(--ink3);font-size:13px;list-style:none}
+details.more summary::before{content:"＋ ";}
+details.more[open] summary::before{content:"－ ";}
+details.more small{display:block;margin-top:4px}
+@media (max-width:640px){
+  body{font-size:16px}
+  header.top{position:static}
+  .top-in{padding-block:8px;gap:6px}
+  .brand{font-size:20px}
+  nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;margin:0;gap:0;display:grid;grid-template-columns:repeat(5,1fr);
+    background:var(--surface);border-top:1px solid var(--line);padding:4px max(4px,env(safe-area-inset-left,0px)) calc(4px + env(safe-area-inset-bottom,0px)) max(4px,env(safe-area-inset-right,0px));box-shadow:0 -4px 16px rgb(0 0 0 / .12)}
+  nav.tabs button{font-size:12px;padding:7px 2px 6px;border-radius:10px;white-space:nowrap;flex-direction:column;gap:3px;justify-content:center}
+  nav.tabs button .ic{width:22px;height:22px}
+  .entry li{grid-template-columns:84px minmax(0,1fr)}
+  .frame{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+  .panel{padding:16px 14px}
+  h2{font-size:20px}
+  h3{font-size:17px}
+  .lede{font-size:15px}
+  .src,.res small,.dl .when{font-size:13px}
+  .eyebrow{font-size:12px}
+  .dl .row{grid-template-columns:58px minmax(0,1fr);gap:4px 10px;align-items:start;padding:11px 0}
+  .dl .row .when{grid-column:2;white-space:normal}
+  .entry li{grid-template-columns:62px minmax(0,1fr);font-size:15px;line-height:1.5}
+  .tablewrap{border:0;overflow:visible}
+  .tablewrap table{display:block;font-size:15px}
+  .tablewrap thead{display:none}
+  .tablewrap tbody{display:grid;gap:8px}
+  .tablewrap tr{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+  .tablewrap td{border:0;padding:0;white-space:normal;text-align:left!important}
+  .tablewrap td:first-child{flex-basis:100%;font-weight:700;font-size:16px}
+  .tablewrap td[data-l]:not(:first-child)::before{content:attr(data-l);color:var(--ink3);font-size:13px;font-weight:500;margin-right:5px}
+  .tablewrap td:empty,.tablewrap td.emptycell{display:none}
+  .tablewrap tr:has(td.ttl) td:first-child{flex-basis:auto;font-weight:500;font-size:15px}
+  .tablewrap td.ttl{flex-basis:100%;order:-1;font-weight:700;font-size:16px}
+  .tablewrap td.ttl::before{content:none!important}
+  input,select,textarea{font-size:16px!important}
+  .chip,.seg button,.btn,nav.tabs button,select,input[type=number],input[type=text]{min-height:44px}
+  .chip{padding:8px 14px}
+  .chips{gap:8px}
+  details.more summary{padding:6px 0}
+  .tablewrap tr:has(td.ttl) td:first-child::before{content:"#";color:var(--ink3);margin-right:2px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+<defs>
+<symbol id="i-scroll" viewBox="0 0 24 24"><path d="M7 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7"/><path d="M7 4a2 2 0 0 0-2 2v1h4V6a2 2 0 0 0-2-2z"/><path d="M7 20a2 2 0 0 1-2-2v-1h4v1a2 2 0 0 1-2 2z"/><path d="M11 9h5M11 12h5M11 15h3"/></symbol>
+<symbol id="i-sword" viewBox="0 0 24 24"><path d="M19 4l-9.5 9.5"/><path d="M19 4h-3.5L6.8 12.7"/><path d="M19 4v3.5l-8.7 8.7"/><path d="M8 11l5 5"/><path d="M9.5 14.5L5 19"/><path d="M4 18l2 2"/></symbol>
+<symbol id="i-pouch" viewBox="0 0 24 24"><path d="M9 4h6l-1.5 3h-3z"/><path d="M10.5 7C6.5 9 5 12.5 5 15.5 5 18.5 8 20 12 20s7-1.5 7-4.5c0-3-1.5-6.5-5.5-8.5"/><path d="M9.5 7.5h5"/><circle cx="12" cy="14" r="2"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M7 16v-4M12 16V8M17 16V5"/><path d="M5 10l5-4 4 3 5-5"/></symbol>
+<symbol id="i-ticket" viewBox="0 0 24 24"><path d="M4 8a2 2 0 0 0 2-2h12a2 2 0 0 0 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 0-2 2H6a2 2 0 0 0-2-2v-2a2 2 0 0 0 0-4z"/><path d="M14 7v2M14 11v2M14 15v2"/></symbol>
+<symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M12 3.5v6M12 14.5v6" opacity=".35"/></symbol>
+<symbol id="i-orb" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M8.5 11a3.5 3.5 0 0 1 3-3"/><path d="M18 3v3M16.5 4.5h3"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M5 5a2 2 0 0 1 2-2h12v15H7a2 2 0 0 0-2 2z"/><path d="M5 20a2 2 0 0 0 2 1h12v-3"/><path d="M10 7h5M10 10h5"/></symbol>
+<symbol id="i-helmet" viewBox="0 0 24 24"><path d="M5 15a7 7 0 0 1 14 0v2H5z"/><path d="M12 8V4"/><path d="M9 4h6"/><path d="M9 17v3M15 17v3"/></symbol>
+<symbol id="i-armor" viewBox="0 0 24 24"><path d="M8 4l-4 3 2 4 2-1v10h8V10l2 1 2-4-4-3"/><path d="M8 4c1 2 2.5 3 4 3s3-1 4-3"/><path d="M8 14h8"/></symbol>
+<symbol id="i-boot" viewBox="0 0 24 24"><path d="M8 3h5v10l6 3v4H6v-6z"/><path d="M6 17h13"/><path d="M8 7h5"/></symbol>
+<symbol id="i-greave" viewBox="0 0 24 24"><path d="M8 3h8l-1 9-1.5 8h-3L9 12z"/><path d="M9 8h6M9.5 12h5"/></symbol>
+<symbol id="i-glove" viewBox="0 0 24 24"><path d="M8 21v-4L5 12.5a1.6 1.6 0 0 1 2.6-1.8L9 12V5a1.5 1.5 0 0 1 3 0v5-6a1.5 1.5 0 0 1 3 0v6-4a1.5 1.5 0 0 1 3 0v8c0 3-1.5 5-3 6v1"/><path d="M8 17h7"/></symbol>
+<symbol id="i-belt" viewBox="0 0 24 24"><path d="M3 9h18v6H3z"/><rect x="9" y="7.5" width="6" height="9" rx="1"/><path d="M12 10.5v3"/></symbol>
+<symbol id="i-necklace" viewBox="0 0 24 24"><path d="M5 3c0 6 3 9 7 9s7-3 7-9"/><path d="M12 12v2"/><path d="M12 14l3 3-3 4-3-4z"/></symbol>
+<symbol id="i-ring" viewBox="0 0 24 24"><circle cx="12" cy="15" r="6"/><path d="M9 6l3-3 3 3-3 3z"/></symbol>
+<symbol id="i-bracelet" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="8.5" ry="5.5"/><ellipse cx="12" cy="12" rx="5.5" ry="3"/><circle cx="12" cy="6.5" r="1.4"/></symbol>
+<symbol id="i-earring" viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 1 3 3c0 2-3 3-3 5"/><circle cx="12" cy="13" r="1.2"/><path d="M12 14.5l3 4-3 3-3-3z"/></symbol>
+<symbol id="i-up" viewBox="0 0 24 24"><path d="M4 18l6-6 4 4 6-8"/><path d="M15 8h5v5"/></symbol>
+<symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M7 20h10M5 7h14"/><path d="M5 7l-3 6a3 3 0 0 0 6 0z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0z"/></symbol>
+<symbol id="i-gift" viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="1"/><path d="M3 9h18M12 9v11"/><path d="M12 9C10 5 7 5 7 7s3 2 5 2c2 0 5 0 5-2s-3-2-5 2"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/></symbol>
+<symbol id="i-dice" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9" r="1.2"/><circle cx="15" cy="15" r="1.2"/><circle cx="15" cy="9" r="1.2"/><circle cx="9" cy="15" r="1.2"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17v.5"/></symbol>
+<symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.5 5.5a4 4 0 0 0 4.9 4.9l-9 9a2.1 2.1 0 0 1-3-3l9-9a4 4 0 0 1-1.9-1.9z"/><path d="M15 9l-1-1"/></symbol>
+<symbol id="i-bug" viewBox="0 0 24 24"><rect x="8" y="7" width="8" height="12" rx="4"/><path d="M12 11v8M8 12H4M20 12h-4M8 16H5M19 16h-3M9 7L7 4M15 7l2-3"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></symbol>
+<symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 21V4"/><path d="M6 4h11l-2 4 2 4H6"/></symbol>
+<symbol id="i-hunt" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 5 5.5"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></symbol>
+</defs>
+</svg>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand"><img class="emblem" src="data:image/png;base64,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" alt="짐승특공대 문장" width="32" height="32"><span><span class="mark">깨비</span>노트</span><small id="subtitle">짐승특공대 문파 전용</small></div>
+    <nav class="tabs" role="tablist" aria-label="메뉴">
+      <button role="tab" id="tab-patch" aria-selected="true" data-tab="patch"><svg class="ic" aria-hidden="true"><use href="#i-scroll"/></svg><span>패치노트</span></button>
+      <button role="tab" id="tab-opt" aria-selected="false" data-tab="opt"><svg class="ic" aria-hidden="true"><use href="#i-sword"/></svg><span>내 장비</span></button>
+      <button role="tab" id="tab-drop" aria-selected="false" data-tab="drop"><svg class="ic" aria-hidden="true"><use href="#i-pouch"/></svg><span>사냥 드랍률</span></button>
+      <button role="tab" id="tab-report" aria-selected="false" data-tab="report"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span>성장 리포트</span></button>
+      <button role="tab" id="tab-coupon" aria-selected="false" data-tab="coupon"><svg class="ic" aria-hidden="true"><use href="#i-ticket"/></svg><span>쿠폰</span></button>
+    </nav>
+    
+  </div>
+</header>
+
+<div class="frame">
+  
+  <main>
+
+
+    <!-- 패치노트 -->
+    <section id="v-patch" class="view" aria-labelledby="tab-patch">
+      <div class="panel" style="display:grid;gap:14px">
+        <div>
+          <div class="eyebrow">이번 주 꼭 볼 것</div>
+          <h2>10월 21일 점검 전에 알아둘 세 가지</h2>
+        </div>
+        <div class="hl">
+          <div class="card"><h3><svg class="ic" aria-hidden="true"><use href="#i-dice"/></svg>추가 효과 변경권 지급 예정</h3><p>10/21 점검에서 보유 장비의 추가 효과를 다시 조정할 수 있는 변경권이 지급됩니다. 지금 옵션이 아쉬운 장비도 분해 전에 기다릴 만합니다 [판단].</p></div>
+          <div class="card warn"><h3><svg class="ic" aria-hidden="true"><use href="#i-alert"/></svg>추가 효과 최대치 하향</h3><p>10/15부터 한 줄 최대치가 영웅 3%, 전설 7.5%로 줄었습니다. 옵션 평가는 바뀐 공식 범위로 계산합니다.</p></div>
+          <div class="card"><h3><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>도술 초기화 · 재화 소급</h3><p>10/21에 도술 강화·돌파가 초기화되고 쓴 재화를 돌려받습니다. 각성은 유지됩니다.</p></div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:18px">
+        <div class="eyebrow">기한 있는 보상 · 일정</div>
+        <div class="dl" id="deadlines" style="margin-top:8px"></div>
+      </div>
+
+      <div class="panel" style="margin-top:18px;display:grid;gap:14px">
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:end">
+          <div><div class="eyebrow">타임라인 · 최신 순</div><h2><svg class="ic" aria-hidden="true"><use href="#i-scroll"/></svg>정식 오픈 이후 변경 사항</h2></div>
+          <div class="chips" id="filters" role="group" aria-label="분류 필터"></div>
+        </div>
+        <div class="tl" id="timeline"></div>
+        <div class="src">출처: 도깨비의세계 공식 커뮤니티 업데이트·공지사항·도깨비 서고 게시판. 각 항목의 원문 링크를 확인하세요. 마지막 반영 2026-10-16</div>
+      </div>
+    </section>
+
+    <!-- 내 장비 -->
+    <section id="v-opt" class="view hidden" aria-labelledby="tab-opt">
+      <div class="panel" style="display:grid;gap:14px">
+        <div>
+          <div class="eyebrow">11부위 · 추가 효과 최상위 대비</div>
+          <h2><svg class="ic" aria-hidden="true"><use href="#i-sword"/></svg>내 장비</h2>
+          <p class="lede">부위를 고르고 등급·강화·추가 효과 수치를 넣으면 이 기기에 바로 저장되고, 공식 수치 범위 기준으로 등급과 최상급 최댓값 대비 %를 보여 줍니다.</p>
+        </div>
+        <div class="chips" id="slots" role="group" aria-label="부위 선택"></div>
+        <div style="border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:12px">
+          <div class="form-row">
+            <h3 id="slot-title" style="margin-right:6px"></h3>
+            <span class="ex hidden" id="ex-badge">예시: 순록이 영웅 지팡이(10/16 캡처) — 수정하면 내 장비로 저장됩니다</span>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>등급</label><div class="seg" id="seg-grade"></div></div>
+            <div class="field"><label for="o-enh">강화</label><input type="number" id="o-enh" min="0" max="50" placeholder="0~50" style="width:90px" inputmode="numeric" enterkeyhint="done"></div>
+            <div class="field" id="kind-wrap"><label for="o-kind">무기 종류</label><select id="o-kind"><option value="">선택</option><option>검</option><option>도</option><option>지팡이</option><option>부채</option><option>활</option></select></div>
+            <div class="field" style="flex:1;min-width:160px"><label for="o-name">장비 이름(선택)</label><input type="text" id="o-name" placeholder="예: 고대 제령"></div>
+          </div>
+          <div class="lines" id="lines" style="margin-top:0"></div>
+          <div class="score" id="score" style="margin-top:0"></div>
+        </div>
+        <div class="lock">
+          
+          <div style="display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;margin-bottom:8px">
+            <div><h3>전체 장비 요약</h3><p class="src" style="margin:2px 0 0" id="loadout-sum"></p></div>
+            <div class="form-row" id="gear-submit"></div>
+          </div>
+          <div class="tablewrap"><table id="loadout-table"></table></div>
+        </div>
+        <p class="src">근거: <a href="https://forum.kakaogames.com/dokkaebi/postView/?code=prob&id=18494" target="_blank" rel="noopener">공식 확률 정보 — 장비 등급별 추가 효과 부여 수 확률 (2026-10-15 09:00 기준)</a>, 부위 구성은 공식 게임 가이드 ‘성장’. 장비는 이 브라우저에만 저장되니 기기를 바꿀 땐 성장 리포트 탭의 ‘백업 복사’를 쓰세요.</p>
+      </div>
+    </section>
+
+    <!-- 쿠폰 -->
+    <section id="v-coupon" class="view hidden" aria-labelledby="tab-coupon">
+      <div class="panel" style="display:grid;gap:14px">
+        <div>
+          <div class="eyebrow">공식 공지 ‘쿠폰 종합 안내’ 기준 · 2026-10-16</div>
+          <h2><svg class="ic" aria-hidden="true"><use href="#i-ticket"/></svg>지금 쓸 수 있는 쿠폰</h2>
+          <p class="lede">문파 자동 등록을 신청하면 새 쿠폰이 나올 때마다 PC 스크립트가 하루 3번 자동으로 등록합니다. 신청 전이거나 직접 넣고 싶다면 코드를 복사해 공식 쿠폰 등록 페이지에 붙여 넣으세요.</p>
+        </div>
+        <div class="panel guild-only" style="background:var(--sunk);border:0;display:grid;gap:10px">
+          <h3>쿠폰 자동 등록 신청</h3>
+          <div class="form-row">
+            <div class="field"><label for="c-who">게임 닉네임</label><input type="text" id="c-who" list="roster-list" maxlength="20"></div>
+            <div class="field"><label for="c-id">회원번호</label><input type="text" id="c-id" maxlength="16" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="done" placeholder="영문 소문자·숫자 12~16자" style="font-family:var(--f-mono)"></div>
+          </div>
+          <label style="display:flex;gap:8px;align-items:flex-start;font-size:14px"><input type="checkbox" id="c-agree" style="margin-top:4px"><span>동의합니다 (입력한 회원번호로 도깨비의세계 쿠폰을 자동 등록). 회원번호는 쿠폰 등록에만 쓰이며, 중단을 원하면 방장에게 말해 주세요.</span></label>
+          <div class="form-row"><a class="btn" style="text-decoration:none" id="c-send" target="_blank" rel="noopener" aria-disabled="true">신청하기</a><span class="src" id="c-msg">닉네임, 회원번호, 동의를 채우면 신청할 수 있습니다.</span></div>
+        </div>
+        <div class="form-row">
+          <a class="btn ghost" style="text-decoration:none" href="https://coupon.kakaogames.com/dokkaebi/ko/" target="_blank" rel="noopener">공식 쿠폰 등록 페이지</a>
+          <span class="src" id="cp-msg"></span>
+        </div>
+        <div class="tablewrap"><table id="coupon-table"></table></div>
+        <p class="src">회원번호는 게임 [설정] 메뉴에서 확인합니다(영문 소문자·숫자 12~16자). 보상은 게임 우편함으로 들어오니 기간 내 수령하세요. 원문: <a href="https://forum.kakaogames.com/dokkaebi/postView/?code=notice&id=13991" target="_blank" rel="noopener">도깨비의세계 쿠폰 종합 안내</a></p>
+      </div>
+    </section>
+
+    <!-- 드랍률 -->
+    <section id="v-drop" class="view hidden" aria-labelledby="tab-drop">
+      <div class="panel" style="display:grid;gap:14px">
+        <div>
+          <div class="eyebrow">실측 · 문파원 기록 합산</div>
+          <h2><svg class="ic" aria-hidden="true"><use href="#i-pouch"/></svg>사냥터별 시간당 획득량</h2>
+          <p class="lede">공식 드랍률은 공개되지 않아, 실제 사냥 기록을 모아 계산합니다. 기록이 쌓일수록 갱신되고, 누적 5시간 미만인 사냥터는 표본 부족으로 표시합니다.</p>
+        </div>
+        <div class="tablewrap"><table id="zone-table"></table></div>
+        <div class="lock">
+          
+          <h3 style="margin-bottom:8px">기록 전체</h3>
+          <div class="tablewrap"><table id="rec-table"></table></div>
+        </div>
+        <div class="panel" style="background:var(--sunk);border:0">
+          <h3>내 사냥 기록</h3>
+          <p class="src" style="margin:4px 0 10px">사냥 시작·끝 가방(획득 내역)을 비교해 적어 주세요. 먼저 이 기기에 저장되고, ‘문파에 제출’을 누르면 내용이 채워진 제출 폼이 열립니다. 제출한 기록은 매일 한 번 위 표에 합산됩니다.</p>
+          <form id="hunt-form" style="display:grid;gap:10px">
+            <div class="form-row">
+              <div class="field"><label for="f-who">닉네임</label><input type="text" id="f-who" list="roster-list" required></div>
+              <div class="field"><label for="f-zone">사냥터</label><input type="text" id="f-zone" list="zones" placeholder="황무지마을" required enterkeyhint="next"></div>
+              <div class="field"><label for="f-cp">사냥 당시 전투력</label><input type="number" id="f-cp" placeholder="175234" required inputmode="numeric" enterkeyhint="next"></div>
+              <div class="field"><label for="f-mode">사냥 방식</label><select id="f-mode"><option>대량 필드 사냥</option><option>단일 사냥</option><option>비경·기타</option></select></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label for="f-min">사냥 시간(분)</label><input type="number" id="f-min" step="0.1" required inputmode="decimal" enterkeyhint="next"></div>
+              <div class="field"><label for="f-coin">얻은 엽전</label><input type="number" id="f-coin" required inputmode="numeric" enterkeyhint="next"></div>
+              <div class="field"><label for="f-dan">얻은 정기단</label><input type="number" id="f-dan" value="0" required inputmode="numeric" enterkeyhint="next"></div>
+              <div class="field" style="flex:1;min-width:200px"><label for="f-items">그 외 아이템 (한 줄에 ‘이름 개수’)</label><textarea id="f-items" rows="2" style="background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:inherit;color:inherit;resize:vertical" placeholder="영웅 비법서 3"></textarea></div>
+            </div>
+            <div><button class="btn" type="submit">내 기기에 저장</button></div>
+            <datalist id="zones"></datalist><datalist id="roster-list"></datalist>
+          </form>
+          <div id="my-hunts" style="margin-top:12px"></div>
+        </div>
+        <p class="src">패치 기준: 10/9 몬스터 엽전 2배, 10/10 필드 정기단 확률 상향 이후의 기록만 합산합니다.</p>
+      </div>
+      
+    </section>
+
+    <!-- 성장 리포트 -->
+    <section id="v-report" class="view hidden" aria-labelledby="tab-report">
+      <div class="panel" style="display:grid;gap:12px">
+        <div>
+          <div class="eyebrow">캡처 분석 · 맞춤 추천</div>
+          <h2><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg>내 캐릭터 성장 리포트</h2>
+          <p class="lede">장비창과 캐릭터 정보 캡처를 바탕으로 약한 부위, 재화를 쓸 순서, 그 재화가 잘 나오는 사냥터, 사냥 목적에 맞는 도술 구성을 한 장으로 정리합니다.</p>
+        </div>
+        <div class="guild-only">
+          <ol class="steps">
+            <li>장비창(전 부위), 캐릭터 정보(전투력·능력치), 도술 화면을 캡처합니다.</li>
+            <li>캡처와 함께 주로 쓰는 재화(엽전·금전·영석)와 사냥 목적(단일/대량)을 적어 <b>문파 카톡방(방장에게)</b>에 올려 주세요.</li>
+            <li>리포트가 정리되면 문파방에 공유해 드립니다.</li>
+          </ol>
+        </div>
+        
+      </div>
+      <div class="panel" style="margin-top:18px;display:grid;gap:12px">
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:end">
+          <div><div class="eyebrow">문파 현황 · 10/16 02:00 게임 화면 기준</div><h2><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>짐승특공대 전투력</h2></div>
+          <div class="field"><label for="me">나는</label><select id="me"></select></div>
+        </div>
+        <p class="src" id="roster-sum"></p>
+        <div class="tablewrap"><table id="roster-table"></table></div>
+      </div>
+      <div class="panel" style="margin-top:18px;display:grid;gap:10px">
+        <div class="eyebrow">내 기기 저장 데이터</div>
+        <p class="src" style="margin:0">저장한 장비와 사냥 기록은 이 브라우저에만 있습니다. 기기를 바꾸거나 브라우저 데이터를 지우기 전에 백업해 두세요.</p>
+        <div class="form-row"><button class="btn ghost" type="button" id="bk-copy">백업 복사</button><button class="btn ghost" type="button" id="bk-load">붙여넣은 백업 불러오기</button><span class="src" id="bk-msg"></span></div>
+        <textarea id="bk-text" rows="3" aria-label="백업 내용" style="background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:12px var(--f-mono);color:inherit;width:100%"></textarea>
+      </div>
+    </section>
+    
+  </main>
+  
+</div>
+
+<script>
+const MODE="guild";
+const OPT={"source": "공식 커뮤니티 현재 확률 정보 — 장비 등급별 추가 효과 부여 수 확률 (2026-10-15 09:00 기준)", "url": "https://forum.kakaogames.com/dokkaebi/postView/?code=prob&id=18494", "lines": {"희귀": 2, "영웅": 3, "전설": 4}, "types": {"무기": {"ranges": {"공격력": {"희귀": [[3, 7], [8, 14], [15, 25], [26, 41]], "영웅": [[17, 42], [43, 83], [84, 150], [151, 250]], "전설": [[63, 157], [158, 313], [314, 564], [565, 939]]}, "공격 정확도": {"희귀": [[1, 1], [2, 2], [3, 4], [5, 6]], "영웅": [[2, 4], [5, 8], [9, 15], [16, 25]], "전설": [[4, 10], [11, 21], [22, 38], [39, 63]]}, "치명타 적중": {"희귀": [[1, 1], [2, 2], [3, 3], [4, 4]], "영웅": [[1, 3], [4, 6], [7, 10], [11, 17]], "전설": [[3, 7], [8, 14], [15, 25], [26, 42]]}, "스타일 피해(각각)": {"희귀": [[1, 2], [3, 5], [6, 9], [10, 15]], "영웅": [[4, 10], [11, 20], [21, 36], [37, 60]], "전설": [[10, 25], [26, 50], [51, 90], [91, 150]]}}, "prob": {"공격력": [30, 22.5, 5.7, 1.5, 0.3], "공격 정확도": [30, 22.5, 5.7, 1.5, 0.3], "치명타 적중": [30, 22.5, 5.7, 1.5, 0.3], "스타일 피해(각각)": [0.83, 0.63, 0.16, 0.04, 0.01]}}, "장신구": {"ranges": {"공격력": {"희귀": [[1, 2], [3, 3], [4, 6], [7, 9]], "영웅": [[4, 9], [10, 19], [20, 34], [35, 57]], "전설": [[13, 33], [34, 66], [67, 119], [120, 198]]}, "공격 정확도": {"희귀": [[1, 1], [2, 2], [3, 4], [5, 6]], "영웅": [[2, 4], [5, 8], [9, 15], [16, 25]], "전설": [[4, 10], [11, 21], [22, 38], [39, 63]]}, "치명타 적중": {"희귀": [[1, 1], [2, 2], [3, 3], [4, 4]], "영웅": [[1, 3], [4, 6], [7, 11], [12, 19]], "전설": [[5, 12], [13, 24], [25, 43], [44, 71]]}, "스타일 피해(각각)": {"희귀": [[1, 2], [3, 5], [6, 9], [10, 15]], "영웅": [[4, 10], [11, 20], [21, 36], [37, 60]], "전설": [[10, 25], [26, 50], [51, 90], [91, 150]]}}, "prob": {"공격력": [30, 22.5, 5.7, 1.5, 0.3], "공격 정확도": [30, 22.5, 5.7, 1.5, 0.3], "치명타 적중": [30, 22.5, 5.7, 1.5, 0.3], "스타일 피해(각각)": [0.83, 0.63, 0.16, 0.04, 0.01]}}, "방어구": {"ranges": {"체력": {"희귀": [[7, 13], [14, 20], [21, 26], [27, 33]], "영웅": [[39, 78], [79, 117], [118, 156], [157, 195]], "전설": [[146, 292], [293, 439], [440, 585], [586, 731]]}, "방어력": {"희귀": [[1, 3], [4, 4], [5, 6], [7, 7]], "영웅": [[9, 17], [18, 26], [27, 34], [35, 43]], "전설": [[32, 64], [65, 96], [97, 128], [129, 160]]}, "도술 막기": {"희귀": [[1, 2], [3, 4], [5, 5], [6, 6]], "영웅": [[7, 14], [15, 21], [22, 28], [29, 35]], "전설": [[26, 53], [54, 79], [80, 105], [106, 132]]}, "치명타 저항": {"희귀": [[1, 1], [2, 2], [3, 3], [4, 4]], "영웅": [[3, 6], [7, 10], [11, 13], [14, 16]], "전설": [[12, 24], [25, 36], [37, 49], [50, 61]]}, "기본 공격 회피": {"희귀": [[1, 2], [3, 3], [4, 4], [5, 5]], "영웅": [[6, 12], [13, 18], [19, 24], [25, 30]], "전설": [[22, 44], [45, 67], [68, 89], [90, 111]]}, "체력 자연 회복": {"희귀": [[1, 2], [3, 3], [4, 4], [5, 5]], "영웅": [[5, 11], [12, 16], [17, 21], [22, 26]], "전설": [[20, 39], [40, 59], [60, 79], [80, 98]]}}, "prob": {"체력": [16.67, 9.17, 5.0, 2.0, 0.5], "방어력": [16.67, 9.17, 5.0, 2.0, 0.5], "도술 막기": [16.67, 9.17, 5.0, 2.0, 0.5], "치명타 저항": [16.67, 9.17, 5.0, 2.0, 0.5], "기본 공격 회피": [16.67, 9.17, 5.0, 2.0, 0.5], "체력 자연 회복": [16.67, 9.17, 5.0, 2.0, 0.5]}}}, "styles12_note": "스타일 피해 12종은 각각 별도 옵션(종류명은 확률표에 미기재)"};
+const PATCHES=[{"date": "2026-10-21", "kind": "예정", "title": "10월 21일(수) 업데이트 예고", "src": [["library", 48694, "업데이트 미리보기"], ["notice", 19240, "긴급 라이브 요약"], ["notice", 17815, "도술 초기화 안내"], ["library", 17814, "10/13 라이브 종합"]], "items": [["신규", "캐릭터명 경매장 추가 — 지금 쓰는 이름을 경매에 올리면 새 이름으로 무료 변경"], ["신규", "신규 PvE '만귀비경' — 50레벨부터 1~4인, 입장권은 필드·낙화의 전장 사냥으로 획득(파티 중 1명만 있으면 4명 입장)"], ["신규", "1 VS 1 친선전(사망 없음, 관전 가능), 할로윈 의복·탈것·도술 스킨(외형 탭), 무기 염색, 인기도"], ["성장", "장비 추가 효과 변경권 지급 — 보유 무기·장비의 추가 효과를 다시 조정 가능(판매 상품 아님)"], ["성장", "도술 초기화 — 강화·돌파 내역 초기화 후 사용 재화 소급(강화분은 요령서 선택 상자, 돌파는 실제 시도 횟수 기준). 각성은 유지"], ["재화·상점", "천요석 제작식 추가(주간 300회 교환) 목표"], ["사냥", "제작 재료 드랍률을 데이터 기반으로 조정할 예정(큰 폭 일괄 상향은 아님)"], ["신규", "서사 임무 약 30종 추가 목표"]]}, {"date": "2026-10-15", "kind": "점검", "title": "10월 15일(목) 임시 점검 · 확률 변경 · 필드 보스 입장 제한", "src": [["notice", 19973, "임시 점검 안내"], ["notice", 20567, "점검 완료 및 보상"], ["notice", 20562, "확률 변경 안내"], ["notice", 24963, "필드 보스 입장 제한"]], "items": [["밸런스", "장비 추가 효과 한 줄 최대치 하향 — 희귀 15%→0.75%, 영웅 15%→3%, 전설 15%→7.5%(옵션 종류·등장 확률은 그대로)"], ["밸런스", "공격 정확도가 도술 막기에 대응해 동작하도록 개선, 무기 기본 공격 계수 상향"], ["확률", "'장비 등급별 추가 효과 부여 수 확률'의 수치 범위 변경(10/15 09:00 기준)"], ["밸런스", "필드 보스 입장에 전투력 100,000 이상 조건 적용(10/15 20:00부터, 추후 조정 가능)"], ["보상", "10/14 점검 후~10/15 점검 전 분해한 영웅 이상 장비 복구(우편 지급)"], ["주의", "점검 시 거래소에 등록돼 있던 장비는 만료 처리, 등록 수수료 미반환"], ["보상", "GM의 선물 상자 1: 신기 가루 10, 엽전 20,000, 전투 공격 비법서 2(10/15 09:00~23:59 접속자)"]]}, {"date": "2026-10-14", "kind": "보상", "title": "10월 14일(수) 긴급 라이브 사과 보상", "src": [["notice", 19240, "긴급 라이브 요약 및 사과"]], "items": [["보상", "엽전 2,000,000, 요혼석 200, 의복 랜덤 열쇠 1, 도전자의 영웅 장신구 도안 선택 상자 1, 기운 발현 재료 선택 상자 200(10/14 19:43~10/16 00:00 접속자, 계정당 1회)"], ["예정", "상위→하위 재료 변환 기능 검토 중"]]}, {"date": "2026-10-14", "kind": "업데이트", "title": "10월 14일(수) 정기 업데이트", "src": [["update", 18403, "업데이트 안내"], ["notice", 18496, "점검 완료 및 보상"]], "items": [["신규", "희귀·영웅·전설 장비에 추가 효과 도입 — 희귀 2줄, 영웅 3줄, 전설 4줄"], ["재화·상점", "엽전 환전소(수로) 교환비 금전 1개당 엽전 100개 → 300개. 이전 교환분 소급, 11/11(수) 05시까지 수령"], ["재화·상점", "금전 상점 구매 제한 상향 — 소분(장비 강화 비법서·가호의 정수·도술 강화 요령서) 일일 50→100회, 천요석 주간 20→25회, 금옥 가호 주머니 일일 30→100회"], ["성장", "희귀 이상 장비·가호의 강화 0단계 기본 능력치 대폭 상향, 내면의 길(희귀·전설)·영기 수련 주요 능력치 상향"], ["밸런스", "도술 돌파 성장 폭 균일화, 쿨타임 감소 상한 15%(초과분은 피해량으로). 일부 도술 PvP·PvE 피해량 상향, 보호막 도술 10종 고정 수치 추가"], ["밸런스", "낙화의 전장 보스·요귀 체력 상향, 레이드 2~5단계 '산신마루 백운' 체력 상향, 적아저·화미공·장설독섬 패턴 완화"], ["재화·상점", "영석 상점 성장 지원 상자(비경 충전부 2 + 요혼석 200, 영석 400, 도사당 4회)·꾸미기 지원 상자 — 10/21 08:00까지"], ["편의", "길라잡이 [맞춤 추천] 탭, 화면에서 바로 타바로성 이동·절전 버튼, 거래소 판매가 표기·개당 가격 정렬, 채팅 개선"], ["주의", "강화·각성한 일반·희귀 장비는 거래소 등록 불가(영웅 이상은 가능). 파티 분배는 무작위만, 문파 전투는 가입 24시간 후 참여"], ["이벤트", "낙화의 전장 요화선녀 처치 서버 보상(1위 요혼석 30) — 10/21 정기 점검 전까지. 심처 개방 10/17(토) 23시~10/18(일) 23시"], ["보상", "GM의 선물 상자 2: 신기 가루 30, 엽전 50,000 등(10/14 10:30~23:59 접속자)"]]}, {"date": "2026-10-13", "kind": "라이브", "title": "10월 13일(화) 라이브 방송 · 임시 점검", "src": [["library", 17814, "라이브 종합 안내"], ["notice", 16692, "임시 점검"]], "items": [["예정", "2027년 1월까지 로드맵 공개, 도술 밸런스·성장 콘텐츠 상향 예고(10/14 반영)"], ["보상", "감사 쿠폰 '도깨비의내일' — 11/11(수) 23:59까지"], ["오류", "파티 생성 시 획득 규칙이 무작위로 설정되도록 수정(10/12·10/13 임시 점검)"]]}, {"date": "2026-10-10", "kind": "점검", "title": "10월 10일(토) 임시 점검", "src": [["notice", 12257, "임시 점검 안내"], ["notice", 12976, "확률 변경 안내"], ["notice", 13011, "점검 완료 및 보상"]], "items": [["사냥", "필드 사냥 정기단 획득 확률 상향 — 상급 사냥터일수록 더 높게"], ["사냥", "낙화의 전장: 전장 점수 3배, 모든 몬스터가 정기단 드롭, 낙화의 증표 +50%, 요화선녀 3,000만·요화궁녀 5,000만 엽전 보상"], ["사냥", "'망자의 마을' 비경이 [지원]으로 변경, 요혼석·요혼석 가루 획득"], ["재화·상점", "단각 상점 요혼석·신기 가루·엽전 일일 구매 100회, 영석 상점 탈것 상자 28종·의복 랜덤 열쇠 추가"], ["성장", "성장 멤버십: 원격 상점 엽전 상품 17종 별도 구매, 오프라인 모드 접속당 최대 8시간. 패스 요혼석 상향(소급)"], ["확률", "의복 랜덤 열쇠 확률 신규, 탈것 합성·단 봉인해제 확률 변경"], ["보상", "정기단·비경 충전부 사용분과 패스 증가분 소급 지급"]]}, {"date": "2026-10-09", "kind": "점검", "title": "10월 9일(금) 임시 점검 및 패치", "src": [["notice", 11050, "임시 점검 및 패치"], ["notice", 11327, "점검 완료 및 보상"]], "items": [["사냥", "필드·비경·전래동화 비경·낙화의 전장 몬스터 엽전 2배"], ["사냥", "필드·비경 [장비 강화] 1~5구역 정기단 드롭 2배, 메마른 늪 1·2·5·6구역에서도 정기단 획득"], ["사냥", "안개 기슭·산신의 영역(지하 동굴 포함) 일반 장비 드롭 2배, 채널 인원 절반으로 조정"], ["밸런스", "초반 몬스터·메인 퀘스트 보스 피해 감소, 헌신 도술 고정 회복(즉시 2,800 / 지속 초당 400)"], ["재화·상점", "필드 보스 누적 피해 보상 전원 지급·금전 증가, 문파 콘텐츠 개인 순위 금전 +20%"], ["오류", "멤버십 물약 소지 증가 효과가 사망 시 풀리던 문제, 필드 보스 보상 미수령 문제 등 수정"]]}, {"date": "2026-10-08", "kind": "오픈", "title": "정식 오픈", "src": [["notice", 9727, "정식 오픈 안내"]], "items": [["신규", "도깨비의세계 정식 서비스 시작"]]}];
+const HUNTS=[{"date": "10/16", "who": "순록이", "zone": "황무지마을", "cp": null, "minutes": 475.4, "coin": 194743, "dan": 309}, {"date": "10/16", "who": "순록이", "zone": "우물동굴", "cp": null, "minutes": 46.0, "coin": 17054, "dan": 25}];
+const TODAY=new Date();
+document.body.classList.add(MODE);
+document.querySelectorAll(MODE==="biz"?".guild-only":".biz-only").forEach(e=>e.remove());
+
+/* ----- 모드 ----- */
+let plan="free";
+function setPlan(p){plan=p;document.body.classList.toggle("free",p==="free");document.body.classList.toggle("pro",p==="pro");
+  const f=document.getElementById("plan-free"),pr=document.getElementById("plan-pro");
+  if(f){f.setAttribute("aria-pressed",p==="free");pr.setAttribute("aria-pressed",p==="pro")}
+  renderDrop();try{localStorage.setItem("kn-plan",p)}catch(e){}}
+
+
+/* ----- 탭 ----- */
+const tabs=[...document.querySelectorAll("nav.tabs button")];
+function showTab(t){tabs.forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===t));
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("hidden",v.id!=="v-"+t));
+  try{localStorage.setItem("kn-tab",t)}catch(e){}}
+tabs.forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+
+/* ----- 패치노트 ----- */
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const postUrl=(b,id)=>`https://forum.kakaogames.com/dokkaebi/postView/?code=${b}&id=${id}`;
+const DL_IC=["flag","gift","flag","ticket","coin","ticket"];
+const DEADLINES=[
+  ["낙화의 전장 심처 개방","2026-10-17T23:00","10/17(토) 23:00 ~ 10/18(일) 23:00"],
+  ["영석 상점 성장·꾸미기 지원 상자 판매 종료","2026-10-21T08:00","10/21(수) 08:00까지"],
+  ["요화선녀 서버 보상 이벤트 종료","2026-10-21T05:00","10/21(수) 정기 점검 전까지"],
+  ["쿠폰 '도깨비1008' 만료","2026-11-05T23:59","11/5(목) 23:59"],
+  ["엽전 교환비 소급분 수령 마감","2026-11-11T05:00","11/11(수) 05:00"],
+  ["쿠폰 5종 만료(매출1위·칭호·애플·구글·도깨비의내일)","2026-11-11T23:59","11/11(수) 23:59"]
+];
+function renderDeadlines(){
+  const el=document.getElementById("deadlines");
+  el.innerHTML=DEADLINES.map(([t,iso,w],di)=>{const d=Math.ceil((new Date(iso+"+09:00")-TODAY)/864e5);
+    const cls=d<0?"past":d<=5?"soon":"";const lab=d<0?"지남":d===0?"D-DAY":"D-"+d;
+    return `<div class="row"><span class="dday ${cls}">${lab}</span><span class="t">${I(DL_IC[di]||"cal")}${esc(t)}</span><span class="when">${esc(w)}</span></div>`}).join("");
+}
+const CATS=["전체","사냥","성장","밸런스","재화·상점","보상","신규","확률","주의","편의","오류","예정","이벤트"];
+let cat="전체";
+function renderFilters(){const used=new Set(PATCHES.flatMap(p=>p.items.map(i=>i[0])));
+  document.getElementById("filters").innerHTML=CATS.filter(c=>c==="전체"||used.has(c)).map(c=>`<button class="chip" aria-pressed="${c===cat}" data-c="${c}">${c!=="전체"&&CAT_IC[c]?I(CAT_IC[c]):""}${c}</button>`).join("");
+  document.querySelectorAll("#filters .chip").forEach(b=>b.onclick=()=>{cat=b.dataset.c;renderFilters();renderTimeline()});}
+function renderTimeline(){
+  const out=[];let n=0;
+  PATCHES.forEach(p=>{const items=p.items.filter(i=>cat==="전체"||i[0]===cat);if(!items.length)return;
+    const d=new Date(p.date+"T00:00+09:00");const dw="일월화수목금토"[d.getDay()];
+    out.push(`<article class="entry"><div class="date"><b>${d.getMonth()+1}.${String(d.getDate()).padStart(2,"0")}</b>${dw}요일</div><div>
+      <span class="kind k-${esc(p.kind)}">${esc(p.kind)}</span><h3>${esc(p.title)}</h3>
+      <ul>${items.map(i=>`<li><span class="tag t-${esc(i[0])}">${CAT_IC[i[0]]?I(CAT_IC[i[0]]):""}${esc(i[0])}</span><span>${esc(i[1])}</span></li>`).join("")}</ul>
+      <div class="src">원문: ${p.src.map(s=>`<a href="${postUrl(s[0],s[1])}" target="_blank" rel="noopener">${esc(s[2])}</a>`).join(" · ")}</div></div></article>`);
+    n++;});
+  document.getElementById("timeline").innerHTML=out.join("")||'<p class="src">이 분류에 해당하는 변경이 없습니다.</p>';
+}
+
+/* ----- 공통 ----- */
+const I=n=>`<svg class="ic" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+const CAT_IC={"사냥":"hunt","성장":"up","밸런스":"scale","재화·상점":"coin","보상":"gift","신규":"spark","확률":"dice","주의":"alert","편의":"tool","오류":"bug","예정":"cal","이벤트":"flag"};
+const SLOT_IC={"무기":"sword","투구":"helmet","갑옷":"armor","신발":"boot","각반":"greave","장갑":"glove","허리띠":"belt","목걸이":"necklace","반지":"ring","팔찌":"bracelet","귀걸이":"earring"};
+const gr=g=>g?`<span class="g-${g}">${g}</span>`:"";
+const fmt=n=>n==null||isNaN(n)?"–":Math.round(n).toLocaleString("ko-KR");
+const fmt1=n=>n==null||isNaN(n)?"–":n.toLocaleString("ko-KR",{maximumFractionDigits:1,minimumFractionDigits:1});
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}};
+const ROSTER=[["순록이", 175234, "문주", "2026-10-16T02:00:00+09:00", "게임 화면"], ["상이이", 171692, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["탱깨비", 157620, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["Fw월영의신", 154503, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["쪼코봉", 154344, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["쪼아시", 151722, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["큥야시", 151209, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["마이크론", 150974, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["동태야밥먹자", 148417, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["맑음이", 142530, "부문주", "2026-10-16T02:00:00+09:00", "게임 화면"], ["뚝깎", 140497, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["잠자러가자", 138471, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["리픽투", 134682, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["흑염소", 134236, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["단vl", 134228, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["창구구", 130218, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["기찻길", 126494, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["수재르", 110842, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["도깨비심장", 107678, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["미스테리", 90541, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["장군의아들", 83100, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["육무쌍", 77557, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["김여", 74177, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["kimiju", 57994, "", "2026-10-16T02:00:00+09:00", "게임 화면"]];
+const FORM_URL="https://docs.google.com/forms/d/e/1FAIpQLSf62ggn_r2tKDw1AF7_8UZLkIimBwoj1tdxqqOcYWSMQ2QA5Q/formResponse";
+const FORM_ENTRY={"who": 924641953, "zone": 1668987214, "cp": 1384361699, "minutes": 1234828068, "coin": 1019143542, "dan": 1820177903, "mode": 1016157962, "items": 395848103};
+const GEAR_URL="https://docs.google.com/forms/d/e/1FAIpQLSf9ifL_Rh6pT_KFbva6lvMDVIBuaWl1R7IAo-zyrcqWKU3I6Q/formResponse";
+const GEAR_ENTRY={"who": 985007610, "cp": 1035163623, "summary": 1794974437, "data": 506256582};
+const enc=encodeURIComponent;
+function alertMsg(m){const el=document.getElementById("bk-msg");if(el)el.textContent=m}
+let myHunts=store.get("kn-hunts",[]), me=store.get("kn-me","");
+if(!Array.isArray(myHunts))myHunts=[];
+
+/* ----- 내 장비 ----- */
+const TIERS=["하급","중급","상급","최상급"];
+const GRADES_ALL=["일반","희귀","영웅","전설"];
+const SLOTS=[["무기","무기"],["투구","방어구"],["갑옷","방어구"],["신발","방어구"],["각반","방어구"],["장갑","방어구"],["허리띠","방어구"],["목걸이","장신구"],["반지","장신구"],["팔찌","장신구"],["귀걸이","장신구"]];
+const slotType=s=>SLOTS.find(x=>x[0]===s)[1];
+const nLines=g=>OPT.lines[g]||0;
+let loadout=store.get("kn-loadout",null), example=false;
+if(!loadout||typeof loadout!=="object"){example=true;
+  loadout={"무기":{grade:"영웅",enh:30,kind:"지팡이",name:"고대 제령",lines:[{opt:"치명타 적중",val:5},{opt:"스타일 피해(각각)",val:0.12},{opt:"공격력",val:26}]}};}
+SLOTS.forEach(([s])=>{const d=loadout[s]||(loadout[s]={});d.grade=d.grade||"";d.enh=d.enh??"";d.kind=d.kind||"";d.name=d.name||"";if(!Array.isArray(d.lines))d.lines=[];});
+let curSlot="무기",oType="무기",oGrade=loadout["무기"].grade,lineState=loadout["무기"].lines;
+function touched(){if(example){example=false;document.getElementById("ex-badge").classList.add("hidden")}
+  if(!store.set("kn-loadout",loadout))alertMsg("이 브라우저는 저장을 막고 있습니다. 백업 복사로 내용을 따로 보관해 주세요.");}
+function seg(id,list,cur,fn){const el=document.getElementById(id);
+  el.innerHTML=list.map(x=>`<button type="button" aria-pressed="${x===cur}">${x}</button>`).join("");
+  [...el.children].forEach(b=>b.onclick=()=>fn(b.textContent));}
+const isStyle=o=>o==="스타일 피해(각각)";
+function optLabel(o){return isStyle(o)?"스타일 피해 % (강타·연타 등 12종)":o}
+const fv=(o,x)=>isStyle(o)?(x/100).toFixed(2)+"%":x;
+function higherProb(type,tier){const P=OPT.types[type].prob;let s=0;
+  for(const [o,arr] of Object.entries(P)){const mult=isStyle(o)?12:1;for(let t=tier+1;t<4;t++)s+=arr[t+1]*mult;}return s;}
+function evalLine(l){
+  const R=OPT.types[oType]?.ranges[l.opt]?.[oGrade];if(!R||l.val===""||l.val==null||isNaN(l.val))return null;
+  const v=isStyle(l.opt)?Math.round(Number(l.val)*100):Number(l.val),max=R[3][1];let tier=-1;R.forEach((r,i)=>{if(v>=r[0]&&v<=r[1])tier=i});
+  return {R,v,max,tier,pct:Math.min(100,v/max*100)};}
+function resHTML(l){const r=evalLine(l);
+  if(!r)return '<small>수치를 넣으면 등급과 % 가 나옵니다.</small>';
+  const tierCls=r.tier<0?"tierx":"tier"+r.tier;const tname=r.tier<0?"범위 밖":TIERS[r.tier];
+  const ticks=r.R.slice(0,3).map(x=>`<span class="tick" style="left:${x[1]/r.max*100}%"></span>`).join("");
+  const hp=r.tier<0?"":` · 다시 뽑으면 이보다 높은 등급 ${higherProb(oType,r.tier).toFixed(1)}%`;
+  let s=`<div class="top"><span class="tier ${tierCls}">${tname}</span><span class="pct">${r.pct.toFixed(0)}%</span><small>최댓값 ${fv(l.opt,r.max)} 대비</small></div>
+  <div class="bar">${ticks}<i style="width:${r.pct}%"></i></div>
+  <details class="more"><summary>공식 범위 · 재추첨 확률</summary><small>${oGrade} ${optLabel(l.opt)} 범위 ${r.R.map((x,j)=>TIERS[j]+" "+(x[0]===x[1]?fv(l.opt,x[0]):fv(l.opt,x[0])+"~"+fv(l.opt,x[1]))).join(" / ")}${hp}</small>${isStyle(l.opt)?`<small>스타일 피해는 게임 화면의 % 값을 그대로 넣습니다(0.12% = 공식 표 수치 12로 환산) [판단: 단위 추정]</small>`:""}</details>`;
+  if(r.tier<0)s+=`<small>입력한 값이 ${oGrade} 범위에 없습니다. 등급이나 수치를 확인해 주세요.</small>`;
+  return s;}
+function slotScore(s){const d=loadout[s];if(!nLines(d.grade))return null;
+  const keep=[oType,oGrade];oType=slotType(s);oGrade=d.grade;const rs=d.lines.map(evalLine).filter(Boolean);[oType,oGrade]=keep;
+  if(!rs.length)return null;return {avg:rs.reduce((a,r)=>a+r.pct,0)/rs.length,n:rs.length,need:nLines(d.grade),low:rs.filter(r=>r.tier===0).length,out:rs.filter(r=>r.tier<0).length};}
+function fitLines(d){const n=nLines(d.grade),opts=Object.keys(OPT.types[slotType(curSlot)].ranges);
+  d.lines=Array.from({length:n},(_,i)=>d.lines[i]&&opts.includes(d.lines[i].opt)?d.lines[i]:{opt:opts[i%opts.length],val:""});lineState=d.lines;}
+function renderSlots(){
+  const el=document.getElementById("slots");
+  el.innerHTML=SLOTS.map(([s])=>{const sc=slotScore(s);const g=loadout[s].grade;
+    return `<button class="chip" type="button" aria-pressed="${s===curSlot}" data-slot="${s}">${I(SLOT_IC[s])}${s}${g?" · "+gr(g):""}${sc?` <b class="num">${sc.avg.toFixed(0)}</b>`:""}</button>`}).join("");
+  el.querySelectorAll("[data-slot]").forEach(b=>b.onclick=()=>{curSlot=b.dataset.slot;const d=loadout[curSlot];oType=slotType(curSlot);oGrade=d.grade;lineState=d.lines;renderOpt();});}
+function renderOpt(){
+  const d=loadout[curSlot];oType=slotType(curSlot);oGrade=d.grade;lineState=d.lines;
+  document.getElementById("slot-title").innerHTML=`${I(SLOT_IC[curSlot])}${curSlot} <span class="src">(${oType})</span>`;
+  document.getElementById("ex-badge").classList.toggle("hidden",!example);
+  seg("seg-grade",GRADES_ALL,d.grade,g=>{d.grade=g;fitLines(d);touched();renderOpt();});
+  const enh=document.getElementById("o-enh");enh.value=d.enh;enh.oninput=()=>{d.enh=enh.value===""?"":Math.max(0,Math.min(50,Number(enh.value)));touched();renderSummary();};
+  const kw=document.getElementById("kind-wrap");kw.classList.toggle("hidden",oType!=="무기");
+  const kd=document.getElementById("o-kind");kd.value=d.kind;kd.onchange=()=>{d.kind=kd.value;touched();renderSummary();};
+  const nm=document.getElementById("o-name");nm.value=d.name;nm.oninput=()=>{d.name=nm.value.slice(0,30);touched();renderSummary();};
+  const el=document.getElementById("lines");
+  if(!d.grade){el.innerHTML='<p class="src" style="margin:0">위에서 이 부위의 장비 등급을 먼저 고르세요.</p>'}
+  else if(!nLines(d.grade)){el.innerHTML='<p class="src" style="margin:0">일반 등급 장비에는 추가 효과가 붙지 않습니다.</p>'}
+  else{const opts=Object.keys(OPT.types[oType].ranges);
+    el.innerHTML=lineState.map((l,i)=>`<div class="line"><span class="n">${i+1}</span>
+      <select id="o-opt-${i}" aria-label="${i+1}번째 줄 효과">${opts.map(o=>`<option value="${esc(o)}" ${o===l.opt?"selected":""}>${esc(optLabel(o))}</option>`).join("")}</select>
+      <input type="number" id="o-val-${i}" aria-label="${i+1}번째 줄 수치" value="${l.val??""}" placeholder="${isStyle(l.opt)?"예: 0.12":"수치"}" step="${isStyle(l.opt)?"0.01":"1"}" min="0" inputmode="${isStyle(l.opt)?"decimal":"numeric"}" enterkeyhint="done">
+      <div class="res" id="o-res-${i}">${resHTML(l)}</div></div>`).join("");
+    lineState.forEach((l,i)=>{document.getElementById("o-opt-"+i).onchange=e=>{l.opt=e.target.value;touched();renderOpt()};
+      document.getElementById("o-val-"+i).oninput=e=>{l.val=e.target.value===""?"":Number(e.target.value);touched();document.getElementById("o-res-"+i).innerHTML=resHTML(l);renderScore();renderSlots();renderSummary();};});}
+  renderScore();renderSlots();renderSummary();}
+function renderScore(){
+  const el=document.getElementById("score");const sc=slotScore(curSlot);
+  if(!sc){el.innerHTML='<p>줄마다 수치를 넣으면 이 부위의 점수를 계산합니다.</p>';return}
+  const msg=sc.avg>=60?"상위권 옵션입니다. 변경권은 다른 부위에 먼저 쓰는 편이 낫습니다.":sc.avg>=30?"중간 수준입니다. 하급 줄이 있다면 변경권 후보입니다.":"하급 위주입니다. 변경권 우선 후보입니다.";
+  el.innerHTML=`<div class="big num">${sc.avg.toFixed(0)}<span style="font-size:18px">점</span></div><p>줄별 최상급 최댓값 대비 % 평균 (${sc.n}/${sc.need}줄 입력, 하급 ${sc.low}줄).<br>${msg} [판단]</p>`;}
+function lineText(l){return (isStyle(l.opt)?"스타일 피해 "+l.val+"%":l.opt+" "+l.val)}
+function slotText(s){const d=loadout[s];if(!d.grade)return null;const sc=slotScore(s);
+  return `${s}${d.kind?"("+d.kind+")":""}${d.name?" "+d.name:""} ${d.grade}${d.enh!==""?" +"+d.enh:""}${d.lines.filter(l=>l.val!==""&&l.val!=null).length?" · "+d.lines.filter(l=>l.val!==""&&l.val!=null).map(lineText).join(" / "):""}${sc?" · "+sc.avg.toFixed(0)+"점":""}`;}
+function renderSummary(){
+  const rows=SLOTS.map(([s])=>({s,d:loadout[s],sc:slotScore(s)}));
+  const scored=rows.filter(r=>r.sc);const avg=scored.length?scored.reduce((a,r)=>a+r.sc.avg,0)/scored.length:null;
+  const order=scored.filter(r=>r.d.grade==="영웅"||r.d.grade==="전설").sort((a,b)=>a.sc.avg-b.sc.avg).map(r=>r.s);
+  document.getElementById("loadout-sum").textContent=`입력 ${rows.filter(r=>r.d.grade).length}/11부위 · 추가 효과 평균 ${avg==null?"–":avg.toFixed(0)+"점"}${order.length?" · 변경권 우선순위: "+order.slice(0,3).join(" → ")+" [판단]":""}`;
+  document.getElementById("loadout-table").innerHTML=`<thead><tr><th>부위</th><th>장비</th><th>등급</th><th>강화</th><th>추가 효과</th><th>점수</th><th>변경권</th></tr></thead><tbody>${
+    rows.map(r=>{const rank=order.indexOf(r.s);return `<tr style="${r.s===curSlot?"background:var(--jade-soft)":""}"><td>${I(SLOT_IC[r.s])}${r.s}</td><td style="text-align:left">${esc((r.d.kind?r.d.kind+" ":"")+(r.d.name||""))||"–"}</td><td>${r.d.grade?gr(r.d.grade):"미입력"}</td><td class="num">${r.d.enh!==""?"+"+r.d.enh:"–"}</td>
+    <td style="text-align:left">${esc(r.d.lines.filter(l=>l.val!==""&&l.val!=null).map(lineText).join(" / "))||"–"}</td><td class="num">${r.sc?r.sc.avg.toFixed(0):"–"}</td><td>${rank>=0&&rank<3?`<span class="tier tier1">${rank+1}순위</span>`:""}</td></tr>`}).join("")}</tbody>`;
+  renderGearSubmit();}
+function gearPayload(){const o={};SLOTS.forEach(([s])=>{const d=loadout[s];if(d.grade)o[s]={g:d.grade,e:d.enh,k:d.kind,n:d.name,l:d.lines.map(l=>[l.opt,l.val])}});return o;}
+function renderGearSubmit(){
+  const el=document.getElementById("gear-submit");if(!el)return;
+  const who=me,r=ROSTER.find(x=>x[0]===who),filled=SLOTS.filter(([s])=>loadout[s].grade).length;
+  if(MODE!=="guild"||!GEAR_URL){el.innerHTML="";return}
+  if(example){el.innerHTML='<span class="src">예시 장비는 제출할 수 없습니다. 내 장비로 수정한 뒤 제출하세요.</span>';return}
+  if(!who){el.innerHTML='<span class="src">성장 리포트 탭에서 ‘나는’을 먼저 고르면 문파에 제출할 수 있습니다.</span>';return}
+  if(!filled){el.innerHTML="";return}
+  const summary=SLOTS.map(([s])=>slotText(s)).filter(Boolean).join("\n");
+  const cp=store.get("kn-cp","")||(r?r[1]:"");
+  const v={who,cp,summary,data:JSON.stringify({v:1,at:(d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"))(new Date()),s:gearPayload()})};
+  const mk=c=>GEAR_URL+"?"+Object.entries(GEAR_ENTRY).map(([k,id])=>"entry."+id+"="+enc(({...v,cp:c})[k])).join("&")+"&submit=Submit";
+  const url=mk(cp);
+  const last=store.get("kn-gear-sent","");
+  el.innerHTML=`<div class="field"><label for="g-cp">지금 전투력</label><input type="number" id="g-cp" value="${esc(cp)}" inputmode="numeric" enterkeyhint="done" style="width:130px"></div>
+    <a class="btn" style="text-decoration:none" href="${url}" target="_blank" rel="noopener" id="gear-send">${who} 장비·전투력 제출</a><span class="src">${last?"마지막 제출 "+esc(last):"아직 제출 전"}</span>`;
+  const ci=document.getElementById("g-cp"),ga=document.getElementById("gear-send");ci.oninput=()=>{const n=Math.round(Number(ci.value));store.set("kn-cp",n>0?n:"");ga.href=mk(n>0?n:"");};
+  document.getElementById("gear-send").addEventListener("click",()=>{const t=new Date();const n=Math.round(Number(ci.value));if(n>0)store.set("kn-cp",n);
+    store.set("kn-gear-sent",`${t.getMonth()+1}/${t.getDate()} ${t.getHours()}:${String(t.getMinutes()).padStart(2,"0")}`);
+    if(n>0)store.set("kn-cp-sent",{who,cp:n,at:t.toISOString()});setTimeout(()=>{renderGearSubmit();renderRoster();},300);});}
+
+/* ----- 쿠폰 ----- */
+const COUPON_FORM="https://docs.google.com/forms/d/e/1FAIpQLSciO64n5KnOJZI3FhPuKpQEF2CWwlGST1xxid2gKwSqVUf6pA/formResponse";
+function setupCouponApply(){
+  const who=document.getElementById("c-who");if(!who)return;
+  const id=document.getElementById("c-id"),ag=document.getElementById("c-agree"),send=document.getElementById("c-send"),msg=document.getElementById("c-msg");
+  if(me&&!who.value)who.value=me;
+  const sent=store.get("kn-coupon-applied","");
+  const upd=()=>{const w=who.value.trim(),v=id.value.trim();const okId=/^[a-z0-9]{12,16}$/.test(v);
+    const ok=w&&okId&&ag.checked;
+    send.setAttribute("aria-disabled",String(!ok));send.style.opacity=ok?"1":".45";send.style.pointerEvents=ok?"auto":"none";
+    send.href=ok?COUPON_FORM+"?entry.1940252904="+enc(w)+"&entry.464061005="+enc(v)+"&entry.2109986605="+enc("동의합니다 (입력한 회원번호로 도깨비의세계 쿠폰을 자동 등록)")+"&submit=Submit":"#";
+    msg.textContent=v&&!okId?"회원번호는 영문 소문자·숫자 12~16자입니다. 게임 [설정] 메뉴에서 확인하세요.":ok?"누르면 새 탭에서 ‘응답이 기록되었습니다’가 뜨면 완료입니다.":(sent?"이 기기에서 "+sent+" 신청함. ":"")+"닉네임, 회원번호, 동의를 채우면 신청할 수 있습니다.";};
+  [who,id].forEach(e=>e.oninput=upd);ag.onchange=upd;
+  send.addEventListener("click",e=>{if(send.getAttribute("aria-disabled")==="true"){e.preventDefault();return}
+    const t=new Date();store.set("kn-coupon-applied",`${t.getMonth()+1}/${t.getDate()}`);setTimeout(()=>{id.value="";ag.checked=false;upd();msg.textContent="신청을 보냈습니다. 새 탭에서 ‘응답이 기록되었습니다’를 확인하세요.";},300);});
+  upd();}
+const COUPONS=[["도깨비1008","무기 외형","2026-11-05T23:59"],["매출1위감사합니다","마켓 매출 1위 기념","2026-11-11T23:59"],["칭호나와라뚝딱","SNS 구독 이벤트","2026-11-11T23:59"],
+  ["애플1위풍악을울려라","앱스토어 인기 1위","2026-11-11T23:59"],["구글1위잔치로구나","구글 플레이 인기 1위","2026-11-11T23:59"],["도깨비의내일","10/13 라이브 감사","2026-11-11T23:59"],
+  ["도깨비의다짐","10/9 라이브 감사",""],["도깨비의약속","10/9 라이브 감사",""],["도깨비의마음","10/9 라이브 감사",""]];
+function renderCoupons(){
+  const el=document.getElementById("coupon-table");
+  el.innerHTML=`<thead><tr><th>쿠폰 코드</th><th>구분</th><th>사용 기한</th><th></th></tr></thead><tbody>${COUPONS.map(([c,k,iso])=>{
+    let dd="제한 없음";if(iso){const d=Math.ceil((new Date(iso+"+09:00")-TODAY)/864e5);const t=new Date(iso+"+09:00");dd=`${t.getMonth()+1}/${t.getDate()} 23:59 <span class="dday ${d<=5?"soon":""}" style="display:inline-block;padding:1px 8px;margin-left:6px">${d<0?"만료":"D-"+d}</span>`;}
+    return `<tr><td style="text-align:left">${I("ticket")}<b class="num" style="font-family:var(--f-body)">${esc(c)}</b></td><td style="text-align:left">${esc(k)}</td><td>${dd}</td><td><button class="chip" type="button" data-cp="${esc(c)}">${I("copy")}코드 복사</button></td></tr>`}).join("")}</tbody>`;
+  el.querySelectorAll("[data-cp]").forEach(b=>b.onclick=async()=>{const m=document.getElementById("cp-msg");
+    try{await navigator.clipboard.writeText(b.dataset.cp);m.textContent=`‘${b.dataset.cp}’ 복사했습니다.`}catch(e){m.textContent=`복사가 막혀 있습니다. 코드를 길게 눌러 복사하세요: ${b.dataset.cp}`}});}
+
+/* 사냥 기록 */
+function prefill(h){if(!FORM_URL)return "";
+  const v={who:h.who,zone:h.zone,cp:h.cp??"",minutes:h.minutes,coin:h.coin,dan:h.dan,mode:h.mode,items:h.items||""};
+  return FORM_URL+"?"+Object.entries(FORM_ENTRY).map(([k,id])=>"entry."+id+"="+enc(v[k])).join("&")+"&submit=Submit";}
+function renderMyHunts(){
+  const el=document.getElementById("my-hunts");if(!el)return;
+  if(!myHunts.length){el.innerHTML='<p class="src" style="margin:0">이 기기에 저장한 기록이 없습니다.</p>';return}
+  el.innerHTML=`<div class="tablewrap"><table><thead><tr><th>날짜</th><th>사냥터</th><th>전투력</th><th>시간(분)</th><th>엽전</th><th>정기단</th><th>상태</th><th></th></tr></thead><tbody>${
+    myHunts.map((h,i)=>`<tr><td>${esc(h.date)}</td><td>${esc(h.zone)}</td><td class="num">${fmt(h.cp)}</td><td class="num">${fmt1(h.minutes)}</td><td class="num">${fmt(h.coin)}</td><td class="num">${fmt(h.dan)}</td>
+    <td>${h.submitted?'<span class="tier tier2">제출함</span>':'<span class="tier tier0">미제출</span>'}</td>
+    <td>${MODE==="guild"&&FORM_URL&&!h.submitted?`<a class="chip" style="text-decoration:none" href="${prefill(h)}" target="_blank" rel="noopener" data-hs="${i}">문파에 제출</a> `:""}<button class="chip" data-hd="${i}">삭제</button></td></tr>`).join("")}</tbody></table></div>`;
+  el.querySelectorAll("[data-hs]").forEach(a=>a.addEventListener("click",()=>{myHunts[+a.dataset.hs].submitted=true;store.set("kn-hunts",myHunts);setTimeout(()=>{renderMyHunts();renderDrop()},300)}));
+  el.querySelectorAll("[data-hd]").forEach(b=>b.onclick=()=>{myHunts.splice(+b.dataset.hd,1);store.set("kn-hunts",myHunts);renderMyHunts();renderDrop();});
+}
+document.getElementById("hunt-form").onsubmit=e=>{e.preventDefault();const v=id=>document.getElementById(id).value;
+  const d=new Date();
+  myHunts.unshift({date:(d.getMonth()+1)+"/"+d.getDate(),who:v("f-who").trim(),zone:v("f-zone").trim(),cp:Number(v("f-cp"))||null,mode:v("f-mode"),
+    minutes:Number(v("f-min")),coin:Number(v("f-coin"))||0,dan:Number(v("f-dan"))||0,items:v("f-items").trim(),submitted:false});
+  if(!store.set("kn-hunts",myHunts))alertMsg("이 브라우저는 저장을 막고 있습니다.");
+  ["f-zone","f-min","f-coin","f-items"].forEach(id=>document.getElementById(id).value="");document.getElementById("f-dan").value="0";
+  renderMyHunts();renderDrop();};
+
+/* 드랍률 표 */
+function poissonCI(k){const z=1.645;if(k===0)return[0,2.996];
+  const lo=k*Math.pow(1-1/(9*k)-z/(3*Math.sqrt(k)),3);const k1=k+1;const hi=k1*Math.pow(1-1/(9*k1)+z/(3*Math.sqrt(k1)),3);return[lo,hi]}
+function renderDrop(){
+  const mine=myHunts.filter(h=>!h.submitted).map(h=>({...h,who:h.who+" (내 기기)"}));
+  const all=HUNTS.concat(mine);const z={};
+  all.forEach(h=>{const a=z[h.zone]||(z[h.zone]={min:0,n:0,coin:0,dan:0,cps:[]});a.min+=h.minutes;a.n++;a.coin+=h.coin||0;a.dan+=h.dan||0;if(h.cp)a.cps.push(h.cp)});
+  const pro=MODE==="guild"||plan==="pro";
+  const rows=Object.entries(z).sort((a,b)=>b[1].coin/b[1].min-a[1].coin/a[1].min).map(([name,a])=>{const hrs=a.min/60;
+    const ci=poissonCI(a.dan).map(x=>x/hrs);const few=hrs<5?'<span class="flag">표본 부족</span>':"";
+    const cp=a.cps.length?(Math.min(...a.cps)===Math.max(...a.cps)?fmt(a.cps[0]):fmt(Math.min(...a.cps))+"~"+fmt(Math.max(...a.cps))):"미입력";
+    return `<tr><td>${esc(name)}${few}</td><td class="num">${a.n}</td><td class="num">${fmt1(hrs)}h</td><td class="num">${fmt(a.coin/hrs)}</td>
+      <td class="num">${fmt1(a.dan/hrs)}${pro?` <span class="ci">(${fmt1(ci[0])}~${fmt1(ci[1])})</span>`:""}</td><td class="num">${cp}</td></tr>`}).join("");
+  document.getElementById("zone-table").innerHTML=`<thead><tr><th>사냥터</th><th>기록</th><th>누적 시간</th><th>${I("coin")}엽전/h</th><th>${I("orb")}정기단/h${pro?" (90% 구간)":""}</th><th>전투력</th></tr></thead><tbody>${rows}</tbody>`;
+  document.getElementById("rec-table").innerHTML=`<thead><tr><th>날짜</th><th>문파원</th><th>사냥터</th><th>방식</th><th>전투력</th><th>시간(분)</th><th>엽전</th><th>정기단</th><th>그 외</th></tr></thead><tbody>${
+    all.map(h=>`<tr><td>${esc(h.date)}</td><td>${esc(h.who)}</td><td>${esc(h.zone)}</td><td>${esc(h.mode||"–")}</td><td class="num">${h.cp?fmt(h.cp):"미입력"}</td><td class="num">${fmt1(h.minutes)}</td><td class="num">${fmt(h.coin)}</td><td class="num">${fmt(h.dan)}</td><td style="text-align:left">${esc((h.items||"").replace(/\n/g,", "))||"–"}</td></tr>`).join("")}</tbody>`;
+  const dl=document.getElementById("zones");if(dl)dl.innerHTML=Object.keys(z).map(n=>`<option value="${esc(n)}">`).join("");
+}
+
+/* 문파 현황 */
+function renderRoster(){
+  const sel=document.getElementById("me");
+  sel.innerHTML='<option value="">선택</option>'+ROSTER.map(r=>`<option ${r[0]===me?"selected":""}>${esc(r[0])}</option>`).join("");
+  sel.onchange=()=>{me=sel.value;store.set("kn-me",me);applyMe();renderRoster();renderGearSubmit();};
+  document.getElementById("roster-list").innerHTML=ROSTER.map(r=>`<option value="${esc(r[0])}">`).join("");
+  const sent=store.get("kn-cp-sent",null);
+  const rows=ROSTER.map(r=>({name:r[0],cp:r[1],role:r[2],at:r[3]?new Date(r[3]):null,src:r[4]||"게임 화면",prev:r[5]??null,pending:false}));
+  if(sent&&sent.who){const x=rows.find(y=>y.name===sent.who);const sa=new Date(sent.at);if(x&&(!x.at||sa>x.at)){x.prev=x.cp;x.cp=sent.cp;x.at=sa;x.src="본인 제출";x.pending=true;}}
+  rows.sort((a,b)=>b.cp-a.cp);
+  const fmtAt=d=>{if(!d||isNaN(d))return "–";const k=new Date(d.getTime());return `${k.getMonth()+1}/${k.getDate()} ${String(k.getHours()).padStart(2,"0")}:${String(k.getMinutes()).padStart(2,"0")}`};
+  const ago=d=>{if(!d)return "";const m=(Date.now()-d)/6e4;return m<1?"방금":m<60?Math.floor(m)+"분 전":m<1440?Math.floor(m/60)+"시간 전":Math.floor(m/1440)+"일 전"};
+  const n=rows.length,avg=rows.reduce((a,r)=>a+r.cp,0)/n,under=rows.filter(r=>r.cp<100000);
+  document.getElementById("roster-sum").textContent=`${n}명 · 평균 ${fmt(avg)} · 필드 보스 입장 기준(100,000) 미달 ${under.length}명${under.length?" ("+under.map(r=>r.name).join(", ")+")":""} · 본인이 ‘내 장비’에서 제출하면 전투력과 갱신 시각이 바뀝니다`;
+  document.getElementById("roster-table").innerHTML=`<thead><tr><th>순위</th><th>닉네임</th><th>직위</th><th>전투력</th><th>갱신</th><th>필드 보스</th></tr></thead><tbody>${
+    rows.map((r,i)=>{const d=r.prev!=null&&r.prev!==r.cp?r.cp-r.prev:0;const stale=r.at&&(Date.now()-r.at)/864e5>=7;
+    return `<tr style="${r.name===me?"background:var(--jade-soft)":""}"><td class="num">${i+1}</td><td class="ttl" style="text-align:left">${esc(r.name)}${r.name===me?' <span class="tier tier2">나</span>':""}</td><td>${esc(r.role||"문파원")}</td>
+    <td class="num">${fmt(r.cp)}${d?` <span class="ci" style="color:${d>0?"var(--jade)":"var(--vermil)"}">${d>0?"▲":"▼"}${fmt(Math.abs(d))}</span>`:""}</td>
+    <td style="text-align:left;${stale?"color:var(--ink3)":""}">${I("clock")}${fmtAt(r.at)} <span class="ci">${ago(r.at)} · ${esc(r.src)}${r.pending?" · 반영 대기":""}</span></td>
+    <td>${r.cp>=100000?"입장 가능":'<span class="flag" style="margin:0">미달</span>'}</td></tr>`}).join("")}</tbody>`;
+}
+function applyMe(){if(!me)return;const r=ROSTER.find(x=>x[0]===me);const w=document.getElementById("f-who"),c=document.getElementById("f-cp");
+  if(w&&!w.value)w.value=me;if(c&&!c.value&&r)c.value=r[1];}
+applyMe();
+
+/* 백업 */
+document.getElementById("bk-copy").onclick=async()=>{const txt=JSON.stringify({v:2,me,loadout:example?null:loadout,hunts:myHunts});const ta=document.getElementById("bk-text");ta.value=txt;
+  try{await navigator.clipboard.writeText(txt);alertMsg("복사했습니다. 메모장이나 카톡 나에게 보내기에 붙여 두세요.")}catch(e){ta.select();alertMsg("아래 칸의 내용을 직접 복사해 주세요.")}};
+document.getElementById("bk-load").onclick=()=>{try{const o=JSON.parse(document.getElementById("bk-text").value);
+  if(!Array.isArray(o.hunts))throw 0;myHunts=o.hunts;me=o.me||me;if(o.loadout&&typeof o.loadout==="object"){loadout=o.loadout;SLOTS.forEach(([s])=>{const d=loadout[s]||(loadout[s]={});d.grade=d.grade||"";d.enh=d.enh??"";d.kind=d.kind||"";d.name=d.name||"";if(!Array.isArray(d.lines))d.lines=[];});example=false;store.set("kn-loadout",loadout);}
+  store.set("kn-hunts",myHunts);store.set("kn-me",me);renderOpt();renderMyHunts();renderDrop();renderRoster();applyMe();alertMsg("불러왔습니다.")}
+  catch(e){alertMsg("백업 내용을 읽을 수 없습니다. ‘백업 복사’로 만든 글을 통째로 붙여 넣어 주세요.")}};
+
+
+
+/* ----- 모바일 표 라벨 ----- */
+function labelTable(tb){const hs=[...tb.querySelectorAll("thead th")].map(h=>h.textContent.trim());
+  tb.querySelectorAll("tbody tr").forEach(tr=>[...tr.children].forEach((td,i)=>{if(hs[i])td.setAttribute("data-l",hs[i]);const tx=td.textContent.trim();td.classList.toggle("emptycell",tx===""||tx==="–");}));}
+function watchTables(){let q=0;const run=()=>{q=0;document.querySelectorAll(".tablewrap table").forEach(labelTable)};run();
+  new MutationObserver(()=>{if(!q)q=requestAnimationFrame(run)}).observe(document.querySelector("main"),{childList:true,subtree:true});}
+/* ----- 시작 ----- */
+renderDeadlines();renderFilters();renderTimeline();renderOpt();renderMyHunts();renderRoster();renderCoupons();setupCouponApply();watchTables();
+let savedPlan="free";try{savedPlan=localStorage.getItem("kn-plan")||"free"}catch(e){}
+setPlan(MODE==="biz"?savedPlan:"pro");
+try{const t=localStorage.getItem("kn-tab");if(t&&document.getElementById("v-"+t))showTab(t)}catch(e){}
+
+</script>
+
+</body>
+</html>
