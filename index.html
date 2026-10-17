@@ -185,9 +185,9 @@ details.more small{display:block;margin-top:4px}
   header.top{position:static}
   .top-in{padding-block:8px;gap:6px}
   .brand{font-size:20px}
-  nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;margin:0;gap:0;display:grid;grid-template-columns:repeat(5,1fr);
+  nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;margin:0;gap:0;display:grid;grid-template-columns:repeat(7,1fr);
     background:var(--surface);border-top:1px solid var(--line);padding:4px max(4px,env(safe-area-inset-left,0px)) calc(4px + env(safe-area-inset-bottom,0px)) max(4px,env(safe-area-inset-right,0px));box-shadow:0 -4px 16px rgb(0 0 0 / .12)}
-  nav.tabs button{font-size:12px;padding:7px 2px 6px;border-radius:10px;white-space:nowrap;flex-direction:column;gap:3px;justify-content:center}
+  nav.tabs button{font-size:11px;padding:7px 1px 6px;border-radius:10px;white-space:nowrap;flex-direction:column;gap:3px;justify-content:center}
   nav.tabs button .ic{width:22px;height:22px}
   .entry li{grid-template-columns:84px minmax(0,1fr)}
   .frame{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
@@ -219,7 +219,296 @@ details.more small{display:block;margin-top:4px}
   details.more summary{padding:6px 0}
   .tablewrap tr:has(td.ttl) td:first-child::before{content:"#";color:var(--ink3);margin-right:2px}
 }
+.site-foot{border-top:1px solid var(--line);padding-top:14px;margin-top:8px;font-size:12px;color:var(--ink3);display:grid;gap:4px}
+.site-foot p{margin:0}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+#v-build{--st-jeol:#1a9e6e;--st-yeon:#2a78d6;--st-gang:#a87400;--st-cheok:#c2417a;--st-jeo:#cc8400;--st-ju:#7b55d1;--st-pa:#e0612a;--st-in:#5f7a6a;--st-gi:#168c9a;--st-heon:#7d7d14;--st-man:#a8459e;--st-je:#4a55c8;--st-aa:#9aa8a2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #v-build{--st-jeol:#38c48f;--st-yeon:#5b9cf0;--st-gang:#d9a23a;--st-cheok:#e56a9f;--st-jeo:#f0b24a;--st-ju:#a587f0;--st-pa:#f08350;--st-in:#93b0a0;--st-gi:#3fc0cc;--st-heon:#c4c44a;--st-man:#d27bd0;--st-je:#8590f0;--st-aa:#7d8a84}}
+:root[data-theme="dark"] #v-build{--st-jeol:#38c48f;--st-yeon:#5b9cf0;--st-gang:#d9a23a;--st-cheok:#e56a9f;--st-jeo:#f0b24a;--st-ju:#a587f0;--st-pa:#f08350;--st-in:#93b0a0;--st-gi:#3fc0cc;--st-heon:#c4c44a;--st-man:#d27bd0;--st-je:#8590f0;--st-aa:#7d8a84}
+#v-build .bt-presets{display:flex;flex-wrap:wrap;gap:6px}
+#v-build .bt-presets button{all:unset;cursor:pointer;font-size:13.5px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--ink2)}
+#v-build .bt-presets button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+#v-build .bt-presets button:focus-visible,#v-build summary:focus-visible{outline:2px solid var(--jade);outline-offset:2px}
+#v-build .bt-sliders,#v-build .bt-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px 18px}
+#v-build .bt-opt{display:grid;gap:2px;font-size:13.5px;color:var(--ink2)}
+#v-build .bt-opt b{font-family:var(--f-mono);color:var(--ink)}
+#v-build .bt-opt input{width:100%;accent-color:var(--jade)}
+#v-build .bt-toggles{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13.5px;color:var(--ink2)}
+#v-build .bt-toggles input{accent-color:var(--jade);margin-right:4px}
+#v-build .bt-lv{display:inline-block;font-weight:700;border-radius:6px;padding:1px 8px;margin:2px 2px;background:var(--surface);border:2px solid var(--c);color:var(--ink)}
+#v-build .bt-share{display:flex;height:28px;border-radius:7px;overflow:hidden;gap:2px;background:var(--surface)}
+#v-build .bt-share span{display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;min-width:0;text-shadow:0 1px 1px rgb(0 0 0 / .35)}
+#v-build .bt-why{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink2);display:grid;gap:2px}
+#v-build .arow.cur .lab{color:var(--jade)}
+#v-build .bt-decks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#v-build .bt-deck{border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:8px;align-content:start;min-width:0}
+#v-build .bt-deck .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+#v-build .bt-deck h4{margin:0;font-size:15px}
+#v-build .bt-main{font-size:13.5px;color:var(--ink2)}
+#v-build .bt-chips{display:flex;flex-wrap:wrap;gap:4px}
+#v-build .bt-chip{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--ink)}
+#v-build .bt-chip i{width:8px;height:8px;border-radius:2px;background:var(--c);display:inline-block}
+#v-build .bt-chip em{font-style:normal;font-size:11px;font-weight:700;color:var(--gold)}
+#v-build .bt-met{font-size:12.5px;color:var(--ink3)}
+#v-build .bt-alt{display:grid;gap:3px;font-size:12px;color:var(--ink3)}
+#v-build .bt-altrow{display:grid;grid-template-columns:52px minmax(0,1fr) 30px;gap:6px;align-items:center}
+#v-build .bt-altrow .tr{height:6px;background:var(--sunk);border-radius:3px;display:block;position:relative}
+#v-build .bt-altrow .tr span{position:absolute;inset:0 auto 0 0;border-radius:3px}
+#v-build .bt-dot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:6px;vertical-align:baseline}
+#v-build .st{display:inline-block;font-size:11.5px;border-radius:5px;padding:0 6px;border:1px solid var(--line);color:var(--ink2)}
+#v-build td.w{white-space:normal;min-width:220px;text-align:left;color:var(--ink2);font-size:12.5px}
+#v-build .good{color:var(--jade);font-weight:700}
+#v-build .bad{color:var(--vermil);font-weight:700}
+#v-build em.ult{font-style:normal;font-size:11px;font-weight:700;color:var(--gold)}
+#v-build .bt-ban{display:grid;gap:6px}
+#v-build .bt-chipsel{display:flex;flex-wrap:wrap;gap:5px}
+#v-build .bt-chipsel button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:12.5px;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--ink2)}
+#v-build .bt-chipsel button i{width:8px;height:8px;border-radius:2px}
+#v-build .bt-chipsel button[aria-pressed="true"]{background:var(--vermil-soft);border-color:var(--vermil);color:var(--vermil);text-decoration:line-through}
+#v-build .bt-chipsel button:focus-visible{outline:2px solid var(--jade)}
+:is(#v-build,#v-gear) .bt-guide{gap:12px}
+:is(#v-build,#v-gear) .bt-gstep{display:grid;grid-template-columns:36px minmax(0,1fr);gap:10px;align-items:start}
+:is(#v-build,#v-gear) .bt-gno{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--jade);color:var(--surface);font:500 17px var(--f-mono)}
+:is(#v-build,#v-gear) .bt-gstep h3{font-size:17px}
+:is(#v-build,#v-gear) .bt-gcols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+:is(#v-build,#v-gear) .bt-gcol{border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:8px;align-content:start}
+:is(#v-build,#v-gear) .bt-gcol h4{margin:0;font-size:15px}
+:is(#v-build,#v-gear) .bt-path{margin:0;padding:0;list-style:none;display:grid;gap:8px;counter-reset:p}
+:is(#v-build,#v-gear) .bt-path li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:8px;align-items:start}
+:is(#v-build,#v-gear) .bt-path li::before{counter-increment:p;content:counter(p);display:grid;place-items:center;width:26px;height:26px;border-radius:7px;background:var(--jade-soft);color:var(--jade);font:500 13px var(--f-mono)}
+:is(#v-build,#v-gear) .bt-path li b{font-size:15px}
+:is(#v-build,#v-gear) .bt-path li span{display:block;font-size:12.5px;color:var(--ink3)}
+:is(#v-build,#v-gear) .bt-path li>*{grid-column:2}
+:is(#v-build,#v-gear) .bt-path li span .tag{display:inline-flex;margin-left:2px}
+:is(#v-build,#v-gear) .bt-path li::before{grid-row:1/span 2;grid-column:1}
+:is(#v-build,#v-gear) .bt-gdecks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+:is(#v-build,#v-gear) .bt-chip small{font-size:10.5px;color:var(--ink3);margin-right:2px}
+:is(#v-build,#v-gear) .bt-dont{margin:0;padding-left:18px;display:grid;gap:6px;font-size:14px;color:var(--ink2)}
+:is(#v-build,#v-gear) .bt-dont b{color:var(--vermil)}
+:is(#v-build,#v-gear) .bt-why3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+:is(#v-build,#v-gear) .bt-why3>div{background:var(--bg);border-radius:10px;padding:12px;display:grid;gap:4px;align-content:start}
+:is(#v-build,#v-gear) .bt-why3 b{font-size:18px;color:var(--jade)}
+:is(#v-build,#v-gear) .bt-why3 span{font-size:13px;color:var(--ink2)}
+#v-build details.bt-calc>summary,:is(#v-build,#v-gear) details.bt-data>summary{cursor:pointer;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;font-size:15px}
+#v-build details.bt-calc[open]>summary{margin-bottom:6px}
+:is(#v-build,#v-gear) .bt-calcin{display:grid;gap:18px}
+:is(#v-build,#v-gear) .bt-f{font:12.5px/1.6 var(--f-mono);background:var(--sunk);border-radius:8px;padding:10px 12px;overflow-x:auto;white-space:pre}
+#v-build .bt-cb{display:grid;grid-template-columns:minmax(40px,1fr) 58px;gap:6px;align-items:center}
+#v-build .bt-cb .t{position:relative;height:9px;background:var(--sunk);border-radius:3px;display:block}
+#v-build .bt-cb .t span{position:absolute;top:0;bottom:0;border-radius:3px}
+#v-build .bt-cb .pos{background:var(--jade)}#v-build .bt-cb .neg{background:var(--vermil)}
+#v-build tr.grp td{background:var(--sunk);font-size:12px;color:var(--ink3);font-weight:700}
+#v-build tr.pick td{background:var(--jade-soft)}
+@media (max-width:760px){#v-build .bt-gcols,#v-build .bt-gdecks,#v-build .bt-why3{grid-template-columns:minmax(0,1fr)}}
+#v-build details.bt-data summary{cursor:pointer;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+@media (max-width:640px){#v-build .bt-decks{grid-template-columns:minmax(0,1fr)}#v-build .bt-sliders,#v-build .bt-opts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+#v-build{--paper:var(--surface);--grid:var(--sunk);--warn:var(--gold);--warn-soft:var(--gold-soft);--bad:var(--vermil);--bad-soft:var(--vermil-soft);--f-num:var(--f-mono);
+  --c-yeon:#2a78d6;--c-pa:#eb6834;--c-jeol:#1baf7a;--c-je:#6250d6;--c-gi:#e87ba4;--c-jeo:#eda100;display:grid;gap:18px;word-break:keep-all;overflow-wrap:anywhere}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #v-build{--c-yeon:#3987e5;--c-pa:#d95926;--c-jeol:#199e70;--c-je:#9085e9;--c-gi:#d55181;--c-jeo:#c98500}}
+:root[data-theme="dark"] #v-build{--c-yeon:#3987e5;--c-pa:#d95926;--c-jeol:#199e70;--c-je:#9085e9;--c-gi:#d55181;--c-jeo:#c98500}
+#v-build .bm-head h2{font-family:var(--f-display);font-size:clamp(22px,4.5vw,30px);line-height:1.2}
+#v-build h1,#v-build h2,#v-build h3{text-wrap:balance;margin:0;font-weight:400}
+#v-build h1{font-family:var(--f-display);font-size:clamp(28px,6vw,40px);line-height:1.15}
+#v-build h2{font-family:var(--f-display);font-size:24px;line-height:1.25}
+#v-build h3{font-size:15px;font-weight:700}
+#v-build p{margin:0}
+#v-build .eyebrow{font-size:12px;letter-spacing:.08em;color:var(--ink3);font-weight:500}
+#v-build .lede{color:var(--ink2);max-width:64ch}
+#v-build .tag{font-size:11px;color:var(--ink3);font-weight:500}
+#v-build .verdict{background:var(--jade-soft);border-radius:12px;padding:16px 18px;display:grid;gap:6px}
+#v-build .verdict b{color:var(--jade)}
+#v-build .panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:14px;min-width:0}
+#v-build .note{font-size:13px;color:var(--ink3)}
+#v-build .read{font-size:14px;color:var(--ink2);border-left:3px solid var(--line);padding-left:12px}
+#v-build .read b{color:var(--ink)}
+#v-build .alloc{display:grid;gap:12px}
+#v-build .arow{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;align-items:center}
+#v-build .arow .lab{font-size:14px;font-weight:700;display:grid}
+#v-build .arow .lab span{font-weight:400;font-size:12.5px;color:var(--ink3)}
+#v-build .bar{display:flex;height:38px;border-radius:8px;overflow:hidden;gap:2px;background:var(--paper)}
+#v-build .seg{display:flex;align-items:center;justify-content:center;color:#fff;font-size:12.5px;font-weight:700;white-space:nowrap;overflow:hidden;min-width:0;padding:0 4px}
+#v-build .seg.yeon{background:var(--c-yeon)}
+#v-build .seg.pa{background:var(--c-pa)}
+#v-build .seg.jeol{background:var(--c-jeol)}
+#v-build .seg.je{background:var(--c-je)}
+#v-build .seg.gi{background:var(--c-gi)}
+#v-build .seg.jeo{background:var(--c-jeo);color:#1b1400}
+#v-build .keys{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--ink2)}
+#v-build .keys span{display:inline-flex;align-items:center;gap:6px}
+#v-build .keys i{width:12px;height:12px;border-radius:3px;display:inline-block}
+#v-build .gains{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#v-build .gain{background:var(--bg);border-radius:10px;padding:12px;display:grid;gap:2px}
+#v-build .gain .v{font:500 24px/1.2 var(--f-num);font-variant-numeric:tabular-nums}
+#v-build .gain .s{font-size:12.5px;color:var(--ink3)}
+#v-build .map{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+#v-build .card{border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:8px;align-content:start;min-width:0}
+#v-build .card .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+#v-build .card .best{font-size:16px;font-weight:700}
+#v-build .card .alt{font-size:13px;color:var(--ink2)}
+#v-build .card .need{font-size:13px;color:var(--ink3)}
+#v-build .pill{font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 9px;white-space:nowrap}
+#v-build .pill.g{background:var(--jade-soft);color:var(--jade)}
+#v-build .pill.w{background:var(--warn-soft);color:var(--warn)}
+#v-build .pill.b{background:var(--bad-soft);color:var(--bad)}
+#v-build .chips{display:flex;flex-wrap:wrap;gap:4px}
+#v-build .chip{font-size:12px;border-radius:6px;padding:1px 7px;border:1px solid var(--line);color:var(--ink2);display:inline-flex;align-items:center;gap:5px}
+#v-build .chip i{width:8px;height:8px;border-radius:2px;display:inline-block}
+#v-build .hbars{display:grid;gap:8px}
+#v-build .hb{display:grid;grid-template-columns:minmax(0,210px) minmax(0,1fr);gap:10px;align-items:center;font-size:13.5px}
+#v-build .hb .nm{color:var(--ink2);line-height:1.35}
+#v-build .hb .nm b{color:var(--ink)}
+#v-build .hb .track{position:relative;height:24px}
+#v-build .hb .fill{height:100%;border-radius:0 4px 4px 0;background:var(--ink3);opacity:.55}
+#v-build .hb.rec .fill{background:var(--jade);opacity:1}
+#v-build .hb.alt .fill{background:var(--c-gi);opacity:.85}
+#v-build .hb .val{position:absolute;top:2px;font:500 13px/20px var(--f-num);color:var(--ink)}
+#v-build .tw{overflow-x:auto}
+#v-build table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+#v-build th,#v-build td{padding:7px 8px;border-bottom:1px solid var(--grid);text-align:center;white-space:nowrap}
+#v-build th:first-child,#v-build td:first-child{text-align:left}
+#v-build th{color:var(--ink3);font-weight:500;font-size:12.5px}
+#v-build td.l{text-align:left;white-space:normal}
+#v-build .cell{display:inline-grid;place-items:center;width:30px;height:24px;border-radius:6px;font-weight:700;font-size:13px}
+#v-build .c3{background:var(--jade);color:#fff}
+#v-build .c2{background:var(--jade-soft);color:var(--jade)}
+#v-build .c1{background:var(--grid);color:var(--ink2)}
+#v-build .c0{color:var(--ink3)}
+#v-build .sum{font:500 14px var(--f-num)}
+#v-build .win{font-weight:700;color:var(--jade)}
+#v-build .win.gi{color:var(--c-gi)}
+#v-build .dots{letter-spacing:2px;font-size:13px;color:var(--jade)}
+#v-build .dots .off{color:var(--line)}
+#v-build .steps{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:s}
+#v-build .steps li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:start}
+#v-build .steps li::before{counter-increment:s;content:counter(s);font:500 15px/34px var(--f-num);text-align:center;border-radius:50%;background:var(--jade-soft);color:var(--jade);width:34px;height:34px}
+#v-build .steps .t{display:grid;gap:2px}
+#v-build .steps .when{font-size:12px;color:var(--jade);font-weight:700}
+#v-build .steps .t span{color:var(--ink2);font-size:14px}
+#v-build .req{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+#v-build .req div{border:1px dashed var(--line);border-radius:10px;padding:12px;display:grid;gap:3px}
+#v-build .req b{font-size:14px}
+#v-build .req span{font-size:13px;color:var(--ink2)}
+#v-build .req .why{font-size:12.5px;color:var(--ink3)}
+#v-build .check{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14px;color:var(--ink2)}
+@media (max-width:640px){#v-build .arow{grid-template-columns:minmax(0,1fr)}
+#v-build .gains{grid-template-columns:minmax(0,1fr)}
+#v-build .hb{grid-template-columns:minmax(0,1fr);gap:2px}
+#v-build .panel{padding:16px 14px}
+#v-build .seg{font-size:11.5px}}
+#v-build .bt-flow{list-style:none;margin:0;padding:0;display:grid;gap:6px;counter-reset:f}
+#v-build .bt-flow li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+#v-build .bt-flow .q{font-size:14px;color:var(--ink2)}
+#v-build .bt-flow .a{font-weight:700;color:var(--jade);text-decoration:none;white-space:nowrap}
+#v-build .bt-flow .a:hover{text-decoration:underline}
+#v-build .bt-flow li.pre{background:var(--gold-soft);border-color:var(--gold-soft)}#v-build .bt-flow li.pre .q{color:var(--ink)}
+#v-build .bt-flow .a.none{color:var(--ink3);font-weight:500}
+#v-build .bt-flow .or{font-size:12px;color:var(--ink3);margin:0 4px}
+#v-build .bt-rdecks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#v-build .bt-rdeck{border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:9px;align-content:start;min-width:0;scroll-margin-top:80px}
+#v-build .bt-rdeck .top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+#v-build .bt-rdeck h4{margin:0;font-size:16px;display:flex;align-items:center;gap:8px}
+#v-build .bt-rdeck h4 .k{display:grid;place-items:center;width:24px;height:24px;border-radius:6px;background:var(--ink);color:var(--surface);font:500 13px var(--f-mono)}
+#v-build .bt-tips{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink2);display:grid;gap:3px}
+#v-build .bt-dl{margin:0;display:grid;grid-template-columns:72px minmax(0,1fr);gap:4px 8px;font-size:12.5px}
+#v-build .bt-dl dt{color:var(--ink3);font-weight:600}
+#v-build .bt-dl dd{margin:0;color:var(--ink2)}
+#v-build .bt-src{font-size:12px;color:var(--vermil);margin:0}
+#v-build .bt-pvp{border:1px dashed var(--line);border-radius:12px;padding:14px;display:grid;gap:6px;scroll-margin-top:80px}
+#v-build .bt-pvp h4{margin:0;font-size:15px}
+#v-build .bt-booktbl td.w{min-width:180px}
+#v-build .bt-gap{display:grid;gap:10px}
+#v-build .bt-gaplg{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--ink2)}
+#v-build .bt-gaplg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+#v-build .bt-gaplg i.c,#v-build .bt-gaprow .b.c{background:var(--ink3)}
+#v-build .bt-gaplg i.l,#v-build .bt-gaprow .b.l{background:var(--vermil)}
+#v-build .bt-gaprow{display:grid;grid-template-columns:200px minmax(0,1fr);gap:10px;align-items:center}
+#v-build .bt-gaprow .nm{font-size:13.5px;color:var(--ink2)}
+#v-build .bt-gaprow .bars{display:grid;gap:3px}
+#v-build .bt-gaprow .b{height:16px;border-radius:0 4px 4px 0;position:relative;min-width:2px}
+#v-build .bt-gaprow .b span{position:absolute;left:calc(100% + 6px);top:0;font-size:12px;line-height:16px;color:var(--ink);white-space:nowrap}
+#v-build .bt-gaprow .bars{padding-right:90px}
+#v-build .bt-why5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+#v-build .bt-why5>div{background:var(--bg);border-radius:10px;padding:10px;display:grid;gap:4px;align-content:start}
+#v-build .bt-why5 b{font-size:14px;color:var(--vermil)}
+#v-build .bt-why5 span{font-size:12.5px;color:var(--ink2)}
+@media (max-width:760px){#v-build .bt-rdecks,#v-build .bt-why5{grid-template-columns:minmax(0,1fr)}#v-build .bt-gaprow{grid-template-columns:minmax(0,1fr);gap:4px}#v-build .bt-flow li{grid-template-columns:minmax(0,1fr)}}
+#v-gear h1,#v-gear h2,#v-gear h3{text-wrap:balance;margin:0;font-weight:400}
+#v-gear h2{font-family:var(--f-display);font-size:24px;line-height:1.25}
+#v-gear h3{font-size:15px;font-weight:700}
+#v-gear .bt-gstep h3{font-size:17px}
+#v-gear .panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:14px;min-width:0}
+#v-gear{--paper:var(--surface);display:grid;gap:18px;word-break:keep-all;overflow-wrap:anywhere}
+#v-build.hidden,#v-gear.hidden{display:none}
+@media (max-width:640px){#v-gear .panel{padding:16px 14px}#v-gear .bt-gcols,#v-gear .bt-why3{grid-template-columns:1fr}}
+#v-gear .gr-seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--surface);justify-self:start}
+#v-gear .gr-seg button{border:0;background:none;padding:7px 16px;border-radius:999px;font-weight:600;color:var(--ink2);cursor:pointer;font-size:14px}
+#v-gear .gr-seg button[aria-selected="true"]{background:var(--ink);color:var(--surface)}
+#v-gear .gr-view{display:grid;gap:18px}#v-gear .gr-view[hidden]{display:none}
+#v-gear .gr-ladder{list-style:none;margin:0;padding:0;display:grid;gap:0;position:relative}
+#v-gear .gr-ladder li{display:grid;grid-template-columns:76px 18px minmax(0,1fr);gap:10px;align-items:start;padding:6px 0;position:relative}
+#v-gear .gr-ladder li::before{content:"";position:absolute;left:94px;top:0;bottom:0;width:2px;background:var(--line)}
+#v-gear .gr-ladder li:first-child::before{top:14px}#v-gear .gr-ladder li:last-child::before{bottom:calc(100% - 14px)}
+#v-gear .gr-ladder .cp{text-align:right;font-size:13px;color:var(--ink3);padding-top:1px}
+#v-gear .gr-ladder .dot{width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--line);margin:4px 0 0 1px;position:relative;z-index:1}
+#v-gear .gr-ladder .tx{display:grid;gap:1px;font-size:14px}
+#v-gear .gr-ladder .tx small{font-size:12px;color:var(--ink3)}
+#v-gear .gr-ladder .tx small.gap{color:var(--gold)}
+#v-gear .gr-ladder li.done .dot{background:var(--jade);border-color:var(--jade)}
+#v-gear .gr-ladder li.done .tx b{color:var(--ink2);font-weight:500}
+#v-gear .gr-ladder li.me .dot{width:16px;height:16px;margin:2px 0 0 -1px;background:var(--vermil);border-color:var(--vermil);box-shadow:0 0 0 4px var(--vermil-soft)}
+#v-gear .gr-ladder li.me .cp,#v-gear .gr-ladder li.me b{color:var(--vermil);font-weight:700}
+#v-gear .gr-ladder li.next .dot{border-color:var(--gold);background:var(--gold-soft)}
+#v-gear .gr-ladder li.next b{color:var(--gold)}
+#v-gear .gr-cal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#v-gear .gr-col{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:6px;align-content:start}
+#v-gear .gr-col h4{margin:0;font-size:15px}#v-gear .gr-col h4 small{font-size:12px;color:var(--ink3);font-weight:500;margin-left:4px}
+#v-gear .gr-col ul{margin:0;padding-left:16px;display:grid;gap:6px;font-size:13.5px;color:var(--ink2)}
+#v-gear .gr-col li b{color:var(--ink)}
+#v-gear table.gr-shop td{white-space:nowrap}
+#v-gear .gr-sig{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+#v-gear .gr-sig li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:10px;border-left:3px solid var(--line);padding-left:10px}
+#v-gear .gr-sig .d{font-size:13px;color:var(--ink3);padding-top:1px}
+#v-gear .gr-sig p{margin:2px 0 0;font-size:13.5px;color:var(--ink2)}
+#v-gear .rd{color:var(--jade)!important;font-size:13px!important;margin:4px 0 0}
+#v-gear .gr-road{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#v-gear .gr-road .rc{background:var(--bg);border-radius:10px;padding:12px;display:grid;gap:6px;align-content:start}
+#v-gear .gr-road h4{margin:0;font-size:15px}
+#v-gear .gr-road ul{margin:0;padding-left:16px;font-size:13px;color:var(--ink2);display:grid;gap:3px}
+@media (max-width:760px){#v-gear .gr-cal,#v-gear .gr-road{grid-template-columns:minmax(0,1fr)}#v-gear .gr-ladder li{grid-template-columns:60px 18px minmax(0,1fr)}#v-gear .gr-ladder li::before{left:78px}}
+#v-gear .eyebrow{font-size:12px;letter-spacing:.08em;color:var(--ink3);font-weight:500}
+#v-gear .verdict{background:var(--jade-soft);border-radius:12px;padding:16px 18px;display:grid;gap:6px}
+#v-gear .note{font-size:13px;color:var(--ink3)}
+#v-gear .tw{overflow-x:auto}
+#v-gear h3{margin:0}
+#v-gear .gr-where{display:grid;gap:14px}
+#v-gear .gr-track{padding:6px 34px 0 4px}
+#v-gear .gr-bar{position:relative;height:12px;border-radius:6px;background:var(--sunk)}
+#v-gear .gr-fill{position:absolute;inset:0 auto 0 0;border-radius:6px;background:var(--jade)}
+#v-gear .gr-ghost{position:absolute;top:0;bottom:0;border-radius:0 6px 6px 0;background:repeating-linear-gradient(45deg,var(--jade-soft) 0 5px,transparent 5px 9px);border:1px dashed var(--jade)}
+#v-gear .gr-marks{list-style:none;margin:0;padding:0;position:relative;height:58px}
+#v-gear .gr-marks li{position:absolute;top:4px;transform:translateX(-50%);display:grid;justify-items:center;text-align:center;width:86px;font-size:11.5px;color:var(--ink3);line-height:1.3}
+#v-gear .gr-marks li::before{content:"";width:2px;height:8px;background:var(--line);margin-bottom:2px}
+#v-gear .gr-marks li b{font-size:13px;color:var(--ink)}
+#v-gear .gr-marks li.me b{color:var(--jade)}
+#v-gear .gr-marks li.me::before{background:var(--jade)}
+#v-gear .gr-income{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#v-gear .gr-income>div,#v-gear .gr-be>div{background:var(--bg);border-radius:10px;padding:12px;display:grid;gap:4px;align-content:start}
+#v-gear .gr-income b{font-size:15px}
+#v-gear .gr-income span:not(.tag){font-size:13.5px;color:var(--jade);font-weight:600}
+#v-gear .gr-income small{font-size:12.5px;color:var(--ink3)}
+#v-gear .gr-be{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#v-gear .gr-be>div{justify-items:center;text-align:center}
+#v-gear .gr-be .ic{width:24px;height:24px;color:var(--jade)}
+#v-gear .gr-be b{font-size:22px;color:var(--ink)}
+#v-gear .gr-be span{font-size:13px;color:var(--ink2)}
+#v-gear .gr-cp{display:grid;grid-template-columns:minmax(80px,1fr) 52px;gap:8px;align-items:center;min-width:150px}
+#v-gear .gr-cp i{display:block;height:10px;border-radius:3px;background:var(--jade);min-width:2px}
+#v-gear .gr-ms td:nth-child(2){text-align:left}
+@media (max-width:640px){#v-gear .gr-income,#v-gear .gr-be{grid-template-columns:1fr}#v-gear .gr-be{grid-template-columns:repeat(3,minmax(0,1fr))}#v-gear .gr-be b{font-size:18px}#v-gear .gr-track{padding:6px 0 0}#v-gear .gr-marks{position:static;height:auto;display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;margin-top:10px}#v-gear .gr-marks li{position:static;transform:none;width:auto;justify-items:start;text-align:left;font-size:12px}#v-gear .gr-marks li::before{display:none}}
+nav.tabs i.dk{font-style:normal}
+@media (max-width:640px){nav.tabs button{font-size:10.5px}nav.tabs i.dk{display:none}}
 </style>
 
 <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
@@ -265,8 +554,10 @@ details.more small{display:block;margin-top:4px}
     <nav class="tabs" role="tablist" aria-label="메뉴">
       <button role="tab" id="tab-patch" aria-selected="true" data-tab="patch"><svg class="ic" aria-hidden="true"><use href="#i-scroll"/></svg><span>패치노트</span></button>
       <button role="tab" id="tab-opt" aria-selected="false" data-tab="opt"><svg class="ic" aria-hidden="true"><use href="#i-sword"/></svg><span>내 장비</span></button>
-      <button role="tab" id="tab-drop" aria-selected="false" data-tab="drop"><svg class="ic" aria-hidden="true"><use href="#i-pouch"/></svg><span>사냥 드랍률</span></button>
-      <button role="tab" id="tab-report" aria-selected="false" data-tab="report"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span>성장 리포트</span></button>
+      <button role="tab" id="tab-drop" aria-selected="false" data-tab="drop"><svg class="ic" aria-hidden="true"><use href="#i-pouch"/></svg><span><i class="dk">사냥 </i>드랍률</span></button>
+      <button role="tab" id="tab-report" aria-selected="false" data-tab="report"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span><i class="dk">성장 </i>리포트</span></button>
+      <button role="tab" id="tab-build" aria-selected="false" data-tab="build"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg><span>도술 빌드</span></button>
+      <button role="tab" id="tab-gear" aria-selected="false" data-tab="gear"><svg class="ic" aria-hidden="true"><use href="#i-up"/></svg><span>성장<i class="dk"> 가이드</i></span></button>
       <button role="tab" id="tab-coupon" aria-selected="false" data-tab="coupon"><svg class="ic" aria-hidden="true"><use href="#i-ticket"/></svg><span>쿠폰</span></button>
     </nav>
     
@@ -343,6 +634,419 @@ details.more small{display:block;margin-top:4px}
     </section>
 
     <!-- 쿠폰 -->
+
+    <!-- 도술 빌드 -->
+    <section id="v-build" class="view hidden" aria-labelledby="tab-build">
+  <header class="bm-head panel" style="display:grid;gap:10px">
+    <div class="eyebrow">도깨비의세계 · 도술 세팅 가이드 · 10/14 패치 이후 실사용 덱 기준 (10/17 수집)</div>
+    <h2>많이 쓰는 덱 중에서 내 상황에 맞는 걸 고르세요</h2>
+    <p class="lede">깨비지지 유저 추천 덱 106개(추천 2,514회)와 유저 측정·공략 영상을 기준으로 다시 정리했습니다. 이전 버전은 화력 계산만으로 덱을 골라서 아직 얻기 힘든 도술이 들어 있었고, 몹 몰이·회복·자동 사냥 순서를 반영하지 못했습니다.</p>
+  </header>
+
+  <section class="verdict" aria-label="한 줄 요약">
+    <p style="font-size:16px"><b>사냥은 '몰이 + 광역 + 힐', 보스는 '절명 + 저격'.</b> 덱은 내가 가진 도술과 스펙으로 고르고, 요령서는 그 덱에서 피해가 가장 많이 나오는 계열에 넣으세요.</p>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="g1">
+    <div class="bt-gstep"><span class="bt-gno">1</span><div><h3 id="g1">내 상황에 맞는 덱 찾기</h3><p class="note">위에서부터 해당되는 줄의 덱을 쓰세요. 카드를 누르면 아래 덱으로 이동합니다.</p></div></div>
+    <ol class="bt-flow">
+      <li class="pre"><span class="q"><b>먼저 확인:</b> 절명(암습·내려찍기 등)과 기동(쌍검 가르기 등) 도술은 상점에서 팔지 않습니다. 없으면 A·D·E는 건너뛰고 B·C부터 쓰세요.</span></li>
+      <li><span class="q">보스·레이드를 잡는다</span><a href="#bd-boss" class="a">E. 절명 + 저격 극딜</a></li>
+      <li><span class="q">비경(하루 1시간)을 돈다</span><a href="#bd-pamyeol" class="a">B. 파멸 저격</a></li>
+      <li><span class="q">기동 도술(쌍검 가르기·도약 찌르기·휩쓸어 베기)이 있고 공격력이 충분하다</span><a href="#bd-gidong" class="a">A. 광역 기동</a></li>
+      <li><span class="q">몹이 모여 있는 필드에서 자동 사냥</span><span class="a"><a href="#bd-yeonta" class="a">C. 연타 광역</a><span class="or">또는</span><a href="#bd-pamyeol" class="a">B. 파멸 저격</a></span></li>
+      <li><span class="q">몹이 띄엄띄엄 있어 한 마리씩 잡는다</span><a href="#bd-dan" class="a">D. 절명 + 저격 단일</a></li>
+      <li><span class="q">겹사가 심한 곳</span><a href="#bd-pamyeol" class="a">B의 겹사방지 변형</a></li>
+      <li><span class="q">PvP(낙화·신기 쟁탈전·1:1)</span><span class="a none">검증된 덱 없음 → 아래 F 참고</span></li>
+    </ol>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="g2">
+    <div class="bt-gstep"><span class="bt-gno">2</span><div><h3 id="g2">덱 그대로 따라 하기</h3><p class="note">숫자는 <b>도술 설정의 사용 순서</b>입니다. 작성자들이 "도술 설정에서 순서를 맞춰야 한다"고 강조합니다. 하트는 깨비지지 추천 수(10/17 기준)로, 인기 지표이지 효율 순위는 아닙니다. 상점 표시는 판매 여부 기준이며, 가격은 조각 100개 기준 일반 1만·전설 10만 엽전, 금전 상점 일반 1만·전설 3만 금전으로 추정됩니다(유저 언급 "요기 폭발 10만 엽전", "용맹의 기운 3만 금전"과 일치).</p></div></div>
+    <div class="bt-rdecks" id="btGuideDecks"></div>
+    <div class="bt-pvp" id="bd-pvp">
+      <h4>F. PvP — 아직 추천할 만한 덱이 없습니다</h4>
+      <p class="note">106개 덱 중 PvP용은 6개, 추천 합 5회뿐이고 승률·측정 자료가 없습니다. 제압 도술은 상점에서 팔지 않아 아직 갖춘 사람이 적습니다. 무과금은 근접이 불리해 원거리 무기가 없으면 카이팅이 어렵다는 의견이 있습니다 <span class="tag">[영상]</span>. 1:1 친선전(10/21 예정 <span class="tag">[공식]</span>) 자료가 쌓이면 다시 정리합니다.</p>
+    </div>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="g3">
+    <div class="bt-gstep"><span class="bt-gno">3</span><div><h3 id="g3">요령서는 쓰는 덱을 따라가세요</h3><p class="note">10/21 강화 초기화로 받는 '도술 요령서 선택 상자' <span class="tag">[공식 공지 17815]</span>도 이 표대로 고르면 됩니다. 단, 상자는 10/21 패치노트를 보고 여세요.</p></div></div>
+    <div class="tw"><table class="bt-booktbl">
+      <thead><tr><th>주력 덱</th><th>1순위</th><th>2순위</th><th>몹 3~5마리일 때 계열별 피해 비중 <span class="tag">[계산]</span></th><th>덱 작성자 의견 <span class="tag">[유저]</span></th></tr></thead>
+      <tbody id="btBookRows"></tbody>
+    </table></div>
+    <p class="note"><b>덱을 자주 바꾼다면 저격</b>이 무난합니다. 저격 도술 3개 이상이 들어간 덱이 106개 중 36개(추천의 57%)로 가장 많아, 기동·파멸 저격·절명 덱 어디로 가도 강화가 같이 따라옵니다 <span class="tag">[깨비 유저 덱 집계]</span>. 한 덱만 계속 쓴다면 피해 비중이 큰 계열을 올릴 때 덱 피해가 더 오릅니다(계열별 강화 곡선이 같다는 가정) <span class="tag">[계산]</span>. 절명 + 저격은 계산(절명)과 작성자(저격)가 엇갈리니, 다른 덱도 쓸 거면 저격, 보스만 잡으면 절명이 무난합니다.</p>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="g4">
+    <div class="bt-gstep"><span class="bt-gno">4</span><div><h3 id="g4">덱을 바꾸기 전에 확인할 것</h3></div></div>
+    <ul class="bt-dont">
+      <li><b>힐 스킬 체력 조건</b> — 연타 광역은 생명의 축복 95%·흐름 90% 조건을 겁니다. 반대로 파멸 저격 작성자는 <b>체력 조건을 끄라고</b> 합니다(켜 두면 겹사 때 쿨 초기화가 꼬인다는 설명) <span class="tag">[유저]</span></li>
+      <li><b>스펙이 부족하면 기동은 손해</b> — 공격력이 낮으면 몹에 '양념'만 치고 기여도를 단일 딜러에게 뺏긴다는 의견이 있습니다("공격력 22K 이상일 때 15K 이하 사냥터에서 고점") <span class="tag">[유저]</span></li>
+      <li><b>물약이 많이 들면 힐 1개 추가</b> — 딜 도술 하나를 힐로 바꾸세요. 106개 덱 중 절반 정도(55개)가 힐을 1~2개 넣습니다.</li>
+      <li><b>없는 도술은 같은 역할로 대체</b> — 각 덱 카드의 '없으면'을 보세요. 엽전·금전 상점에서 살 수 있는 도술이 많습니다.</li>
+      <li><b>도술 선택 상자는 상점에 없는 도술에</b> — 상점에서 살 수 있는 도술(연타·강타·저격·파멸·주술·헌신·기만·강인)에 쓰지 말고, 기동·절명처럼 상점에 없는 도술에 쓰라는 조언이 있습니다 <span class="tag">[유저]</span></li>
+      <li><b>자동 사냥 설정</b> — 자동 회복 체력 95%, 사냥 범위는 사람이 없으면 16m·겹사가 많으면 30m, '나를 공격한 대상 우선' 켜기를 권하는 영상이 있습니다 <span class="tag">[영상·2차 정리]</span></li>
+    </ul>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="g45">
+    <div class="bt-gstep"><span class="bt-gno">+</span><div><h3 id="g45">문파 실측: 덱별 시간당 수급</h3><p class="note">추천 수는 인기일 뿐이라, 문파원 사냥 기록으로 덱별 실제 수급을 비교합니다. '사냥 드랍률' 탭의 사냥 기록에서 <b>사용한 도술 덱</b>을 골라 제출하면 여기에 합산됩니다.</p></div></div>
+    <div id="btMeasure"></div>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="g5">
+    <div class="bt-gstep"><span class="bt-gno">5</span><div><h3 id="g5">계산만으로 골랐을 때 틀렸던 이유</h3><p class="note">계산 1위였던 이전 사냥 덱은 구할 수 없는 제압 도술이 들어 있어 실사용 목록에 없습니다. 아래 계산기(화력 시뮬레이션)는 참고용으로만 남겨 둡니다.</p></div></div>
+    <div class="bt-gap" id="btGap"></div>
+    <div class="bt-why5">
+      <div><b>얻을 수 없는 도술</b><span>이전 사냥 덱의 도깨비 불·머리치기(제압)는 상점에서 팔지 않습니다. 제압이 들어간 덱은 106개 중 3개(추천 합 7회)뿐입니다.</span></div>
+      <div><b>몹 몰이</b><span>영혼 소용돌이는 계수가 낮아 계산에선 덱 피해의 약 1%지만 106개 중 54개 덱에 들어갑니다. 몹을 모아야 광역기가 제값을 합니다.</span></div>
+      <div><b>생존</b><span>물약·사망·멈춘 시간이 시간당 수급을 정합니다. 계산은 이를 무시해서 힐 칸을 손해로 봤습니다.</span></div>
+      <div><b>자동 사냥 순서</b><span>게임은 도술 설정 순서·체력 조건대로 씁니다. 계산은 매번 가장 센 도술을 고른다고 가정했습니다.</span></div>
+      <div><b>겹사·기여도</b><span>사람이 많은 곳에선 내 딜보다 '누가 먼저·많이 때렸나'가 수급을 정합니다.</span></div>
+    </div>
+  </section>
+  <details class="panel bt-calc" id="btCalc">
+    <summary><b>화력 계산기 (참고용)</b> <span class="note">도술 계수·쿨·신식만으로 피해를 시뮬레이션합니다. 몹 몰이·생존·자동 사냥 순서·도술 보유 여부는 반영하지 않으니 덱 선택은 위 가이드를 따르세요 (몇 초 걸림)</span></summary>
+    <div class="bt-calcin">
+  <section class="panel" aria-labelledby="bt-ctl">
+    <div class="eyebrow">조건</div>
+    <h3 id="bt-ctl">어떤 콘텐츠를 얼마나 하시나요</h3>
+    <div class="bt-presets" role="group" aria-label="빠른 선택">
+      <button type="button" data-p="hunt" aria-pressed="true">사냥 위주</button>
+      <button type="button" data-p="boss" aria-pressed="false">보스 위주</button>
+      <button type="button" data-p="guild" aria-pressed="false">문파전 위주</button>
+      <button type="button" data-p="even" aria-pressed="false">골고루</button>
+    </div>
+    <div class="bt-sliders" id="btW"></div>
+    <div class="bt-opts">
+      <label class="bt-opt"><span>사냥터 몹 수 <b id="btNv">5</b>마리</span><input type="range" id="btN" min="1" max="10" step="1" value="5"></label>
+      <label class="bt-opt"><span>도술 칸 <b id="btSv">8</b>칸</span><input type="range" id="btS" min="5" max="8" step="1" value="8"></label>
+      <label class="bt-opt"><span>요령서 <b id="btBv">105</b>권</span><input type="range" id="btB" min="0" max="360" step="5" value="105"></label>
+      <label class="bt-opt"><span>투자 계열 <b id="btKv">2</b>개까지</span><input type="range" id="btK" min="1" max="3" step="1" value="2"></label>
+      <label class="bt-opt"><span>광역 도술 최대 <b id="btAv">3</b>마리 (가정)</span><input type="range" id="btA" min="2" max="5" step="1" value="3"></label>
+    </div>
+    <div class="bt-toggles">
+      <label><input type="checkbox" id="btLeg"> 전설 도술 포함 (집중 연타·꿰뚫는 저격·일섬 등 16개)</label>
+      <label><input type="checkbox" id="btShin" checked> 신식 효과 반영</label>
+    </div>
+    <div class="bt-ban"><span class="note">빼고 볼 계열 (없거나 안 쓰는 계열)</span><div class="bt-chipsel" id="btBan" role="group" aria-label="제외할 계열"></div></div>
+    <p class="note" id="btStatus" aria-live="polite">계산 중…</p>
+  </section>
+
+  <section class="verdict" aria-labelledby="bt-tree">
+    <h3 id="bt-tree" style="font-size:16px">내 조건의 요령서 배분</h3>
+    <div id="btTree"></div>
+  </section>
+
+  <section class="panel" aria-labelledby="bt-cmp">
+    <div class="eyebrow">투자 방식 비교 (선택한 권수)</div>
+    <h3 id="bt-cmp">몰빵·2계열·3계열을 전투력과 실제 피해로 나란히</h3>
+    <div class="tw"><table class="bt-cmp">
+      <thead><tr><th>방식</th><th class="l">강화 레벨</th><th>필드</th><th>보스</th><th>내 비중 가중</th><th>전투력</th><th>개방 재화</th></tr></thead>
+      <tbody id="btCmp"></tbody>
+    </table></div>
+    <p class="note">필드·보스는 강화 0 최적 덱 대비 피해, 전투력은 그 덱을 장착했을 때 강화 0 대비입니다. '덱 몰빵'은 한 계열 도술만 8칸에 넣은 덱입니다. 개방 재화는 요혼석 / 엽전(만)입니다 <span class="tag">[계산]</span></p>
+  </section>
+
+  <section class="panel bt-q" aria-labelledby="bt-je">
+    <div class="eyebrow">자주 묻는 것</div>
+    <h3 id="bt-je">제압이 왜 위에 나오나요? 쓰는 사람이 거의 없는데</h3>
+    <p class="read">계수만 보면 제압 도술이 강합니다. 도깨비 불 405%(쿨 12초), 얼음 감옥 759%(23.5초), 머리치기 350%(16초)로 일반 도술 중 초당 계수 상위권이고, 두 데이터 사이트(깨비지지·도깨비지지)와 이론 덱 사이트(도세지지, 제압 덱 1초 화력 200 · 절명 204 · 연타 237)가 같은 값을 보여 줍니다 <span class="tag">[깨비·도깨비지지·도세지지]</span> 반면 커뮤니티 티어표는 제압을 '대인전 보조(T3)'로 둡니다. 자동 사냥 처치 속도와 보스에게 제어가 걸리는지가 검증되지 않았기 때문입니다 <span class="tag">[유저글]</span></p>
+    <ul class="check">
+      <li>이 계산기에서 제압은 <b>주력이 아니라 끼워 넣는 도술</b>(도깨비 불·머리치기)로 필드·낙화 덱에 들어가고, 신기·1:1에서는 CC 점수 때문에 주력이 됩니다.</li>
+      <li>제압을 빼고 다시 계산하면(위 '빼고 볼 계열'에서 제압 선택) 필드 -10%, 신기 -11%, 1:1 -8%, 보스·낙화는 거의 그대로입니다 <span class="tag">[계산]</span></li>
+      <li>광역 도술이 실제로 몇 마리를 맞히는지가 가장 큰 가정입니다. 수련장이나 사냥터에서 도깨비 불 피해 숫자가 몇 마리에 뜨는지 보면 바로 검증됩니다.</li>
+    </ul>
+  </section>
+
+  <section class="panel" aria-labelledby="bt-ms">
+    <div class="eyebrow">요령서가 쌓이는 순서</div>
+    <h3 id="bt-ms">권수별 목표 레벨</h3>
+    <div class="alloc" id="btAlloc"></div>
+    <p class="note">레벨당 요령서는 깨비지지 레벨표, 레벨 효과는 Lv50에서 도술 계수 +75%입니다. Lv10·20·30·40·50은 요령서 대신 개방(요혼석 100~500 + 엽전 20만~300만)이 필요합니다 <span class="tag">[깨비]</span> 투자 계열 수를 늘리면 권당 효율은 오르지만 개방 비용이 계열마다 따로 듭니다.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="bt-deck">
+    <div class="eyebrow">콘텐츠별 추천 덱 (프리셋)</div>
+    <h3 id="bt-deck">덱은 콘텐츠마다 나누고, 겹치는 계열에 요령서를 모은다</h3>
+    <div class="bt-decks" id="btDecks"></div>
+    <p class="note">초당 계수는 공격력 대비 %입니다. 필드는 몹 수만큼 광역 도술이 맞는다고 보고(일반 광역 최대 5마리 가정), PvP는 거리 2~8m에서 사거리가 닿는 도술만 쓰되 돌진기 1회당 3초 근접을 허용했습니다 <span class="tag">[계산·가정]</span></p>
+  </section>
+
+  <section class="panel" aria-labelledby="bt-ult">
+    <div class="eyebrow">궁극기 12종</div>
+    <h3 id="bt-ult">궁극기와 신식이 계열 순위를 정한다</h3>
+    <div class="tw"><table class="bt-ult">
+      <thead><tr><th>궁극기</th><th>쿨</th><th>사거리</th><th>대상</th><th>1회 계수</th><th>PvP</th><th class="l">신식 (같은 계열 3개)</th><th>보스 최고</th><th>필드 최고</th></tr></thead>
+      <tbody id="btUlt"></tbody>
+    </table></div>
+    <p class="note">쿨·사거리·대상은 공식 TIP 13133(10/10), 계수·신식 수치는 깨비지지, PvP 계수는 도깨비지지입니다. '보스 최고·필드 최고'는 그 계열을 주력(3개 이상)으로 했을 때 찾은 가장 좋은 덱의 초당 계수입니다 <span class="tag">[공식·깨비·계산]</span></p>
+  </section>
+
+
+
+
+    </div>
+  </details>
+
+  <details class="panel bt-data">
+    <summary><b>계산 공식 · 출처 · 가정</b> <span class="note">이 가이드의 숫자가 나온 방법</span></summary>
+    <div class="f bt-f">요령서 비용(L레벨로 올릴 때) = L이 10의 배수면 0(개방), 아니면 3×⌊L/10⌋ + ⌊(L mod 10 − 1)/3⌋ + 1
+누적: Lv10 18권 · Lv20 63권 · Lv25 100권 · Lv30 135권 · Lv40 234권 · Lv50 360권     [깨비 레벨표]
+강화 효과 = 그 계열 도술 계수 × (1 + 레벨 계수),  Lv1 1.13% … Lv50 75%                  [깨비 레벨표]
+전투력 배율 = 1 + Σ(장착 일반 도술 칸마다 2.55% + 0.0584% × 그 계열 레벨)              [깨비 계산기]
+개방 = 계열마다 Lv10·20·30·40·50에 요혼석 100~500 + 엽전 20만~300만                     [깨비]
+덱 피해 = 60~120초 시뮬레이션: 준비된 도술 중 1회 피해 큰 것부터, 시전 모션 동안 대기, 빈 시간은 평타
+  도술 계수·쿨·모션·신식 [깨비] · 사거리·충전·PvP 계수 [도깨비지지] · 궁극기 쿨·사거리·대상 [공식 TIP 13133]
+PvP 점수 = 거리 2~8m에서 사거리가 닿는 도술의 초당 계수(돌진기 1회당 3초 근접) + CC·이동·생존 횟수</div>
+    <ul class="check">
+      <li><b>[가정]</b> 평타 초당 100% · 광역 도술 최대 3마리(필드 몹 5마리) · 상태 이상 10초 · 사냥 위주 비중 필드 55 / 보스 25 / 신기 8 / 낙화 8 / 1:1 4</li>
+      <li><b>[보정]</b> 절명 8칸 대 올저격 보스 비율: 계산 1.34배, 유저 측정 1.31배 <span class="tag">[유저글]</span>, 문파원 실측 1.27배 <span class="tag">[실측]</span></li>
+      <li><b>[한계]</b> 계수는 10/14 패치 반영본(깨비 패치 비교표와 대조), 몹 몰이·생존·자동 사냥 순서·도술 획득 여부 미반영, 치명타·방어력·지속 피해 제외, 후퇴 거리·CC 시간 미공개, PvP 계수는 도깨비지지 한 곳 자료</li>
+      <li><b>[미확인]</b> 입장 조건 전투력이 장착 덱 기준인지, 10/21 개편 뒤에도 계수·레벨표가 같은지</li>
+    </ul>
+    <p class="note">출처: 카카오게임즈 도깨비의세계 공식 포럼 TIP 13133(2026-10-10), 가이드 7971·7974, 도술 소개 3415·3431·3433 · 깨비지지 kkaebigg.com 도술 데이터·레벨표·전투력 계산기·유저 추천 덱 106개·상점표(10/17 조회) · 도깨비지지 kkaebi.gg 도술 도감(10/17 조회) · OSLink 티어표·도세지지 덱 비교(참고).</p>
+  </details>
+
+  <details class="panel bt-data">
+    <summary><b>도술별 데이터 104개</b> <span class="note">계수·쿨·사거리·PvP 비율</span></summary>
+    <div class="tw"><table>
+      <thead><tr><th>도술</th><th>계열</th><th>1회 계수</th><th>쿨</th><th>초당</th><th>PvP 비율</th><th>사거리</th><th>광역</th></tr></thead>
+      <tbody id="btData"></tbody>
+    </table></div>
+  </details>
+    </section>
+    <!-- 템 세팅 -->
+    <section id="v-gear" class="view hidden" aria-labelledby="tab-gear">
+  <div class="gr-seg" role="tablist" aria-label="성장 가이드 보기">
+    <button type="button" role="tab" data-gv="road" aria-selected="true">성장 로드맵</button>
+    <button type="button" role="tab" data-gv="gear" aria-selected="false">장비 세팅</button>
+  </div>
+  <div id="gv-road" class="gr-view">
+  <header class="panel" style="display:grid;gap:10px">
+    <div class="eyebrow">도깨비의세계 · 게임사가 정해 둔 성장 경로 · 공식 공지·가이드·게임 내 묘선생 기준 (10/17)</div>
+    <h2>게임사가 열어 둔 길대로 성장하기</h2>
+    <p class="lede">게임사는 사냥터 권장 전투력, 콘텐츠 입장 조건, 상점 구매 한도, 하루·주간 시간 제한으로 성장 속도를 조절합니다. 이 제한을 공식 공지·게임 내 묘선생·출시 전 시연 자료로 확인하고 출처를 각각 표시했습니다. 그걸 기준으로 다음 관문과 매주 채울 것을 정리했습니다.</p>
+  </header>
+
+  <section class="verdict" aria-label="한 줄 요약">
+    <p style="font-size:16px"><b>다음 관문은 26만(음산한 폐광), 큰 관문은 38.5만(금전 일일 임무).</b> 그 전까지는 무료 시간(비경·전래동화·임무)과 엽전 상점 주간 한도를 매주 빠짐없이 채우는 게 핵심입니다.</p>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="gr1">
+    <div class="bt-gstep"><span class="bt-gno">1</span><div><h3 id="gr1">전투력 관문</h3><p class="note">권장 전투력을 넘기면 길라잡이 보상(요혼석·강화 재료 선택 상자)을 1번 받고 그 사냥터로 엽전 없이 이동할 수 있습니다 <span class="tag">[깨비 시연 정리·묘선생]</span></p></div></div>
+    <ol class="gr-ladder" id="grLadder"></ol>
+    <p class="note">사냥터 권장 전투력 중 산신의 영역·지하 동굴·황무지 마을은 게임 내 묘선생 답변과 일치합니다. 음산한 폐광 이후는 출시 전 시연 화면 값이라 바뀌었을 수 있습니다. 필드 보스 10만 조건은 게임사가 "금전과 성장 가치를 안정적으로 유지하기 위한 조치"라고 밝혔고, 앞으로 조정될 수 있다고 했습니다 <span class="tag">[공식 공지]</span></p>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="gr2">
+    <div class="bt-gstep"><span class="bt-gno">2</span><div><h3 id="gr2">매일·매주 채울 것</h3><p class="note">시간이 지나면 사라지는 몫입니다. 쌓아 둘 수 없는 것부터 먼저 하세요.</p></div></div>
+    <div class="gr-cal">
+      <div class="gr-col"><h4>매일 <small>05:00 초기화</small></h4><ul>
+        <li><b>비경 1시간</b> 세 곳 합산. 충전부로 최대 6시간 추가 <span class="tag">[공식]</span></li>
+        <li><b>일일 임무 5개</b> <span class="tag">[공식]</span></li>
+        <li><b>문파 협력수련 20회</b> 상위 유저 60% 이상이 매일 함 <span class="tag">[묘선생]</span></li>
+        <li><b>단각 상점</b> 영웅 비법서 하루 20·요령서 하루 10 등 일일 한도 <span class="tag">[깨비]</span></li>
+        <li><b>오프라인 사냥</b> 게임을 꺼도 필드 사냥 최대 8시간 <span class="tag">[시연]</span></li>
+      </ul></div>
+      <div class="gr-col"><h4>매주 <small>수요일 05:00 초기화</small></h4><ul>
+        <li><b>전래동화 5시간</b> 충전 불가 — 별의 조각(미누 상점: 영웅·전설 도안 등)·제작 재료 <span class="tag">[공식]</span></li>
+        <li><b>주간 임무 5개</b> <span class="tag">[공식]</span></li>
+        <li><b>도사 수행록 125,000점까지</b> 구간 누적 보상 합계 엽전 10만·요혼석 50·비경 충전부 1·가호 주머니 10 <span class="tag">[공식]</span></li>
+        <li><b>복분이 엽전 상점</b> 영웅 비법서 주 50 등 주간 한도 <span class="tag">[깨비]</span></li>
+        <li><b>문파 전투</b> 요신 토벌령·결계지 방어(상시), 신기 쟁탈전(금), 미혹의 정원(토) <span class="tag">[묘선생]</span></li>
+      </ul></div>
+      <div class="gr-col"><h4>정해진 시간 · 쌓아 두기</h4><ul>
+        <li><b>레이드 티켓 (쌓임)</b> 하루 1장, 최대 10장 — 몰아서 가도 됨. 4단계부터 금전(묘선생 표에는 3단계 이상) <span class="tag">[묘선생]</span></li>
+        <li><b>필드 보스 (정해진 시간)</b> 산군대호 월·수·금·일 20:00 <span class="tag">[묘선생]</span>, 해골장군 화·목·토 <span class="tag">[시연]</span>. 전투력 10만 이상, 처치 전 이탈하면 보상 없음 <span class="tag">[공식]</span></li>
+        <li><b>낙화의 전장 (시즌)</b> 2주 시즌, 개인 점수 500·1,000·2,000·3,000·10,000점마다 금전 <span class="tag">[묘선생]</span></li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="gr3">
+    <div class="bt-gstep"><span class="bt-gno">3</span><div><h3 id="gr3">상점 한도로 보는 설계</h3><p class="note">같은 재료를 세 가지 화폐로 팔고, 화폐마다 한도가 다릅니다. 한도를 꽉 채웠을 때 일주일에 살 수 있는 양입니다 <span class="tag">[깨비 상점표]</span></p></div></div>
+    <div class="tw"><table class="gr-shop" id="grShop"></table></div>
+    <p class="note">단각은 단 봉인해제로 얻지만 1회당 얼마나 나오는지는 확률 공지에 없어, 단각 한도를 매일 다 채울 수 있는지는 사람마다 다릅니다 <span class="tag">[미확인]</span></p>
+    <div class="bt-why3">
+      <div><b class="num">주 50 vs 700</b><span>영웅 비법서 주간 한도가 엽전 상점은 50개, 금전 상점은 700개입니다. 다만 700개를 다 사려면 주 14만 금전이 들어, 실제 제약은 한도가 아니라 금전 수입입니다. 금전 상점은 50레벨부터이고, 금전은 레이드·필드 보스·낙화·문파 전투·38.5만 일일 임무·거래소에서 들어옵니다.</span></div>
+      <div><b class="num">엽전 → 금전 불가</b><span>금전은 엽전으로 바꿀 수 있지만 반대는 안 됩니다. 10/14부터 교환비가 3배(1:100 → 1:300)가 돼, 금전을 엽전으로 바꿀지 금전 상점에서 쓸지 따져 볼 만해졌습니다 <span class="tag">[공식·기사]</span></span></div>
+      <div><b class="num">관문 = 수도꼭지</b><span>필드 보스(10만)와 금전 일일 임무(38.5만)처럼 금전이 나오는 곳에 전투력 조건이 걸려 있습니다. 19만이면 이미 필드 보스·레이드·낙화로 금전이 들어오고, 38.5만은 매일 금전 통로가 하나 더 열리는 관문입니다 <span class="tag">[판단]</span></span></div>
+    </div>
+    <p class="note">엽전이 모자라면 <b>영웅 장비 비법서(주 50, 1개 1.5만)</b>부터 사세요. 장비 세팅 계산에서 비법서 1권당 전투력이 가장 큰 구간이 지금(희귀 → 영웅 교체기)입니다 <span class="tag">[계산]</span>. 천요석(1개 10만 엽전)은 돌파할 때만, 그리고 아래 10/21 제작식을 보고 사세요.</p>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="gr4">
+    <div class="bt-gstep"><span class="bt-gno">4</span><div><h3 id="gr4">게임사가 최근 보낸 신호</h3><p class="note">공지 내용은 그대로, 해석은 따로 표시했습니다.</p></div></div>
+    <ol class="gr-sig" id="grSig"></ol>
+    <p class="note"><b>정리</b> <span class="tag">[판단]</span>: 성장 재료(엽전·천요석·제작 재료)는 풀어 주는 쪽, 금전과 장비 격차는 전투력 조건·하향으로 묶는 쪽입니다. 그래서 무료 재료는 아끼지 말고 쓰되, 금전·거래용 장비는 조건이 바뀌기 전에 확인하는 게 안전합니다.</p>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="gr45">
+    <div class="bt-gstep"><span class="bt-gno">5</span><div><h3 id="gr45">앞으로 열릴 것 (로드맵 ~2027년 1월)</h3><p class="note">10/13 라이브에서 공개된 로드맵을 기사로 확인한 목록입니다. 개발 상황에 따라 바뀔 수 있다고 공지했습니다 <span class="tag">[기사·공식]</span></p></div></div>
+    <div class="gr-road" id="grRoad"></div>
+    <p class="note"><b>개발진이 밝힌 기조</b>: 과금 차이는 '성장 가능 여부'가 아니라 '목표 도달 속도'에 두고, 금전은 영석으로 직접 팔지 않으며, 고급 성장 재료는 엽전 상점과 금전 상점에서도 구할 수 있게 한다고 했습니다(9/27 인터뷰). 드랍률은 데이터를 보며 점진적으로 올린다고 했습니다(10/9·10/14 라이브) <span class="tag">[기사]</span>. 그래서 무과금은 '막힘'보다 '속도'의 문제이고, 무료 몫을 놓치지 않는 게 가장 큰 차이를 만듭니다 <span class="tag">[판단]</span></p>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="gr5">
+    <div class="bt-gstep"><span class="bt-gno">6</span><div><h3 id="gr5">10/21 패치 전 할 일</h3></div></div>
+    <ul class="bt-dont">
+      <li><b>접속 보상 세 번</b> — 10/17(토) 19:30~23:59(요혼석 200 추가), 10/18(일) 12:00~23:59, 19:30~23:59에 각각 접속하면 엽전 30만·천요석 5·희귀 비법서 100씩 <span class="tag">[공식 공지]</span></li>
+      <li><b>천요석 엽전 구매는 잠시 보류</b> — 10/21 목표인 제작식(주 300회)은 요혼석 10 + 엽전 5만으로, 엽전 상점(1개 10만)보다 엽전이 덜 듭니다 <span class="tag">[공식·기사]</span>. 대신 요혼석이 새 병목이 될 수 있으니 요혼석도 아껴 두세요 <span class="tag">[판단]</span></li>
+      <li><b>강화한 일반·희귀 장비는 거래소에 못 올림(10/14부터 적용 중)</b> — 팔 장비는 강화하기 전에 <span class="tag">[공식]</span></li>
+      <li><b>만귀비경·금전 상점은 50레벨부터</b> — 내 레벨을 먼저 확인 <span class="tag">[공식·깨비]</span></li>
+      <li><b>추가 효과 변경권(10/21 지급)</b>은 오래 쓸 장비에. 판매하지 않고 플레이로만 얻는다고 공지 <span class="tag">[공식]</span></li>
+      <li><b>도술 요령서 선택 상자</b>는 패치노트를 보고 열기 — 도술 빌드 탭 참고</li>
+    </ul>
+  </section>
+
+  <details class="panel bt-data">
+    <summary><b>출처</b> <span class="note">공식 공지·가이드 원문</span></summary>
+    <p class="note">카카오게임즈 도깨비의세계 공식 포럼: 10월 13일 라이브 방송 종합 안내(library), 10월 14일 긴급 라이브 요약(notice), 필드 보스 전투력 기준 입장 제한(notice), 10월 17일 라이브 방송 감사 보상(notice 242548), 10월 21일 업데이트 미리보기(library 48694), 가이드 성장 7739·임무 7938·비경 탐험 7943·도사 수행록 7941·상인회 7988·단 봉인해제 7838 · 게임 내 묘선생(10/17 조회) · 경향게임스 10/13(309268)·게임플 10/14(216686)·게임톡 10/9(112091)·10/13(112180)·게임플 10/14(216694)·게임뷰 10/13(61416)·게임조선 9/27(225669) 기사 · 깨비지지 kkaebigg.com 시스템 가이드(출시 전 시연 정리)·상점 효율표(10/17 조회).</p>
+  </details>
+  </div>
+  <div id="gv-gear" class="gr-view" hidden>
+  <header class="panel" style="display:grid;gap:10px">
+    <div class="eyebrow">도깨비의세계 · 최종 템 세팅 로드맵 · 전투력 약 19만, 희귀 50강·돌파3 기준</div>
+    <h2>희귀 50강에서 전설까지, 이 순서로 맞추세요</h2>
+    <p class="lede">장비 강화 데이터(비법서·엽전·요혼석·돌파 확률)를 전투력 공식에 넣어 계산하고, 지금 콘텐츠에서 하루에 모이는 재화 속도에 맞춰 단계를 나눴습니다.</p>
+  </header>
+
+  <section class="verdict" aria-label="한 줄 요약">
+    <p style="font-size:16px"><b>비경 1시간은 매일, 영웅템은 무기부터, 강화는 11칸 고르게 +10 → +20 → +30.</b> 전설 비법서는 쓰지 말고 모았다가 전설템이 나오면 바로 갈아타세요.</p>
+  </section>
+
+  <section class="panel gr-where" aria-labelledby="gw">
+    <h3 id="gw">지금 위치와 다음 목표</h3>
+    <div class="gr-track" role="img" aria-label="전투력 구간: 13.5만 황무지 권장, 현재 약 19만, 영웅 전부 50강 돌파2 시 약 24만, 38.5만 금전 일일 임무">
+      <div class="gr-bar"><span class="gr-fill" style="width:49%"></span><span class="gr-ghost" style="left:49%;width:13%"></span></div>
+      <ol class="gr-marks">
+        <li style="left:35%"><b class="num">13.5만</b><span>황무지 권장</span></li>
+        <li class="me" style="left:49%"><b class="num">≈19만</b><span>지금 (4주 전 5.2만)</span></li>
+        <li style="left:62%"><b class="num">≈24만</b><span>영웅 11칸 50강+돌파2</span></li>
+        <li style="left:100%"><b class="num">38.5만</b><span>금전 일일 임무</span></li>
+      </ol>
+    </div>
+    <p class="note">영웅 장비만 끝까지 올려도 약 +5만입니다. 38.5만은 <b>전설 장비 + 가호 + 도술 요령서</b>를 같이 올려야 닿습니다. 그래서 영웅은 '빨리 고르게', 남는 힘은 전설 준비로 돌리는 게 이 가이드의 핵심입니다 <span class="tag">[묘선생·계산·판단]</span></p>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="r0">
+    <div class="bt-gstep"><span class="bt-gno">0</span><div><h3 id="r0">매일 이것부터 (재화 수급)</h3><p class="note">장비 속도는 결국 비법서와 엽전 속도입니다.</p></div></div>
+    <div class="gr-income">
+      <div><b>비경 3단계 1시간</b><span class="num">영웅 비법서 ≈27개 · 엽전 ≈19,000</span><small>파멸 저격 덱 기준. 힐 빼면 엽전 ≈20,000. 물약이 많이 들면 힐을 넣거나 단일 저격으로 <span class="tag">[영상]</span></small></div>
+      <div><b>복분이 영웅 비법서</b><span class="num">주 50개 · 개당 1.5만 엽전</span><small>엽전이 남는 주에만. 주 75만 엽전이 듭니다 <span class="tag">[묘선생·깨비]</span></small></div>
+      <div><b>전설 비법서 모으기</b><span class="num">거래소 판매 불가</span><small>비경·상점(복분이 5만 엽전)·단각·메인 퀘스트·업적. 전설 분해 재료와는 다른 재료입니다 <span class="tag">[영상·깨비]</span></small></div>
+    </div>
+    <p class="note">비경은 3곳 합쳐 하루 기본 1시간(05시 초기화), 충전부로 최대 6시간까지 늘릴 수 있습니다. 시간이 되면 충전부가 가장 확실한 가속입니다 <span class="tag">[공식]</span></p>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="r1">
+    <div class="bt-gstep"><span class="bt-gno">1</span><div><h3 id="r1">영웅템은 이 순서로 만드세요</h3><p class="note">비법서 1권당 전투력이 높은 순서입니다.</p></div></div>
+    <div class="bt-gcols">
+      <div class="bt-gcol"><h4>제작 순서</h4>
+        <ol class="bt-path">
+          <li><b>무기</b><span>주 도술 계열에 맞는 원거리 무기 우선. PvP를 한다면 근접 무기는 카이팅이 어렵습니다 <span class="tag">[영상]</span></span></li>
+          <li><b>방어구 6부위</b><span>투구·갑옷·신발·각반·장갑·허리띠. 강화 비용이 가장 싸서 빨리 따라잡습니다</span></li>
+          <li><b>장신구 4부위</b><span>목걸이·반지·팔찌·귀걸이</span></li>
+        </ol></div>
+      <div class="bt-gcol"><h4>재료 구하는 법</h4>
+        <ol class="bt-path">
+          <li><b>도안은 거래소에서</b><span>약 1.9만 금전으로 싸게 거래됨 (10/13 지팡이 2.7만 기록도 있음) <span class="tag">[영상·유저]</span></span></li>
+          <li><b>재료는 하위 사냥터 + 전래동화</b><span>원님 고개 활용 시 약 20일이면 모입니다 <span class="tag">[영상]</span></span></li>
+          <li><b>원하던 무기가 아닌 도안이 나오면</b><span>일단 그걸로 만들고, 별의 조각을 모아 나중에 같은 무기 하나 더 → 1각성 <span class="tag">[영상]</span></span></li>
+        </ol></div>
+    </div>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="r2">
+    <div class="bt-gstep"><span class="bt-gno">2</span><div><h3 id="r2">갈아끼우기 전에 비법서를 미리 모아 두세요</h3><p class="note">영웅 +0은 희귀 50강·돌파3보다 약합니다. 아래 권수를 갖고 만들면 끼우자마자 손해 없이 넘어갑니다.</p></div></div>
+    <div class="gr-be">
+      <div><svg class="ic" aria-hidden="true"><use href="#i-sword"/></svg><b class="num">90권</b><span>무기 +10</span></div>
+      <div><svg class="ic" aria-hidden="true"><use href="#i-armor"/></svg><b class="num">21권</b><span>방어구 +11 (부위당)</span></div>
+      <div><svg class="ic" aria-hidden="true"><use href="#i-ring"/></svg><b class="num">31권</b><span>장신구 +11 (부위당)</span></div>
+    </div>
+    <p class="note">11칸 전부 손익분기까지 = 비법서 340권 · 엽전 약 77만 · 요혼석 340 <span class="tag">[계산]</span></p>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="r3">
+    <div class="bt-gstep"><span class="bt-gno">3</span><div><h3 id="r3">강화는 11칸 고르게, 10강 단위로</h3><p class="note">비법서 1권 효과는 무기 기준 0~10강이 40~50강의 2배입니다. 한 부위만 50강 찍지 마세요.</p></div></div>
+    <div class="tw"><table class="gr-ms">
+      <thead><tr><th>11칸 전부</th><th>전투력 (희귀 풀세트 대비)</th><th>비법서 누적</th><th>엽전 누적</th><th>요혼석 누적</th><th>주 240권이면</th></tr></thead>
+      <tbody>
+        <tr><td><b>+10/11</b></td><td><span class="gr-cp"><i style="width:0%"></i><b class="num">±0</b></span></td><td class="num">340</td><td class="num">77만</td><td class="num">340</td><td class="num">1.5주</td></tr>
+        <tr><td><b>+20</b></td><td><span class="gr-cp"><i style="width:17%"></i><b class="num">+9.4천</b></span></td><td class="num">747</td><td class="num">176만</td><td class="num">980</td><td class="num">3주</td></tr>
+        <tr><td><b>+30</b></td><td><span class="gr-cp"><i style="width:37%"></i><b class="num">+2.0만</b></span></td><td class="num">1,359</td><td class="num">319만</td><td class="num">1,960</td><td class="num">6주</td></tr>
+        <tr><td><b>+40</b></td><td><span class="gr-cp"><i style="width:57%"></i><b class="num">+3.1만</b></span></td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr><td><b>+50</b></td><td><span class="gr-cp"><i style="width:81%"></i><b class="num">+4.4만</b></span></td><td class="num">3,060</td><td class="num">753만</td><td class="num">4,860</td><td class="num">13주</td></tr>
+        <tr><td><b>+50 · 돌파2</b></td><td><span class="gr-cp"><i style="width:100%"></i><b class="num">+5.4만</b></span></td><td colspan="4" class="note" style="text-align:left">천요석이 병목 (돌파 1회마다 단계×18개, 무기 기준)</td></tr>
+      </tbody></table></div>
+    <p class="note">'주 240권'은 비경 하루 1시간(≈27권×7) + 복분이 50권으로 잡은 <span class="tag">[가정]</span>입니다. 실제로는 <b>엽전이 먼저 막힙니다</b>: +20까지 176만이 드는데 비경 1시간 엽전은 주 13만 정도라, 일일·주간 콘텐츠 엽전을 강화에 우선 배정하세요. +40 구간 누적 비용은 원본 데이터에서 따로 확인하지 못해 비웠습니다.</p>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="r4">
+    <div class="bt-gstep"><span class="bt-gno">4</span><div><h3 id="r4">돌파·각성은 마지막에, 조금만</h3></div></div>
+    <div class="bt-gcols">
+      <div class="bt-gcol"><h4>돌파 (50강 이후)</h4>
+        <ol class="bt-path">
+          <li><b>1~2단계만</b><span>성공률 90% → 80%. 실패해도 단계는 유지. 3단계(70%)부터는 천요석 소모가 커집니다</span></li>
+          <li><b>무기 → 방어구 순</b><span>무기 1단계당 전투력 약 +1.5천 <span class="tag">[계산]</span></span></li>
+        </ol></div>
+      <div class="bt-gcol"><h4>각성</h4>
+        <ol class="bt-path">
+          <li><b>같은 장비가 하나 더 필요</b><span>강화 안 한 동일 장비를 재료로 씀. 영웅은 최대 3각성</span></li>
+          <li><b>무기만 1각성</b><span>별의 조각으로 무기를 하나 더 만들어 1각성이 현실적인 목표 <span class="tag">[영상]</span></span></li>
+        </ol></div>
+    </div>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="r5">
+    <div class="bt-gstep"><span class="bt-gno">5</span><div><h3 id="r5">전설템이 나오면 바로 갈아타세요</h3><p class="note">전설 +0이 영웅 +50과 거의 같습니다. 영웅 강화가 덜 됐어도 기다릴 이유가 없습니다.</p></div></div>
+    <div class="bt-why3">
+      <div><b class="num">+0 ≈ 영웅 +50</b><span>전설 무기는 강화 0이어도 영웅 50강과 비슷한 전투력이고, 주 계열 도술 피해 +10% 효과가 붙습니다 (예: [저격] 화령궁, [절명] 심장추적자).</span></div>
+      <div><b class="num">+10까지만</b><span>전설 무기 +10 = 전설 비법서 90권 + 엽전 약 485만 + 요혼석 250. 영웅 50강 대비 전투력 약 +4.7천. 처음엔 +10에서 멈추고 다른 부위를 바꾸세요.</span></div>
+      <div><b class="num">권당 1.5배</b><span>전설은 비법서 1권 효과가 영웅의 약 1.5배지만, 강화 1회 엽전이 4만(영웅 1,500)이라 엽전 관리가 핵심입니다.</span></div>
+    </div>
+    <p class="note">주 도술 계열에 맞는 전설 무기를 고르세요. 도술 탭 가이드 기준 사냥은 연타·파멸, 보스는 절명입니다 <span class="tag">[깨비·계산]</span></p>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="r6">
+    <div class="bt-gstep"><span class="bt-gno">!</span><div><h3 id="r6">이것만은 하지 마세요</h3></div></div>
+    <ul class="bt-dont">
+      <li><b>한 부위만 50강</b> — 40~50강 구간은 비법서 효율이 0~10강의 절반입니다. 11칸 +20이 무기 하나 50강보다 전투력이 높습니다.</li>
+      <li><b>희귀템에 돌파·각성 더 하기</b> — 곧 바꿀 장비입니다. 재화를 영웅 손익분기(90/21/31권)용으로 남기세요.</li>
+      <li><b>전설 비법서를 일찍 다 쓰기</b> — 전설템이 생기기 전엔 쓸 곳이 없고, 거래소에서도 못 삽니다. 계속 모으세요.</li>
+      <li><b>전설 강화로 엽전 바닥내기</b> — 1회 4만 엽전입니다. 영웅 다른 부위 개방·강화가 먼저입니다.</li>
+      <li><b>10/21 추가 효과 변경권 바로 쓰기</b> — 10/15부터 추가 효과 최대치가 영웅 3%, 전설 7.5%로 바뀌었습니다. 최종 장비(전설)에 쓰는 게 이득입니다 <span class="tag">[공식·판단]</span></li>
+    </ul>
+  </section>
+
+  <section class="panel bt-guide" aria-labelledby="r7">
+    <div class="bt-gstep"><span class="bt-gno">+</span><div><h3 id="r7">가호도 같이</h3></div></div>
+    <p class="note" style="font-size:14px;color:var(--ink2)">가호 주머니(쿠폰·드롭스·이벤트·도사 수행록·보물 찾기)에서 희귀 가호를 뽑고, 부족한 조각은 거래소에서 개당 약 250 금전에 사서 완성하세요. <b>V1~V5 부위가 겹치지 않게</b> 확인하고 사야 합니다(부위당 1개 착용) <span class="tag">[영상]</span></p>
+  </section>
+
+  <details class="panel bt-data">
+    <summary><b>계산 공식과 출처</b> <span class="note">숫자가 어디서 나왔는지</span></summary>
+    <div class="bt-calcin">
+      <div class="bt-f">전투력 = (Σ 능력치 × 가중치) × 배율 × (1 + 도술 보정)
+가중치: 공격력 3 · 치명타 적중 5.646 · 공격 정확도 3.764 · 방어력 1.113
+        치명타 저항 6.951 · 도술 막기 2.772 · 회피 1.296 · 체력 0.459 · 체력 자연 회복 1.47
+표의 전투력 = 장비 능력치 합 × 약 1.3 (전투력 19만 계정 실측 배율)</div>
+      <div class="tw"><table>
+        <thead><tr><th>+50까지 비법서 누적</th><th>영웅·전설</th><th>희귀</th><th>개방 1~5회 엽전 (영웅)</th><th>개방 요혼석 (영웅)</th></tr></thead>
+        <tbody>
+          <tr><td>무기</td><td class="num">900</td><td class="num">585</td><td class="num">8·12·16·24·32만</td><td class="num">100~500</td></tr>
+          <tr><td>방어구</td><td class="num">180</td><td class="num">108</td><td class="num">1.6·2.4·3.2·4.8·6.4만</td><td class="num">20~100</td></tr>
+          <tr><td>장신구</td><td class="num">270</td><td class="num">135</td><td class="num">2·3·4·6·8만</td><td class="num">30~130</td></tr>
+        </tbody></table></div>
+      <p class="note">강화 1회 엽전: 일반 500 · 희귀 1,000 · 영웅 1,500 · 전설 40,000. 돌파 성공률 90/80/70/55/40/25/10/5/5/5% (영웅 최대 5단계, 전설 10단계). 전설 방어구 +1은 데이터상 2권이고, 영상의 '1강에 10개'는 +5 무렵 누적치와 비슷합니다.</p>
+      <p class="note">출처: 공식 장비 가이드(7739)·비경/전래동화 안내 <span class="tag">[공식]</span> · kkaebi.gg 성장 데이터·전투력 계산기 (10/05) <span class="tag">[깨비]</span> · 게임 내 AI '묘선생' 전투력·상점 정보 <span class="tag">[묘선생]</span> · LiveWiki 유튜브 요약(비경 파멸 저격·도안·가호) <span class="tag">[영상]</span> · 나머지는 이 공식으로 직접 계산 <span class="tag">[계산]</span></p>
+    </div>
+  </details>
+  </div>
+    </section>
     <section id="v-coupon" class="view hidden" aria-labelledby="tab-coupon">
       <div class="panel" style="display:grid;gap:14px">
         <div>
@@ -391,6 +1095,7 @@ details.more small{display:block;margin-top:4px}
               <div class="field"><label for="f-zone">사냥터</label><input type="text" id="f-zone" list="zones" placeholder="황무지마을" required enterkeyhint="next"></div>
               <div class="field"><label for="f-cp">사냥 당시 전투력</label><input type="number" id="f-cp" placeholder="175234" required inputmode="numeric" enterkeyhint="next"></div>
               <div class="field"><label for="f-mode">사냥 방식</label><select id="f-mode"><option>대량 필드 사냥</option><option>단일 사냥</option><option>비경·기타</option></select></div>
+              <div class="field"><label for="f-deck">사용한 도술 덱</label><select id="f-deck"><option value="">선택 안 함</option><option>A 광역 기동</option><option>B 파멸 저격</option><option>C 연타 광역</option><option>D 절명+저격 단일</option><option>E 절명+저격 극딜</option><option>기타 덱</option></select></div>
             </div>
             <div class="form-row">
               <div class="field"><label for="f-min">사냥 시간(분)</label><input type="number" id="f-min" step="0.1" required inputmode="decimal" enterkeyhint="next"></div>
@@ -441,6 +1146,10 @@ details.more small{display:block;margin-top:4px}
       </div>
     </section>
     
+    <footer class="site-foot">
+      <p>© 2026 깨비노트 (짐승특공대). 이 사이트의 글·계산·구성은 깨비노트가 만들었습니다. 무단 복제·재배포는 삼가 주시고, 인용할 때는 출처를 밝혀 주세요.</p>
+      <p>도깨비의세계 및 게임 내 명칭·이미지의 권리는 카카오게임즈와 개발사에 있습니다. 깨비노트는 비공식 팬 사이트이며, 게임 수치 일부는 깨비지지·도깨비지지 자료를 참고했습니다.</p>
+    </footer>
   </main>
   
 </div>
@@ -449,7 +1158,7 @@ details.more small{display:block;margin-top:4px}
 const MODE="guild";
 const OPT={"source": "공식 커뮤니티 현재 확률 정보 — 장비 등급별 추가 효과 부여 수 확률 (2026-10-15 09:00 기준)", "url": "https://forum.kakaogames.com/dokkaebi/postView/?code=prob&id=18494", "lines": {"희귀": 2, "영웅": 3, "전설": 4}, "types": {"무기": {"ranges": {"공격력": {"희귀": [[3, 7], [8, 14], [15, 25], [26, 41]], "영웅": [[17, 42], [43, 83], [84, 150], [151, 250]], "전설": [[63, 157], [158, 313], [314, 564], [565, 939]]}, "공격 정확도": {"희귀": [[1, 1], [2, 2], [3, 4], [5, 6]], "영웅": [[2, 4], [5, 8], [9, 15], [16, 25]], "전설": [[4, 10], [11, 21], [22, 38], [39, 63]]}, "치명타 적중": {"희귀": [[1, 1], [2, 2], [3, 3], [4, 4]], "영웅": [[1, 3], [4, 6], [7, 10], [11, 17]], "전설": [[3, 7], [8, 14], [15, 25], [26, 42]]}, "스타일 피해(각각)": {"희귀": [[1, 2], [3, 5], [6, 9], [10, 15]], "영웅": [[4, 10], [11, 20], [21, 36], [37, 60]], "전설": [[10, 25], [26, 50], [51, 90], [91, 150]]}}, "prob": {"공격력": [30, 22.5, 5.7, 1.5, 0.3], "공격 정확도": [30, 22.5, 5.7, 1.5, 0.3], "치명타 적중": [30, 22.5, 5.7, 1.5, 0.3], "스타일 피해(각각)": [0.83, 0.63, 0.16, 0.04, 0.01]}}, "장신구": {"ranges": {"공격력": {"희귀": [[1, 2], [3, 3], [4, 6], [7, 9]], "영웅": [[4, 9], [10, 19], [20, 34], [35, 57]], "전설": [[13, 33], [34, 66], [67, 119], [120, 198]]}, "공격 정확도": {"희귀": [[1, 1], [2, 2], [3, 4], [5, 6]], "영웅": [[2, 4], [5, 8], [9, 15], [16, 25]], "전설": [[4, 10], [11, 21], [22, 38], [39, 63]]}, "치명타 적중": {"희귀": [[1, 1], [2, 2], [3, 3], [4, 4]], "영웅": [[1, 3], [4, 6], [7, 11], [12, 19]], "전설": [[5, 12], [13, 24], [25, 43], [44, 71]]}, "스타일 피해(각각)": {"희귀": [[1, 2], [3, 5], [6, 9], [10, 15]], "영웅": [[4, 10], [11, 20], [21, 36], [37, 60]], "전설": [[10, 25], [26, 50], [51, 90], [91, 150]]}}, "prob": {"공격력": [30, 22.5, 5.7, 1.5, 0.3], "공격 정확도": [30, 22.5, 5.7, 1.5, 0.3], "치명타 적중": [30, 22.5, 5.7, 1.5, 0.3], "스타일 피해(각각)": [0.83, 0.63, 0.16, 0.04, 0.01]}}, "방어구": {"ranges": {"체력": {"희귀": [[7, 13], [14, 20], [21, 26], [27, 33]], "영웅": [[39, 78], [79, 117], [118, 156], [157, 195]], "전설": [[146, 292], [293, 439], [440, 585], [586, 731]]}, "방어력": {"희귀": [[1, 3], [4, 4], [5, 6], [7, 7]], "영웅": [[9, 17], [18, 26], [27, 34], [35, 43]], "전설": [[32, 64], [65, 96], [97, 128], [129, 160]]}, "도술 막기": {"희귀": [[1, 2], [3, 4], [5, 5], [6, 6]], "영웅": [[7, 14], [15, 21], [22, 28], [29, 35]], "전설": [[26, 53], [54, 79], [80, 105], [106, 132]]}, "치명타 저항": {"희귀": [[1, 1], [2, 2], [3, 3], [4, 4]], "영웅": [[3, 6], [7, 10], [11, 13], [14, 16]], "전설": [[12, 24], [25, 36], [37, 49], [50, 61]]}, "기본 공격 회피": {"희귀": [[1, 2], [3, 3], [4, 4], [5, 5]], "영웅": [[6, 12], [13, 18], [19, 24], [25, 30]], "전설": [[22, 44], [45, 67], [68, 89], [90, 111]]}, "체력 자연 회복": {"희귀": [[1, 2], [3, 3], [4, 4], [5, 5]], "영웅": [[5, 11], [12, 16], [17, 21], [22, 26]], "전설": [[20, 39], [40, 59], [60, 79], [80, 98]]}}, "prob": {"체력": [16.67, 9.17, 5.0, 2.0, 0.5], "방어력": [16.67, 9.17, 5.0, 2.0, 0.5], "도술 막기": [16.67, 9.17, 5.0, 2.0, 0.5], "치명타 저항": [16.67, 9.17, 5.0, 2.0, 0.5], "기본 공격 회피": [16.67, 9.17, 5.0, 2.0, 0.5], "체력 자연 회복": [16.67, 9.17, 5.0, 2.0, 0.5]}}}, "styles12_note": "스타일 피해 12종은 각각 별도 옵션(종류명은 확률표에 미기재)"};
 const PATCHES=[{"date": "2026-10-21", "kind": "예정", "title": "10월 21일(수) 업데이트 예고", "src": [["library", 48694, "업데이트 미리보기"], ["notice", 19240, "긴급 라이브 요약"], ["notice", 17815, "도술 초기화 안내"], ["library", 17814, "10/13 라이브 종합"]], "items": [["신규", "캐릭터명 경매장 추가 — 지금 쓰는 이름을 경매에 올리면 새 이름으로 무료 변경"], ["신규", "신규 PvE '만귀비경' — 50레벨부터 1~4인, 입장권은 필드·낙화의 전장 사냥으로 획득(파티 중 1명만 있으면 4명 입장)"], ["신규", "1 VS 1 친선전(사망 없음, 관전 가능), 할로윈 의복·탈것·도술 스킨(외형 탭), 무기 염색, 인기도"], ["성장", "장비 추가 효과 변경권 지급 — 보유 무기·장비의 추가 효과를 다시 조정 가능(판매 상품 아님)"], ["성장", "도술 초기화 — 강화·돌파 내역 초기화 후 사용 재화 소급(강화분은 요령서 선택 상자, 돌파는 실제 시도 횟수 기준). 각성은 유지"], ["재화·상점", "천요석 제작식 추가(주간 300회 교환) 목표"], ["사냥", "제작 재료 드랍률을 데이터 기반으로 조정할 예정(큰 폭 일괄 상향은 아님)"], ["신규", "서사 임무 약 30종 추가 목표"]]}, {"date": "2026-10-15", "kind": "점검", "title": "10월 15일(목) 임시 점검 · 확률 변경 · 필드 보스 입장 제한", "src": [["notice", 19973, "임시 점검 안내"], ["notice", 20567, "점검 완료 및 보상"], ["notice", 20562, "확률 변경 안내"], ["notice", 24963, "필드 보스 입장 제한"]], "items": [["밸런스", "장비 추가 효과 한 줄 최대치 하향 — 희귀 15%→0.75%, 영웅 15%→3%, 전설 15%→7.5%(옵션 종류·등장 확률은 그대로)"], ["밸런스", "공격 정확도가 도술 막기에 대응해 동작하도록 개선, 무기 기본 공격 계수 상향"], ["확률", "'장비 등급별 추가 효과 부여 수 확률'의 수치 범위 변경(10/15 09:00 기준)"], ["밸런스", "필드 보스 입장에 전투력 100,000 이상 조건 적용(10/15 20:00부터, 추후 조정 가능)"], ["보상", "10/14 점검 후~10/15 점검 전 분해한 영웅 이상 장비 복구(우편 지급)"], ["주의", "점검 시 거래소에 등록돼 있던 장비는 만료 처리, 등록 수수료 미반환"], ["보상", "GM의 선물 상자 1: 신기 가루 10, 엽전 20,000, 전투 공격 비법서 2(10/15 09:00~23:59 접속자)"]]}, {"date": "2026-10-14", "kind": "보상", "title": "10월 14일(수) 긴급 라이브 사과 보상", "src": [["notice", 19240, "긴급 라이브 요약 및 사과"]], "items": [["보상", "엽전 2,000,000, 요혼석 200, 의복 랜덤 열쇠 1, 도전자의 영웅 장신구 도안 선택 상자 1, 기운 발현 재료 선택 상자 200(10/14 19:43~10/16 00:00 접속자, 계정당 1회)"], ["예정", "상위→하위 재료 변환 기능 검토 중"]]}, {"date": "2026-10-14", "kind": "업데이트", "title": "10월 14일(수) 정기 업데이트", "src": [["update", 18403, "업데이트 안내"], ["notice", 18496, "점검 완료 및 보상"]], "items": [["신규", "희귀·영웅·전설 장비에 추가 효과 도입 — 희귀 2줄, 영웅 3줄, 전설 4줄"], ["재화·상점", "엽전 환전소(수로) 교환비 금전 1개당 엽전 100개 → 300개. 이전 교환분 소급, 11/11(수) 05시까지 수령"], ["재화·상점", "금전 상점 구매 제한 상향 — 소분(장비 강화 비법서·가호의 정수·도술 강화 요령서) 일일 50→100회, 천요석 주간 20→25회, 금옥 가호 주머니 일일 30→100회"], ["성장", "희귀 이상 장비·가호의 강화 0단계 기본 능력치 대폭 상향, 내면의 길(희귀·전설)·영기 수련 주요 능력치 상향"], ["밸런스", "도술 돌파 성장 폭 균일화, 쿨타임 감소 상한 15%(초과분은 피해량으로). 일부 도술 PvP·PvE 피해량 상향, 보호막 도술 10종 고정 수치 추가"], ["밸런스", "낙화의 전장 보스·요귀 체력 상향, 레이드 2~5단계 '산신마루 백운' 체력 상향, 적아저·화미공·장설독섬 패턴 완화"], ["재화·상점", "영석 상점 성장 지원 상자(비경 충전부 2 + 요혼석 200, 영석 400, 도사당 4회)·꾸미기 지원 상자 — 10/21 08:00까지"], ["편의", "길라잡이 [맞춤 추천] 탭, 화면에서 바로 타바로성 이동·절전 버튼, 거래소 판매가 표기·개당 가격 정렬, 채팅 개선"], ["주의", "강화·각성한 일반·희귀 장비는 거래소 등록 불가(영웅 이상은 가능). 파티 분배는 무작위만, 문파 전투는 가입 24시간 후 참여"], ["이벤트", "낙화의 전장 요화선녀 처치 서버 보상(1위 요혼석 30) — 10/21 정기 점검 전까지. 심처 개방 10/17(토) 23시~10/18(일) 23시"], ["보상", "GM의 선물 상자 2: 신기 가루 30, 엽전 50,000 등(10/14 10:30~23:59 접속자)"]]}, {"date": "2026-10-13", "kind": "라이브", "title": "10월 13일(화) 라이브 방송 · 임시 점검", "src": [["library", 17814, "라이브 종합 안내"], ["notice", 16692, "임시 점검"]], "items": [["예정", "2027년 1월까지 로드맵 공개, 도술 밸런스·성장 콘텐츠 상향 예고(10/14 반영)"], ["보상", "감사 쿠폰 '도깨비의내일' — 11/11(수) 23:59까지"], ["오류", "파티 생성 시 획득 규칙이 무작위로 설정되도록 수정(10/12·10/13 임시 점검)"]]}, {"date": "2026-10-10", "kind": "점검", "title": "10월 10일(토) 임시 점검", "src": [["notice", 12257, "임시 점검 안내"], ["notice", 12976, "확률 변경 안내"], ["notice", 13011, "점검 완료 및 보상"]], "items": [["사냥", "필드 사냥 정기단 획득 확률 상향 — 상급 사냥터일수록 더 높게"], ["사냥", "낙화의 전장: 전장 점수 3배, 모든 몬스터가 정기단 드롭, 낙화의 증표 +50%, 요화선녀 3,000만·요화궁녀 5,000만 엽전 보상"], ["사냥", "'망자의 마을' 비경이 [지원]으로 변경, 요혼석·요혼석 가루 획득"], ["재화·상점", "단각 상점 요혼석·신기 가루·엽전 일일 구매 100회, 영석 상점 탈것 상자 28종·의복 랜덤 열쇠 추가"], ["성장", "성장 멤버십: 원격 상점 엽전 상품 17종 별도 구매, 오프라인 모드 접속당 최대 8시간. 패스 요혼석 상향(소급)"], ["확률", "의복 랜덤 열쇠 확률 신규, 탈것 합성·단 봉인해제 확률 변경"], ["보상", "정기단·비경 충전부 사용분과 패스 증가분 소급 지급"]]}, {"date": "2026-10-09", "kind": "점검", "title": "10월 9일(금) 임시 점검 및 패치", "src": [["notice", 11050, "임시 점검 및 패치"], ["notice", 11327, "점검 완료 및 보상"]], "items": [["사냥", "필드·비경·전래동화 비경·낙화의 전장 몬스터 엽전 2배"], ["사냥", "필드·비경 [장비 강화] 1~5구역 정기단 드롭 2배, 메마른 늪 1·2·5·6구역에서도 정기단 획득"], ["사냥", "안개 기슭·산신의 영역(지하 동굴 포함) 일반 장비 드롭 2배, 채널 인원 절반으로 조정"], ["밸런스", "초반 몬스터·메인 퀘스트 보스 피해 감소, 헌신 도술 고정 회복(즉시 2,800 / 지속 초당 400)"], ["재화·상점", "필드 보스 누적 피해 보상 전원 지급·금전 증가, 문파 콘텐츠 개인 순위 금전 +20%"], ["오류", "멤버십 물약 소지 증가 효과가 사망 시 풀리던 문제, 필드 보스 보상 미수령 문제 등 수정"]]}, {"date": "2026-10-08", "kind": "오픈", "title": "정식 오픈", "src": [["notice", 9727, "정식 오픈 안내"]], "items": [["신규", "도깨비의세계 정식 서비스 시작"]]}];
-const HUNTS=[{"date": "10/16", "who": "순록이", "zone": "황무지마을", "cp": null, "minutes": 475.4, "coin": 194743, "dan": 309}, {"date": "10/16", "who": "순록이", "zone": "우물동굴", "cp": null, "minutes": 46.0, "coin": 17054, "dan": 25}];
+const HUNTS=[{"date": "10/16", "who": "순록이", "zone": "황무지마을", "cp": null, "minutes": 475.4, "coin": 194743, "dan": 309}, {"date": "10/16", "who": "순록이", "zone": "우물동굴", "cp": null, "minutes": 46.0, "coin": 17054, "dan": 25}, {"date": "10/16", "who": "순록이", "zone": "황무지마을", "cp": 175772, "minutes": 485.0, "coin": 227465, "dan": 392, "items": "영웅 장비 강화 비법서 24\n희귀 장비 강화 비법서 49\n도술 강화 요령서 1\n이름 미확인 18종(장비·재료 등)"}];
 const TODAY=new Date();
 document.body.classList.add(MODE);
 document.querySelectorAll(MODE==="biz"?".guild-only":".biz-only").forEach(e=>e.remove());
@@ -461,6 +1170,51 @@ function setPlan(p){plan=p;document.body.classList.toggle("free",p==="free");doc
   if(f){f.setAttribute("aria-pressed",p==="free");pr.setAttribute("aria-pressed",p==="pro")}
   renderDrop();try{localStorage.setItem("kn-plan",p)}catch(e){}}
 
+
+(function(){
+const $g=s=>document.querySelector('#v-gear '+s);
+const LAD=[
+ [37000,'안개 기슭','첫 사냥터','시연'],
+ [68000,'산신의 영역','길라잡이 보상 요혼석 20','묘선생'],
+ [94500,'산신의 영역 지하 동굴','','묘선생'],
+ [100000,'필드 보스 입장','금전이 처음 들어오는 곳 (10/15~)','공식'],
+ [135000,'황무지 마을','길라잡이 보상 영웅 강화 재료 선택 상자 (2구역 15만)','묘선생'],
+ [188000,'지금 이 가이드 기준','희귀 50강 → 영웅 교체기',''],
+ [260000,'음산한 폐광','다음 사냥터','시연'],
+ [360000,'요기의 동굴','','시연'],
+ [385000,'금전 일일 임무','매일 금전 수급이 열림','묘선생'],
+ [490000,'마을 어귀','','시연'],
+ [695000,'동구밖','','시연'],
+ [960000,'고갯마루','','시연']];
+const ME=188000;
+$g('#grLadder').innerHTML=LAD.map(([cp,n,d,src])=>{const cls=cp===ME?'me':cp<ME?'done':(cp===260000||cp===385000)?'next':'';
+ return `<li class="${cls}"><span class="cp num">${cp===ME?'≈18.8만':(cp/10000).toLocaleString(undefined,{maximumFractionDigits:2})+'만'}</span><span class="dot"></span><span class="tx"><span><b>${n}</b>${src?` <span class="tag">[${src}]</span>`:''}</span>${d?`<small>${d}</small>`:''}${cp>ME?`<small class="gap">지금보다 +${Math.round((cp/ME-1)*100)}%</small>`:''}</span></li>`}).join('');
+const SHOP=[
+ ['영웅 장비 비법서','1.5만 × 주 50','20 × 하루 20 (주 140)','200 × 하루 100 (주 700)'],
+ ['전설 장비 비법서','5만 × 주 20','100 × 하루 10 (주 70)','800 × 하루 100 (주 700)'],
+ ['도술 요령서 (계열마다)','5만 × 주 10','100 × 하루 10 (주 70)','800 × 하루 100 (주 700)'],
+ ['영웅 가호의 정수','1.5만 × 주 50','20 × 하루 20 (주 140)','200 × 하루 100 (주 700)'],
+ ['천요석','10만 × 주 10','—','1,000 × 주 25'],
+ ['요혼석','—','10 × 하루 100 (주 700)','—']];
+$g('#grShop').innerHTML=`<thead><tr><th>재료</th><th>엽전 (복분이)</th><th>단각 (단 봉인해제)</th><th>금전 (소분, 50레벨~)</th></tr></thead><tbody>${SHOP.map(r=>`<tr><td><b>${r[0]}</b></td><td class="num">${r[1]}</td><td class="num">${r[2]}</td><td class="num">${r[3]}</td></tr>`).join('')}</tbody>`;
+const SIG=[
+ ['10/13','라이브 방송','장비·가호·내면의 길·영기 수련 능력치 전반 상향, 장비 랜덤 옵션 추가, 금전→엽전 교환 3배, 강화한 일반·희귀 장비 거래소 등록 불가','성장 속도는 올리고, 강화 장비 되팔기는 막음'],
+ ['10/14','긴급 라이브','과도했던 장비 추가 효과를 희귀 약 5%·영웅 약 20%·전설 약 50% 수준으로 하향(패치 전보다는 높게 유지), 변경권 지급. 서사 임무 약 30종·제작 재료 드랍률 조정 예고, 상위→하위 재료 변환은 검토 중','등급 간 격차가 너무 벌어지지 않게 관리'],
+ ['10/15','공지','필드 보스 입장 전투력 10만 이상. "금전과 성장 가치를 안정적으로 유지하기 위한 조치"','금전 수급을 전투력으로 통제'],
+ ['10/17','라이브 방송','접속 보상: 엽전 30만·천요석 5·희귀 비법서 100 × 3회, 요혼석 200','병목 재료(천요석·요혼석) 직접 지급'],
+ ['10/21','예정','천요석 제작식(주 300회, 요혼석 10 + 엽전 5만 — 기사), 만귀비경(50레벨, 필드·낙화 사냥으로 입장권), 1:1 친선전, 도술 강화 초기화와 요령서 선택 상자, 추가 효과 변경권','천요석 병목 완화, 새 수급처 추가']];
+$g('#grSig').innerHTML=SIG.map(([d,k,t,r])=>`<li><span class="d num">${d}</span><div><b>${k}</b> <span class="tag">[공식]</span><p>${t}</p><p class="rd">→ ${r} <span class="tag">[판단]</span></p></div></li>`).join('');
+const ROAD=[
+ ['11월',['차원 점령전 (서버 대항전)','불가살이 레이드 — 기존 레이드 대체, 시즌마다 보스 교체','도깨비 총회·미니게임'],'레이드 금전 수급처가 바뀔 수 있음'],
+ ['12월',['1:1 비동기 랭크전·4:4 실시간 결투','문파 아지트·타바로 온천','전래동화 2편 「의좋은 형제」'],'PvP 덱·전래동화 상점 품목 변화'],
+ ['2027년 1월',['1차 초월(승급)','신규 도술','영기·요기 추가 성장 요소','요리·채집·낚시, 혼례, 문파 투자'],'새 성장 축 — 재료를 쌓아 둘 이유가 생김'],
+ ['검토 중',['고난도 던전·하드 모드','가호 분해·재활용','필드 보스 시간 분산'],'확정 아님']];
+$g('#grRoad').innerHTML=ROAD.map(([m,items,imp])=>`<div class="rc"><h4>${m}</h4><ul>${items.map(x=>`<li>${x}</li>`).join('')}</ul><p class="rd">→ ${imp} <span class="tag">[판단]</span></p></div>`).join('');
+const segs=[...document.querySelectorAll('#v-gear .gr-seg button')];
+function show(v){segs.forEach(b=>b.setAttribute('aria-selected',b.dataset.gv===v));document.getElementById('gv-road').hidden=v!=='road';document.getElementById('gv-gear').hidden=v!=='gear';try{localStorage.setItem('kn-gv',v)}catch(e){}}
+segs.forEach(b=>b.onclick=()=>show(b.dataset.gv));
+try{const v=localStorage.getItem('kn-gv');if(v==='gear')show('gear')}catch(e){}
+})();
 
 /* ----- 탭 ----- */
 const tabs=[...document.querySelectorAll("nav.tabs button")];
@@ -513,7 +1267,7 @@ const fmt=n=>n==null||isNaN(n)?"–":Math.round(n).toLocaleString("ko-KR");
 const fmt1=n=>n==null||isNaN(n)?"–":n.toLocaleString("ko-KR",{maximumFractionDigits:1,minimumFractionDigits:1});
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
   set(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}};
-const ROSTER=[["순록이", 175234, "문주", "2026-10-16T02:00:00+09:00", "게임 화면"], ["상이이", 171692, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["탱깨비", 157620, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["Fw월영의신", 154503, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["쪼코봉", 154344, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["쪼아시", 151722, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["큥야시", 151209, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["마이크론", 150974, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["동태야밥먹자", 148417, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["맑음이", 142530, "부문주", "2026-10-16T02:00:00+09:00", "게임 화면"], ["뚝깎", 140497, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["잠자러가자", 138471, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["리픽투", 134682, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["흑염소", 134236, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["단vl", 134228, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["창구구", 130218, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["기찻길", 126494, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["수재르", 110842, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["도깨비심장", 107678, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["미스테리", 90541, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["장군의아들", 83100, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["육무쌍", 77557, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["김여", 74177, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["kimiju", 57994, "", "2026-10-16T02:00:00+09:00", "게임 화면"]];
+const ROSTER=[["순록이", 175772, "문주", "2026-10-16T16:38:00+09:00", "게임 화면", 175234], ["상이이", 171692, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["탱깨비", 157620, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["Fw월영의신", 154503, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["쪼코봉", 154344, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["쪼아시", 151722, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["큥야시", 151209, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["마이크론", 150974, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["동태야밥먹자", 148417, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["맑음이", 142530, "부문주", "2026-10-16T02:00:00+09:00", "게임 화면"], ["뚝깎", 140497, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["잠자러가자", 138471, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["리픽투", 134682, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["흑염소", 134236, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["단vl", 134228, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["창구구", 130218, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["기찻길", 126494, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["수재르", 110842, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["도깨비심장", 107678, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["미스테리", 90541, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["장군의아들", 83100, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["육무쌍", 77557, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["김여", 74177, "", "2026-10-16T02:00:00+09:00", "게임 화면"], ["kimiju", 57994, "", "2026-10-16T02:00:00+09:00", "게임 화면"]];
 const FORM_URL="https://docs.google.com/forms/d/e/1FAIpQLSf62ggn_r2tKDw1AF7_8UZLkIimBwoj1tdxqqOcYWSMQ2QA5Q/formResponse";
 const FORM_ENTRY={"who": 924641953, "zone": 1668987214, "cp": 1384361699, "minutes": 1234828068, "coin": 1019143542, "dan": 1820177903, "mode": 1016157962, "items": 395848103};
 const GEAR_URL="https://docs.google.com/forms/d/e/1FAIpQLSf9ifL_Rh6pT_KFbva6lvMDVIBuaWl1R7IAo-zyrcqWKU3I6Q/formResponse";
@@ -655,7 +1409,7 @@ function renderCoupons(){
 
 /* 사냥 기록 */
 function prefill(h){if(!FORM_URL)return "";
-  const v={who:h.who,zone:h.zone,cp:h.cp??"",minutes:h.minutes,coin:h.coin,dan:h.dan,mode:h.mode,items:h.items||""};
+  const v={who:h.who,zone:h.zone,cp:h.cp??"",minutes:h.minutes,coin:h.coin,dan:h.dan,mode:h.mode,items:(h.deck?"[덱: "+h.deck+"]\n":"")+(h.items||"")};
   return FORM_URL+"?"+Object.entries(FORM_ENTRY).map(([k,id])=>"entry."+id+"="+enc(v[k])).join("&")+"&submit=Submit";}
 function renderMyHunts(){
   const el=document.getElementById("my-hunts");if(!el)return;
@@ -669,11 +1423,11 @@ function renderMyHunts(){
 }
 document.getElementById("hunt-form").onsubmit=e=>{e.preventDefault();const v=id=>document.getElementById(id).value;
   const d=new Date();
-  myHunts.unshift({date:(d.getMonth()+1)+"/"+d.getDate(),who:v("f-who").trim(),zone:v("f-zone").trim(),cp:Number(v("f-cp"))||null,mode:v("f-mode"),
+  myHunts.unshift({date:(d.getMonth()+1)+"/"+d.getDate(),who:v("f-who").trim(),zone:v("f-zone").trim(),cp:Number(v("f-cp"))||null,mode:v("f-mode"),deck:v("f-deck"),
     minutes:Number(v("f-min")),coin:Number(v("f-coin"))||0,dan:Number(v("f-dan"))||0,items:v("f-items").trim(),submitted:false});
   if(!store.set("kn-hunts",myHunts))alertMsg("이 브라우저는 저장을 막고 있습니다.");
   ["f-zone","f-min","f-coin","f-items"].forEach(id=>document.getElementById(id).value="");document.getElementById("f-dan").value="0";
-  renderMyHunts();renderDrop();};
+  renderMyHunts();renderDrop();if(window.renderMeasure)window.renderMeasure();};
 
 /* 드랍률 표 */
 function poissonCI(k){const z=1.645;if(k===0)return[0,2.996];
@@ -734,6 +1488,449 @@ function labelTable(tb){const hs=[...tb.querySelectorAll("thead th")].map(h=>h.t
   tb.querySelectorAll("tbody tr").forEach(tr=>[...tr.children].forEach((td,i)=>{if(hs[i])td.setAttribute("data-l",hs[i]);const tx=td.textContent.trim();td.classList.toggle("emptycell",tx===""||tx==="–");}));}
 function watchTables(){let q=0;const run=()=>{q=0;document.querySelectorAll(".tablewrap table").forEach(labelTable)};run();
   new MutationObserver(()=>{if(!q)q=requestAnimationFrame(run)}).observe(document.querySelector("main"),{childList:true,subtree:true});}
+/* 도술 추천 엔진 — 깨비노트 도술 빌드 탭과 node 테스트에서 함께 쓴다 */
+(function (root) {
+'use strict';
+const LV = [0,0.011255,0.022637,0.034147,0.045787,0.057557,0.06946,0.081497,0.093669,0.105979,0.118427,0.131015,0.143745,0.156618,0.169636,0.1828,0.196113,0.209575,0.223189,0.236957,0.250879,0.264958,0.279195,0.293593,0.308152,0.322876,0.337765,0.352822,0.368048,0.383446,0.399016,0.414763,0.430686,0.446789,0.463073,0.47954,0.496192,0.513032,0.530062,0.547283,0.564698,0.582309,0.600118,0.618127,0.63634,0.654757,0.673382,0.692216,0.711262,0.730523,0.75];
+const bookCost = L => (L % 10 === 0) ? 0 : 3 * Math.floor(L / 10) + Math.floor((L % 10 - 1) / 3) + 1;
+const OPEN = {10:[100,'20만'],20:[200,'60만'],30:[300,'120만'],40:[400,'200만'],50:[500,'300만']};
+const STYLES = ['절명','연타','강타','척살','저격','주술','파멸','강인','기동','헌신','기만','제압'];
+
+function make(SK) {
+  const BY = {}; SK.forEach(s => BY[s.n] = s);
+  const ULTS = {}; SK.forEach(s => { if (s.u) ULTS[s.st] = s.n; });
+
+  let AOECAP = 3;
+  function tf(s, N) {
+    if (N <= 1) return 1;
+    if (s.n === '대폭발') return N <= 5 ? N : N * Math.max(0.2, 1 - 0.8 * (N - 5) / 25);
+    if (s.cap === 1.5) return 1.5;
+    if (!s.u && s.cap > 1 && s.n !== '연쇄 번개') return Math.min(N, s.cap, AOECAP);
+    return Math.min(N, s.cap);
+  }
+
+  /* 한 덱을 T초 돌린다. o: {mode:'pve'|'pvp', N, shin, field, T, only:Set|null} */
+  function sim(names, o) {
+    const T = o.T || 120, pvp = o.mode === 'pvp', N = o.N || 1;
+    const all = names.filter(n => BY[n]);
+    const cnt = {}; all.forEach(n => { const s = BY[n]; if (!s.u) cnt[s.st] = (cnt[s.st] || 0) + 1; });
+    const on = st => o.shin && (cnt[st] || 0) >= 3;
+    const use = all.filter(n => !o.only || o.only.has(n));
+    const sk = use.map(n => BY[n]).filter(s => (pvp ? s.pvp : s.pve) > 0 || s.ex);
+    const st = sk.map(s => ({ s, ch: s.ch, next: 0, cd: s.cd }));
+    const hasStat = {}; all.forEach(n => { const s = BY[n]; if (s.stat) hasStat[s.stat] = 1; });
+    let t = 0, dmg = 0, idle = 0; const bySt = {}, casts = {};
+    let rage = 0, lastHit = -9, dag = 0, gEn = 0, csEn = 0, arrows = 0, arrT = 0, aim = -1, pmEn = 0, flood = -1, gdEn = 0, chainUntil = -1,
+        tears = 0, locks = 0, blue = -1, stance = -1, gyeol = 0, kills = 0;
+    const statUntil = {};
+    const LVm = o.lv || {};
+    const lvf = s => 1 + (LV[LVm[s.st] || 0] || 0);
+    const base = s => (pvp ? s.pvp : s.pve) * lvf(s);
+    function ready(x) { return x.ch > 0; }
+    function tick(now) {
+      st.forEach(x => { while (x.ch < x.s.ch && x.next <= now) { x.ch++; if (x.ch < x.s.ch) x.next += x.cd; } });
+    }
+    function resetNormals() { st.forEach(x => { if (!x.s.u) { x.ch = x.s.ch; x.next = t; } }); }
+    let guard = 0;
+    while (t < T && guard++ < 5000) {
+      tick(t);
+      // 저격 화살촉 (1초 25 영력 → 4초 1개, 최대 3)
+      if (on('저격')) { const add = Math.floor((t - arrT) / 4); if (add > 0) { arrows = Math.min(3, arrows + add); arrT += add * 4; } }
+      const av = st.filter(ready);
+      if (!av.length) { const nx = Math.min(...st.filter(x => x.ch < x.s.ch).map(x => x.next), T); if (nx <= t) break; idle += nx - t; t = nx; continue; }
+      // 우선순위: 기대 1회 피해 (궁극기는 절명 단검 3개 이상일 때까지 보류)
+      let best = null, bv = -1;
+      av.forEach(x => {
+        let v = base(x.s) * tf(x.s, N) + (x.s.ex ? x.s.ex[pvp ? 1 : 0] : 0);
+        if (x.s.u && x.s.st === '절명' && on('절명') && dag < 5) v *= 0.3;
+        if (v > bv) { bv = v; best = x; }
+      });
+      const x = best, s = x.s;
+      if (x.ch === s.ch) x.next = t + x.cd;
+      x.ch--;
+      // 배율
+      let m = 1;
+      if (on('연타')) { if (t - lastHit > 3) rage = 0; m += rage * 0.004; }
+      if (on('강타')) m += gEn >= 100 ? 0.10 : gEn >= 66 ? 0.07 : gEn >= 33 ? 0.03 : 0;
+      if (on('척살')) { if (t < stance) m += pvp ? 0.20 : 0.10; m += gyeol * 0.02; }
+      if (on('저격') && s.st !== '저격') m += arrows * 0.015;
+      if (on('저격') && s.st === '저격' && arrows > 0) { m += arrows * (pvp ? 0.145 : 0.15); arrows = 0; aim = t + 10; }
+      if (!pvp && t < aim) m += 0.10;
+      if (on('파멸') && t < flood) m += 0.10;
+      if (on('제압')) m += locks * 0.02;
+      if (t < blue) m += 0.18;
+      if (s.n === '심장 절단' && (statUntil['출혈'] || -1) > t) m += 0.106;
+      let um = 1;
+      if (s.u) {
+        if (s.n === '암습' && on('절명') && dag >= 3) { um += pvp ? [0, 0, 0, .05, .10, .15][dag] : [0, 0, 0, .55, .75, 1.25][dag]; dag = 0; }
+        if (s.n === '폭주' && (statUntil['화상'] || -1) > t) um += 0.4019;
+        if (s.n === '정조준') ['출혈','화상','감전','저주'].forEach(k => { if ((statUntil[k] || -1) > t) um += 0.15; });
+        if (s.n === '일필휘지' && (statUntil['받피증'] || -1) > t) um += 0.10;
+        if (s.st === '기동' && t < chainUntil) um += 0.5;
+      }
+      let d = base(s) * tf(s, N) * m * um;
+      if (s.ex) d += s.ex[pvp ? 1 : 0] * lvf(s) * (on('주술') ? (pvp ? 1.9 : 1.94) : 1) * m;
+      dmg += d; bySt[s.st] = (bySt[s.st] || 0) + d; casts[s.n] = (casts[s.n] || 0) + 1;
+      // 사후 효과
+      if (s.stat) statUntil[s.stat] = t + 10;
+      if (on('연타')) { rage = Math.min(50, rage + s.hits * Math.min(N, Math.max(1, Math.floor(s.cap)))); lastHit = t; }
+      if (on('절명') && !s.u) { if (dag >= 5) { const u = st.find(y => y.s.u && y.s.st === '절명'); if (u) u.next -= 6; } else dag++; }
+      if (on('강타')) { if (s.u && gEn >= 100) { resetNormals(); gEn = 0; } else gEn = Math.min(100, gEn + 10 + (s.cap && s.n.includes('검기') ? 6 : 0)); }
+      if (on('척살')) { if (s.st === '척살') stance = t + 10; csEn += 5; if (o.field && N >= 3) { kills += 1; if (kills % 2 === 0) csEn = 100; } if (csEn >= 100) { csEn = 0; gyeol = Math.min(10, gyeol + 1); } }
+      if (on('주술') && s.st === '주술' && !s.u) st.forEach(y => { if (!y.s.u && y !== x) y.next -= 0.9; });
+      if (on('파멸') && t >= flood) { pmEn += 25; if (pmEn >= 200) { pmEn = 0; flood = t + 20; resetNormals(); } }
+      if (on('기동')) { gdEn += 15; if (gdEn >= 200) { gdEn = 0; chainUntil = t + 10; const u = st.find(y => y.s.u && y.s.st === '기동'); if (u) { u.ch = u.s.ch; u.next = t; } } }
+      if (on('기만') && !s.u) { if (tears >= 2) { tears = 0; x.next = t + x.cd * 0.5; } else tears++; }
+      if (on('제압')) { if (s.u && s.st === '제압') { x.next = t + Math.max(5, x.cd - 3 * locks); locks = Math.max(0, locks - 1); blue = t + 10; } else locks = Math.min(3, locks + 1); }
+      t += Math.max(s.mot, 0.15);
+    }
+    const aa = (o.aa || 0) * idle * (pvp ? 0.5 : 1); if (aa) bySt['평타'] = aa;
+    return { dps: (dmg + aa) / T, bySt, casts, idle: idle / T };
+  }
+
+  function util(names) {
+    let cc = 0, mob = 0, surv = 0;
+    const cnt = {}; names.forEach(n => { const s = BY[n]; if (s && !s.u) cnt[s.st] = (cnt[s.st] || 0) + 1; });
+    names.forEach(n => { const s = BY[n]; if (!s) return; const f = 60 / s.cd;
+      cc += (s.cc ? 1 : 0) * f + (s.slow || 0) * f + (s.push ? 0.5 * f : 0);
+      mob += (s.eng ? f : 0) + (s.dis ? 0.8 * f : 0);
+      surv += (s.surv || 0) * f / 6; });
+    if ((cnt['연타'] || 0) >= 3) surv += 1.5;
+    if ((cnt['강인'] || 0) >= 3) surv += 1.5;
+    if ((cnt['파멸'] || 0) >= 3) surv += 0.5;
+    if ((cnt['제압'] || 0) >= 3) cc += 2;
+    return { cc, mob, surv };
+  }
+
+  /* 거리별 PvP: 사거리 닿는 도술만 + 붙는 수단 창(회당 3초) */
+  const DIST = { siege: [2, 3.5, 5], fall: [2, 4, 6], duel: [1.6, 3, 5, 6.5, 8] };
+  const REF = { F: 1, B: 1, P: 200, CC: 42, MOB: 51, S: 5.9 };
+  function lazy(deck, ult, o) {
+    const full = deck.concat([ult]); const c = {};
+    const so = (x) => Object.assign({ shin: o.shin, T: o.T, aa: o.aa, lv: o.lv }, x);
+    const M = {
+      get B() { return c.B || (c.B = sim(full, so({ mode: 'pve', N: 1 }))); },
+      get F() { return c.F || (c.F = sim(full, so({ mode: 'pve', N: o.N, field: true }))); },
+      get PF() { return c.PF || (c.PF = sim(full, so({ mode: 'pvp', N: 1 }))); },
+      get U() { return c.U || (c.U = util(full)); },
+      P(key) { const k = 'P' + key; if (c[k]) return c[k];
+        const fullD = M.PF.dps; let v = 0;
+        DIST[key].forEach(d => { const can = new Set(full.filter(n => BY[n] && BY[n].rg >= d));
+          const avail = can.size === full.length ? fullD : (can.size ? sim(full, so({ mode: 'pvp', N: 1, only: can, aa: 0 })).dps : 0);
+          let e = 0; full.forEach(n => { const s = BY[n]; if (s && s.eng && s.rg >= d) e += 60 / s.cd; });
+          const a = Math.min(1, e * 3 / 60); v += avail + a * Math.max(0, fullD - avail); });
+        return (c[k] = { dps: v / DIST[key].length, bySt: M.PF.bySt }); },
+    };
+    return M;
+  }
+  function metrics(deck, ult, o) { const M = lazy(deck, ult, o); return { B: M.B, F: M.F, Pm: M.P('siege'), Pf: M.P('fall'), Pd: M.P('duel'), U: M.U }; }
+  const CONTENT = {
+    field: { name: '필드 사냥', score: M => M.F.dps / REF.F, by: M => M.F.bySt },
+    boss: { name: '보스 레이드', score: M => M.B.dps / REF.B, by: M => M.B.bySt },
+    siege: { name: '신기 쟁탈전', score: M => 0.55 * M.P('siege').dps / REF.P + 0.25 * M.U.cc / REF.CC + 0.2 * (M.U.mob / REF.MOB + M.U.surv / REF.S) / 2, by: M => M.PF.bySt },
+    fall: { name: '낙화의 전장', score: M => 0.5 * M.F.dps / REF.F + 0.3 * M.P('fall').dps / REF.P + 0.2 * M.U.surv / REF.S,
+      by: M => { const r = {}; [M.F.bySt, M.PF.bySt].forEach((b, i) => { const tot = Object.values(b).reduce((a, c) => a + c, 0) || 1; Object.entries(b).forEach(([k, v]) => r[k] = (r[k] || 0) + v / tot * (i ? .375 : .625)); }); return r; } },
+    duel: { name: '1:1 친선전', score: M => 0.6 * M.P('duel').dps / REF.P + 0.25 * M.U.cc / REF.CC + 0.15 * M.U.mob / REF.MOB, by: M => M.PF.bySt },
+  };
+
+  /* 덱 탐색: 주 계열 3개 이상 + 궁극기, 나머지 탐욕 추가 후 1:1 교체 */
+  function search(key, o) {
+    const C = CONTENT[key];
+    const pool = SK.filter(s => !s.u && (o.leg || !s.leg) && !(o.ban && o.ban.includes(s.st)));
+    const score = (deck, ult) => C.score(lazy(deck, ult, o));
+    const soloV = {}; pool.forEach(s => soloV[s.n] = score([s.n], ULTS[s.st]));
+    const top = pool.slice().sort((a, b) => soloV[b.n] - soloV[a.n]).slice(0, o.cand || 24).map(s => s.n);
+    let best = null; const perStyle = {};
+    (o.styles || STYLES).filter(S0 => !(o.ban && o.ban.includes(S0))).forEach(S0 => {
+      const ult = ULTS[S0]; if (!ult) return;
+      const own = pool.filter(s => s.st === S0).sort((a, b) => soloV[b.n] - soloV[a.n]).map(s => s.n);
+      if (own.length < 3) return;
+      let deck = own.slice(0, 3);
+      const cands = Array.from(new Set(top.concat(own)));
+      while (deck.length < o.slots) {
+        let bn = null, bs = -1;
+        cands.forEach(n => { if (deck.includes(n)) return; const v = score(deck.concat([n]), ult); if (v > bs) { bs = v; bn = n; } });
+        if (!bn) break; deck.push(bn);
+      }
+      let cur = score(deck, ult), improved = true, pass = 0;
+      while (improved && pass++ < (o.passes || 1)) {
+        improved = false;
+        for (let i = 0; i < deck.length; i++) {
+          for (const n of cands) {
+            if (deck.includes(n)) continue;
+            const nd = deck.slice(); nd[i] = n;
+            if (nd.filter(m => BY[m].st === S0).length < 3) continue;
+            const v = score(nd, ult); if (v > cur + 1e-9) { cur = v; deck = nd; improved = true; }
+          }
+        }
+      }
+      perStyle[S0] = { ult, deck, score: cur };
+      if (!best || cur > best.score) best = { key, ult, main: S0, deck, score: cur };
+    });
+    const M = lazy(best.deck, best.ult, Object.assign({}, o, { T: o.Tfinal || o.T }));
+    best.M = metrics(best.deck, best.ult, Object.assign({}, o, { T: o.Tfinal || o.T }));
+    best.by = C.by(M); best.perStyle = perStyle;
+    return best;
+  }
+
+  /* 요령서 배분: 계열 가치 = Σ 콘텐츠 가중 × 그 덱의 계열 피해 비중 */
+  function allocate(results, w, budget, K) {
+    const val = {}; let wsum = 0;
+    Object.keys(results).forEach(k => { const wk = w[k] || 0; if (!wk) return; wsum += wk;
+      const by = Object.fromEntries(Object.entries(results[k].by).filter(([s]) => s !== '평타')); const tot = Object.values(by).reduce((a, c) => a + c, 0) || 1;
+      Object.entries(by).forEach(([s, v]) => val[s] = (val[s] || 0) + wk * v / tot); });
+    Object.keys(val).forEach(s => val[s] /= (wsum || 1));
+    const keep = new Set(Object.entries(val).sort((a, b) => b[1] - a[1]).slice(0, K || 12).map(e => e[0]));
+    const L = {}; STYLES.forEach(s => L[s] = 0);
+    let left = budget; const steps = [];
+    while (true) {
+      let bs = null, br = 0;
+      STYLES.forEach(s => { if (!val[s] || !keep.has(s) || L[s] >= 50) return; const c = bookCost(L[s] + 1);
+        const r = val[s] * (LV[L[s] + 1] - LV[L[s]]) / Math.max(c, 0.5); if (c <= left && r > br) { br = r; bs = s; } });
+      if (!bs) break;
+      const c = bookCost(L[bs] + 1); left -= c; L[bs]++;
+      steps.push([bs, L[bs], budget - left]);
+    }
+    const gain = {}; Object.keys(results).forEach(k => { const by = results[k].by; const tot = Object.values(by).reduce((a, c) => a + c, 0) || 1;
+      gain[k] = Object.entries(by).reduce((a, [s, v]) => a + v / tot * LV[L[s] || 0], 0); });
+    return { L, used: budget - left, steps, val, gain, keep: [...keep] };
+  }
+
+  function run(o) {
+    const res = {}; AOECAP = o.aoe || 3;
+    REF.F = 1; REF.B = 1;
+    res.field = search('field', o); REF.F = res.field.score;
+    res.boss = search('boss', o); REF.B = res.boss.score;
+    res.field.score = 1; res.boss.score = 1;
+    ['siege', 'fall', 'duel'].forEach(k => res[k] = search(k, o));
+    return res;
+  }
+
+  /* ---- 요령서 배분: 강화 레벨을 넣고 덱을 다시 채점해 1·2·3계열 후보를 비교 ---- */
+  const KEYS = ['field', 'boss', 'siege', 'fall', 'duel'];
+  function levelFor(b) { let L = 0, c = 0; while (L < 50) { const n = bookCost(L + 1); if (c + n > b) break; c += n; L++; } return L; }
+  function booksFor(L) { let c = 0; for (let x = 1; x <= L; x++) c += bookCost(x); return c; }
+  function openCost(lv) { let y = 0, m = 0; Object.values(lv).forEach(L => { for (let x = 10; x <= L; x += 10) { y += x * 10; m += { 10: 20, 20: 60, 30: 120, 40: 200, 50: 300 }[x]; } }); return [y, m]; }
+  function metricOf(k, deck, ult, lv, o) {
+    const M = lazy(deck, ult, Object.assign({}, o, { lv, T: o.Tfinal || o.T }));
+    return k === 'field' ? M.F.dps : k === 'boss' ? M.B.dps : CONTENT[k].score(M);
+  }
+  function evalAlloc(R, lv, o, base, W) {
+    const g = {}; let wg = 0, ws = 0; const cps = {};
+    KEYS.forEach(k => { const v = metricOf(k, R[k].deck, R[k].ult, lv, o); g[k] = v / base[k] - 1; cps[k] = cp(R[k].deck, lv) / cp(R[k].deck, {}) - 1; wg += (W[k] || 0) * g[k]; ws += (W[k] || 0); });
+    return { lv, g, w: ws ? wg / ws : 0, cps, open: openCost(lv), books: Object.values(lv).reduce((a, L) => a + booksFor(L), 0) };
+  }
+  function baseMetrics(R, o) { const b = {}; KEYS.forEach(k => b[k] = metricOf(k, R[k].deck, R[k].ult, {}, o)); return b; }
+  function plan(R, W, B, o, base) {
+    base = base || baseMetrics(R, o);
+    const A = allocate(R, W, B, 12);
+    const top = Object.entries(A.val).filter(([s]) => s !== '평타' && STYLES.includes(s)).sort((a, b) => b[1] - a[1]).slice(0, 5).map(e => e[0]);
+    const out = { one: [], two: [], three: null };
+    top.forEach(S => out.one.push(Object.assign({ kind: 1, name: S + ' 집중' }, evalAlloc(R, { [S]: levelFor(B) }, o, base, W))));
+    for (let i = 0; i < top.length; i++) for (let j = i + 1; j < top.length; j++) {
+      let best = null;
+      [0.5, 0.65, 0.8].forEach(fr => [[top[i], top[j]], [top[j], top[i]]].forEach(([a, b]) => {
+        const lv = { [a]: levelFor(B * fr), [b]: levelFor(B * (1 - fr)) };
+        const r = evalAlloc(R, lv, o, base, W); if (!best || r.w > best.w) best = Object.assign({ kind: 2, name: a + '+' + b }, r); }));
+      out.two.push(best);
+    }
+    const A3 = allocate(R, W, B, 3); const lv3 = Object.fromEntries(Object.entries(A3.L).filter(([s, v]) => v));
+    out.three = Object.assign({ kind: 3, name: '3계열 분산' }, evalAlloc(R, lv3, o, base, W));
+    out.one.sort((a, b) => b.w - a.w); out.two.sort((a, b) => b.w - a.w);
+    return out;
+  }
+  /* 한 계열로만 덱을 채운 경우(전투력 최대): 필드·보스 덱을 그 계열 안에서만 고른다 */
+  function pureDecks(o) {
+    const res = {};
+    STYLES.forEach(S => {
+      const pool = SK.filter(s => !s.u && s.st === S && (o.leg || !s.leg));
+      if (pool.length < o.slots) return;
+      const oo = Object.assign({}, o, { ban: STYLES.filter(x => x !== S) });
+      res[S] = { field: search('field', oo), boss: search('boss', oo) };
+    });
+    return res;
+  }
+  function evalPure(P, S, B, o, base) {
+    const lv = { [S]: levelFor(B) }; const p = P[S];
+    const F = metricOf('field', p.field.deck, p.field.ult, lv, o), Bo = metricOf('boss', p.boss.deck, p.boss.ult, lv, o);
+    return { name: S + ' 8칸', lv, g: { field: F / base.field - 1, boss: Bo / base.boss - 1 }, cps: { field: cp(p.field.deck, lv) / cp(p.field.deck, {}) - 1 }, open: openCost(lv), deck: p.field.deck };
+  }
+  function cp(deck, lv) { let b = 0; deck.forEach(n => { const s = BY[n]; if (s && !s.u) b += 2.55 + 0.0584 * ((lv || {})[s.st] || 0); }); return 1 + b / 100; }
+  return { KEYS, levelFor, booksFor, openCost, metricOf, evalAlloc, baseMetrics, plan, pureDecks, evalPure, cp, sim, metrics, lazy, search, run, allocate, util, CONTENT, REF, LV, bookCost, OPEN, STYLES, BY, ULTS };
+}
+root.DosulEngine = { make };
+if (typeof module !== 'undefined') module.exports = { make };
+})(typeof window !== 'undefined' ? window : globalThis);
+
+/* ----- 도술 빌드 탭 ----- */
+(function(){
+const SK=[{"n":"연속 찌르기","st":"절명","u":0,"cd":7,"ch":1,"mot":0.2,"pve":169.6,"pvp":41.4,"rg":1.6,"hits":2,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"삼단 찌르기","st":"절명","u":0,"cd":6,"ch":1,"mot":0.4,"pve":111.9,"pvp":46.8,"rg":1.6,"hits":3,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"내려찍기","st":"절명","u":0,"cd":8,"ch":2,"mot":0.15,"pve":198.0,"pvp":38.1,"rg":1.6,"hits":1,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"기습","st":"절명","u":0,"cd":16,"ch":2,"mot":0.3,"pve":339.2,"pvp":53.4,"rg":7,"hits":1,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":1,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"환영 참격","st":"절명","u":0,"cd":8,"ch":1,"mot":0.53,"pve":116.2,"pvp":56.7,"rg":1.6,"hits":7,"cap":1,"leg":0,"stat":"출혈","cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"심장 절단","st":"절명","u":0,"cd":8,"ch":1,"mot":0.3,"pve":165.3,"pvp":67.8,"rg":1.6,"hits":3,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"찌르기","st":"절명","u":0,"cd":8,"ch":2,"mot":0.11,"pve":204.8,"pvp":37.4,"rg":1.6,"hits":2,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"약점 베기","st":"절명","u":0,"cd":12.14,"ch":1,"mot":0.35,"pve":233.1,"pvp":85.5,"rg":1.6,"hits":3,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"은신","st":"절명","u":0,"cd":25,"ch":1,"mot":0.0,"pve":0.0,"pvp":0.0,"rg":1,"hits":0,"cap":1,"leg":1,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":1,"surv":0.6,"ex":null,"ux":null,"anom":0},{"n":"암습","st":"절명","u":1,"cd":30,"ch":1,"mot":0.59,"pve":994.8,"pvp":453.2,"rg":1.8,"hits":4,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":["단일","즉시",30,1.8,1.2],"anom":0},{"n":"주먹 지르기","st":"연타","u":0,"cd":7,"ch":1,"mot":0.4,"pve":231.6,"pvp":162.4,"rg":1.6,"hits":4,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0.1,"ex":null,"ux":null,"anom":0},{"n":"휘둘러 내려치기","st":"연타","u":0,"cd":6,"ch":1,"mot":0.3,"pve":167.7,"pvp":144.9,"rg":1.8,"hits":3,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"묵직한 주먹","st":"연타","u":0,"cd":9,"ch":1,"mot":0.25,"pve":132.2,"pvp":89.2,"rg":2,"hits":2,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":1,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"연쇄 타격","st":"연타","u":0,"cd":8,"ch":1,"mot":0.55,"pve":145.5,"pvp":69.0,"rg":2,"hits":5,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"회전 난격","st":"연타","u":0,"cd":10,"ch":1,"mot":1.4,"pve":135.2,"pvp":56.7,"rg":2,"hits":7,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"집중 연타","st":"연타","u":0,"cd":9,"ch":1,"mot":1.3,"pve":362.6,"pvp":245.8,"rg":1.8,"hits":6,"cap":1,"leg":1,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"난타","st":"연타","u":0,"cd":11,"ch":1,"mot":1.8,"pve":233.8,"pvp":106.4,"rg":3,"hits":14,"cap":5,"leg":1,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0.2,"ex":null,"ux":null,"anom":0},{"n":"폭주","st":"연타","u":1,"cd":50,"ch":1,"mot":3.0,"pve":1646.3,"pvp":509.0,"rg":2,"hits":11,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":["범위 5인","즉시",50,2,3.4],"anom":0},{"n":"내려치기","st":"강타","u":0,"cd":13.7,"ch":1,"mot":0.9,"pve":228.2,"pvp":113.7,"rg":2.2,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"올려치기","st":"강타","u":0,"cd":13.6,"ch":1,"mot":0.7,"pve":228.1,"pvp":113.9,"rg":2.2,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"대검 찍기","st":"강타","u":0,"cd":13.8,"ch":1,"mot":0.7,"pve":221.6,"pvp":107.3,"rg":2.2,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"크게 베기","st":"강타","u":0,"cd":15.4,"ch":1,"mot":1.0,"pve":202.3,"pvp":75.6,"rg":2.2,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"연속 충격","st":"강타","u":0,"cd":13.8,"ch":1,"mot":1.5,"pve":251.0,"pvp":118.0,"rg":2,"hits":2,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"휘둘러치기","st":"강타","u":0,"cd":16.6,"ch":1,"mot":0.9,"pve":267.6,"pvp":102.8,"rg":5,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":1,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"검기 날리기","st":"강타","u":0,"cd":16.2,"ch":1,"mot":1.6,"pve":216.6,"pvp":76.5,"rg":4,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"검기 폭발","st":"강타","u":0,"cd":18.6,"ch":1,"mot":1.8,"pve":232.2,"pvp":85.6,"rg":3,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0.4,"ex":null,"ux":null,"anom":0},{"n":"대검 강타","st":"강타","u":0,"cd":22,"ch":1,"mot":2.0,"pve":164.2,"pvp":60.0,"rg":4,"hits":2,"cap":5,"leg":1,"stat":null,"cc":null,"slow":0,"push":0,"eng":1,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"돌풍 강격","st":"강타","u":0,"cd":17.4,"ch":1,"mot":2.0,"pve":265.2,"pvp":102.1,"rg":3,"hits":4,"cap":5,"leg":1,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"천벌","st":"강타","u":1,"cd":45,"ch":1,"mot":2.4,"pve":505.9,"pvp":194.4,"rg":5,"hits":1,"cap":10,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":1,"dis":0,"surv":0.2,"ex":null,"ux":["범위 10인","차지",45,5,1.5],"anom":0},{"n":"먹 베기","st":"척살","u":0,"cd":7,"ch":1,"mot":0.3,"pve":170.8,"pvp":87.5,"rg":2,"hits":2,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"삼묵법","st":"척살","u":0,"cd":9,"ch":1,"mot":1.0,"pve":233.8,"pvp":108.6,"rg":2,"hits":4,"cap":1,"leg":0,"stat":null,"cc":"경직","slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"무수불축","st":"척살","u":0,"cd":8,"ch":1,"mot":0.95,"pve":208.2,"pvp":86.4,"rg":2,"hits":6,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"필력종횡","st":"척살","u":0,"cd":7,"ch":1,"mot":0.7,"pve":168.8,"pvp":86.2,"rg":2,"hits":2,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"묵영점정","st":"척살","u":0,"cd":12.26,"ch":1,"mot":0.9,"pve":400.3,"pvp":88.5,"rg":2,"hits":7,"cap":1,"leg":1,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"용사비등","st":"척살","u":0,"cd":10,"ch":1,"mot":0.8,"pve":274.5,"pvp":106.7,"rg":3,"hits":1,"cap":1,"leg":1,"stat":null,"cc":null,"slow":0,"push":0,"eng":1,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"일필휘지","st":"척살","u":1,"cd":50,"ch":1,"mot":1.0,"pve":1762.4,"pvp":466.8,"rg":2.5,"hits":4,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":["단일","즉시",50,2.5,1.4],"anom":0},{"n":"밀쳐내는 화살","st":"저격","u":0,"cd":7.5,"ch":1,"mot":0.3,"pve":235.9,"pvp":110.9,"rg":8,"hits":1,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0.1,"push":1,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"반동 사격","st":"저격","u":0,"cd":7,"ch":1,"mot":0.3,"pve":185.6,"pvp":110.6,"rg":8,"hits":1,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":1,"surv":0.1,"ex":null,"ux":null,"anom":0},{"n":"사격","st":"저격","u":0,"cd":3.5,"ch":1,"mot":0.3,"pve":103.8,"pvp":61.0,"rg":8,"hits":1,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"쇠뇌 사격","st":"저격","u":0,"cd":4,"ch":1,"mot":0.3,"pve":132.8,"pvp":76.8,"rg":8,"hits":1,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"쐐기 화살","st":"저격","u":0,"cd":8,"ch":1,"mot":0.4,"pve":254.3,"pvp":125.8,"rg":8,"hits":1,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"이중 사격","st":"저격","u":0,"cd":4,"ch":1,"mot":0.3,"pve":98.8,"pvp":69.4,"rg":8,"hits":2,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"일점 저격","st":"저격","u":0,"cd":10,"ch":1,"mot":0.8,"pve":321.6,"pvp":167.9,"rg":8,"hits":1,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"집중 사격","st":"저격","u":0,"cd":8,"ch":1,"mot":0.3,"pve":258.6,"pvp":149.4,"rg":8,"hits":1,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"폭발하는 화살","st":"저격","u":0,"cd":10,"ch":1,"mot":0.45,"pve":242.1,"pvp":122.1,"rg":8,"hits":3,"cap":1,"leg":0,"stat":"화상","cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"꿰뚫는 저격","st":"저격","u":0,"cd":11,"ch":1,"mot":0.525,"pve":331.8,"pvp":158.8,"rg":8,"hits":2,"cap":1,"leg":1,"stat":"받피증","cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"정조준","st":"저격","u":1,"cd":40,"ch":1,"mot":0.5,"pve":1098.7,"pvp":521.3,"rg":8,"hits":1,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":["단일","0.5초",40,8,0.7],"anom":0},{"n":"부적 던지기","st":"주술","u":0,"cd":4.5,"ch":3,"mot":0.35,"pve":18.9,"pvp":9.45,"rg":6,"hits":1,"cap":1.5,"leg":0,"stat":"저주","cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":1},{"n":"살 날리기","st":"주술","u":0,"cd":5,"ch":2,"mot":0.35,"pve":80.0,"pvp":57.6,"rg":6,"hits":2,"cap":1.5,"leg":0,"stat":"저주","cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"신벌의 영역","st":"주술","u":0,"cd":15,"ch":1,"mot":0.5,"pve":87.6,"pvp":33.0,"rg":6,"hits":6,"cap":5,"leg":0,"stat":"저주","cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"영혼 소용돌이","st":"주술","u":0,"cd":9,"ch":1,"mot":0.5,"pve":17.5,"pvp":10.5,"rg":6,"hits":7,"cap":5,"leg":0,"stat":"저주","cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"저주 내리기","st":"주술","u":0,"cd":15,"ch":1,"mot":0.5,"pve":79.5,"pvp":28.0,"rg":6,"hits":5,"cap":5,"leg":0,"stat":"저주","cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"신내림","st":"주술","u":1,"cd":78.2,"ch":1,"mot":0.7,"pve":543.6,"pvp":253.8,"rg":6,"hits":6,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":[486.0,226.9],"ux":["범위 5인","즉시",78.2,6,1.2],"anom":0},{"n":"낙뢰","st":"파멸","u":0,"cd":14.7,"ch":1,"mot":0.5,"pve":153.3,"pvp":67.6,"rg":6,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"날카로운 얼음창","st":"파멸","u":0,"cd":19.4,"ch":1,"mot":0.5,"pve":265.0,"pvp":70.0,"rg":6,"hits":5,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"번개 폭풍","st":"파멸","u":0,"cd":14,"ch":1,"mot":0.6,"pve":134.4,"pvp":17.1,"rg":6,"hits":3,"cap":5,"leg":0,"stat":"감전","cc":"마비","slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"붕괴하는 대지","st":"파멸","u":0,"cd":17.4,"ch":1,"mot":0.6,"pve":169.6,"pvp":59.2,"rg":6,"hits":2,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0.1,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"서리의 잔향","st":"파멸","u":0,"cd":18.7,"ch":1,"mot":0.5,"pve":195.0,"pvp":69.0,"rg":8,"hits":10,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0.5,"push":0,"eng":0,"dis":1,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"얼음화살","st":"파멸","u":0,"cd":8.8,"ch":1,"mot":1.0,"pve":265.5,"pvp":53.5,"rg":6,"hits":5,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"연쇄 번개","st":"파멸","u":0,"cd":22,"ch":1,"mot":0.5,"pve":178.2,"pvp":68.3,"rg":6,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"요혼격","st":"파멸","u":0,"cd":10,"ch":1,"mot":0.6,"pve":239.2,"pvp":135.2,"rg":6,"hits":4,"cap":1,"leg":0,"stat":"받피증","cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"화염 분출","st":"파멸","u":0,"cd":14.7,"ch":1,"mot":0.5,"pve":149.6,"pvp":68.3,"rg":6,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"화염구","st":"파멸","u":0,"cd":11,"ch":2,"mot":0.5,"pve":258.2,"pvp":38.4,"rg":6,"hits":1,"cap":5,"leg":0,"stat":"화상","cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"요기 폭발","st":"파멸","u":0,"cd":23.5,"ch":1,"mot":0.6,"pve":211.3,"pvp":82.7,"rg":6,"hits":5,"cap":5,"leg":1,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"하늘의 심판","st":"파멸","u":0,"cd":23.5,"ch":1,"mot":0.6,"pve":185.9,"pvp":76.3,"rg":6,"hits":1,"cap":5,"leg":1,"stat":"화상","cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"대폭발","st":"파멸","u":1,"cd":159.1,"ch":1,"mot":1.5,"pve":1822.8,"pvp":719.7,"rg":6,"hits":3,"cap":30,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":["범위 30인","1.5초",159.1,6,0.7],"anom":0},{"n":"강인한 의지","st":"강인","u":0,"cd":12,"ch":1,"mot":0.5,"pve":68.8,"pvp":12.5,"rg":1.5,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0.6,"ex":null,"ux":null,"anom":0},{"n":"방패 내려찍기","st":"강인","u":0,"cd":10,"ch":1,"mot":0.5,"pve":94.1,"pvp":34.9,"rg":2,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0.2,"ex":null,"ux":null,"anom":0},{"n":"방패 밀기","st":"강인","u":0,"cd":8,"ch":1,"mot":0.45,"pve":146.0,"pvp":97.8,"rg":1.6,"hits":1,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":1,"eng":0,"dis":0,"surv":0.5,"ex":null,"ux":null,"anom":0},{"n":"방패 충격파","st":"강인","u":0,"cd":10,"ch":1,"mot":0.5,"pve":70.9,"pvp":16.5,"rg":2,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0.6,"ex":null,"ux":null,"anom":0},{"n":"방패 치기","st":"강인","u":0,"cd":6,"ch":1,"mot":0.45,"pve":152.2,"pvp":98.1,"rg":1.6,"hits":1,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0.2,"ex":null,"ux":null,"anom":0},{"n":"전투의 함성","st":"강인","u":0,"cd":14,"ch":1,"mot":0.7,"pve":146.9,"pvp":51.2,"rg":2.4,"hits":1,"cap":5,"leg":1,"stat":null,"cc":null,"slow":0,"push":1,"eng":0,"dis":0,"surv":1,"ex":null,"ux":null,"anom":0},{"n":"방패 낙하","st":"강인","u":1,"cd":55,"ch":1,"mot":1.6,"pve":403.3,"pvp":111.7,"rg":7,"hits":1,"cap":10,"leg":0,"stat":null,"cc":"기절","slow":0,"push":0,"eng":1,"dis":0,"surv":0,"ex":null,"ux":["범위 10인","즉시",55,7,1.8],"anom":0},{"n":"급소 관통","st":"기동","u":0,"cd":10,"ch":1,"mot":0.7,"pve":220.5,"pvp":161.7,"rg":7,"hits":1,"cap":1,"leg":0,"stat":"출혈","cc":null,"slow":0,"push":0,"eng":1,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"도약 찌르기","st":"기동","u":0,"cd":8,"ch":1,"mot":0.8,"pve":201.4,"pvp":174.7,"rg":5,"hits":1,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":1,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"쌍검 가르기","st":"기동","u":0,"cd":10,"ch":1,"mot":0.45,"pve":170.4,"pvp":87.0,"rg":4.5,"hits":2,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":1,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"후퇴 사격","st":"기동","u":0,"cd":8,"ch":1,"mot":0.7,"pve":148.8,"pvp":56.0,"rg":4,"hits":1,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0.15,"push":0,"eng":0,"dis":1,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"휩쓸어 베기","st":"기동","u":0,"cd":9,"ch":1,"mot":0.8,"pve":103.4,"pvp":65.0,"rg":5,"hits":2,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":1,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"월식","st":"기동","u":0,"cd":12,"ch":1,"mot":0.7,"pve":83.7,"pvp":54.6,"rg":6.5,"hits":3,"cap":1,"leg":1,"stat":null,"cc":null,"slow":0,"push":0,"eng":1,"dis":1,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"일섬","st":"기동","u":0,"cd":11,"ch":1,"mot":0.7,"pve":102.1,"pvp":49.1,"rg":7.5,"hits":1,"cap":5,"leg":1,"stat":"감전","cc":null,"slow":0,"push":0,"eng":1,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"연속 쇄도","st":"기동","u":1,"cd":30,"ch":1,"mot":0.45,"pve":722.8,"pvp":272.8,"rg":4,"hits":4,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":1,"dis":0,"surv":0,"ex":null,"ux":["범위 5인","즉시",30,4,0.9],"anom":0},{"n":"불굴","st":"헌신","u":0,"cd":20,"ch":1,"mot":0.7,"pve":148.4,"pvp":65.9,"rg":5,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":1,"ex":null,"ux":null,"anom":0},{"n":"산들 바람","st":"헌신","u":0,"cd":12,"ch":2,"mot":0.7,"pve":102.5,"pvp":41.0,"rg":4,"hits":5,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"생명의 축복","st":"헌신","u":0,"cd":14,"ch":1,"mot":0.7,"pve":0.0,"pvp":0.0,"rg":5,"hits":0,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0.6,"ex":null,"ux":null,"anom":0},{"n":"생명의 흐름","st":"헌신","u":0,"cd":10,"ch":1,"mot":0.7,"pve":0.0,"pvp":0.0,"rg":5,"hits":0,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0.5,"ex":null,"ux":null,"anom":0},{"n":"최후의 저항","st":"헌신","u":0,"cd":30,"ch":1,"mot":0.7,"pve":250.4,"pvp":104.4,"rg":3,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":1,"ex":null,"ux":null,"anom":0},{"n":"용맹의 기운","st":"헌신","u":0,"cd":22,"ch":1,"mot":0.7,"pve":17.0,"pvp":8.5,"rg":5,"hits":2,"cap":5,"leg":1,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0.4,"ex":null,"ux":null,"anom":1},{"n":"개전의 가호","st":"헌신","u":1,"cd":60,"ch":1,"mot":0.7,"pve":1256.0,"pvp":399.0,"rg":2.5,"hits":5,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0.8,"ex":null,"ux":["범위 5인","즉시",60,2.5,0.7],"anom":0},{"n":"공간 결계","st":"기만","u":0,"cd":15,"ch":1,"mot":1.0,"pve":79.6,"pvp":53.6,"rg":5.5,"hits":4,"cap":5,"leg":0,"stat":"받피증","cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0.2,"ex":null,"ux":null,"anom":0},{"n":"광기의 칼놀림","st":"기만","u":0,"cd":13,"ch":1,"mot":0.9,"pve":123.9,"pvp":51.9,"rg":5.5,"hits":3,"cap":5,"leg":0,"stat":null,"cc":"침묵","slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"솟아오르는 창","st":"기만","u":0,"cd":16,"ch":1,"mot":0.6,"pve":169.9,"pvp":82.7,"rg":5.5,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"슬쩍 베기","st":"기만","u":0,"cd":8,"ch":1,"mot":0.7,"pve":216.1,"pvp":208.4,"rg":5.5,"hits":1,"cap":1,"leg":0,"stat":null,"cc":null,"slow":0.3,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"어지럼 유발","st":"기만","u":0,"cd":7,"ch":1,"mot":0.8,"pve":112.6,"pvp":58.0,"rg":5.5,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0.5,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"환상술","st":"기만","u":0,"cd":18,"ch":1,"mot":0.75,"pve":189.7,"pvp":89.0,"rg":5.5,"hits":7,"cap":5,"leg":1,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"회전하는 칼날","st":"기만","u":1,"cd":40,"ch":1,"mot":0.8,"pve":1919.4,"pvp":590.8,"rg":2.5,"hits":14,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":["범위 5인","즉시",40,2.5,null],"anom":0},{"n":"도깨비 불","st":"제압","u":0,"cd":12,"ch":1,"mot":1.0,"pve":405.0,"pvp":301.8,"rg":5,"hits":6,"cap":5,"leg":0,"stat":null,"cc":"변이","slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"머리치기","st":"제압","u":0,"cd":16,"ch":1,"mot":0.6,"pve":349.7,"pvp":65.5,"rg":5.5,"hits":1,"cap":5,"leg":0,"stat":null,"cc":"침묵","slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"쇠사슬 가시","st":"제압","u":0,"cd":12,"ch":1,"mot":0.7,"pve":396.0,"pvp":224.6,"rg":4,"hits":2,"cap":1,"leg":0,"stat":null,"cc":"속박","slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"얼음 감옥","st":"제압","u":0,"cd":23.5,"ch":1,"mot":0.8,"pve":759.0,"pvp":351.4,"rg":5,"hits":2,"cap":1,"leg":0,"stat":null,"cc":"빙결","slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"응축하는 바람","st":"제압","u":0,"cd":11,"ch":1,"mot":0.6,"pve":133.3,"pvp":25.8,"rg":4,"hits":1,"cap":5,"leg":0,"stat":null,"cc":"수면","slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"지진","st":"제압","u":0,"cd":18,"ch":1,"mot":1.683,"pve":265.6,"pvp":56.0,"rg":2.8,"hits":2,"cap":5,"leg":0,"stat":null,"cc":"기절","slow":0,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"회전 일격","st":"제압","u":0,"cd":12,"ch":1,"mot":1.2,"pve":175.9,"pvp":115.9,"rg":2.4,"hits":1,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0.5,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"얼어붙은 대지","st":"제압","u":0,"cd":20,"ch":1,"mot":1.0,"pve":478.1,"pvp":248.1,"rg":6,"hits":14,"cap":5,"leg":1,"stat":null,"cc":null,"slow":0.45,"push":0,"eng":0,"dis":0,"surv":0,"ex":null,"ux":null,"anom":0},{"n":"사슬 묶기","st":"제압","u":1,"cd":30,"ch":1,"mot":0.5,"pve":749.7,"pvp":272.7,"rg":5,"hits":9,"cap":5,"leg":0,"stat":null,"cc":null,"slow":0,"push":0,"eng":1,"dis":0,"surv":0,"ex":null,"ux":["범위 5인","즉시",30,5,1.8],"anom":0}];
+const E=window.DosulEngine.make(SK);
+const $b=s=>document.querySelector('#v-build '+s);
+const STC={"절명":"--st-jeol","연타":"--st-yeon","강타":"--st-gang","척살":"--st-cheok","저격":"--st-jeo","주술":"--st-ju","파멸":"--st-pa","강인":"--st-in","기동":"--st-gi","헌신":"--st-heon","기만":"--st-man","제압":"--st-je","평타":"--st-aa"};
+const col=s=>`var(${STC[s]||'--ink3'})`;
+const SHIN={"절명":"단검 3·4·5개 소모 시 궁극기 +55·75·125% (PvP 5·10·15%), 단검 최대 이후 획득마다 궁극기 쿨 -6초",
+"연타":"적중마다 격노 1, 중첩당 주는 피해 +0.4%·받는 피해 -0.4% (최대 20%), 3초 못 때리면 초기화",
+"강타":"영력 단계별 피해 +3·7·10%, 최대에서 궁극기 → 일반 도술 쿨 초기화 + 10초 즉시 최대 차지",
+"척살":"척살 도술 사용 후 10초 피해 +10%·PvP +10%, 처치마다 척결 +2% (최대 20%)",
+"저격":"4초마다 화살촉(최대 3): 보유 시 다른 도술 +1.5%/개, 저격 도술이 소모하며 +15%/개, 조준 10초 PvE +10%",
+"주술":"구슬 활성 시 주술 도술 사용마다 다른 도술 쿨 -0.3~0.9초, 궁극기 저주·폭발 +34~94%",
+"파멸":"사용당 영력 25, 200에서 요기범람 20초: 보호막·피해 +10%·일반 도술 쿨 초기화",
+"강인":"최대 영력에서 강건 10초: 최대 체력 +2.5%, 보호막, 받는 피해 -25%",
+"기동":"사용당 영력 15, 200에서 궁극기 쿨 초기화 + 연쇄 10초(궁극기 +50%)",
+"헌신":"하트 3개 소모 → 헌신 도술 이로운 효과 대폭 증가 (수치 비공개)",
+"기만":"눈물 2개면 다음 도술 쿨 50% 감소, 허상 5중첩 시 적 이로운 효과 1개 제거",
+"제압":"자물쇠 1~3개: 궁극기 쿨 -3~9초·피해 +2~6%, 강화 궁극기 → 2초 속박 + 받는 피해 최대 +18%"};
+const CN={field:'필드 사냥',boss:'보스 레이드',siege:'신기 쟁탈전',fall:'낙화의 전장',duel:'1:1 친선전'};
+const PRE={hunt:{field:55,boss:25,siege:8,fall:8,duel:4},boss:{field:30,boss:50,siege:8,fall:8,duel:4},guild:{field:20,boss:15,siege:30,fall:25,duel:10},even:{field:20,boss:20,siege:20,fall:20,duel:20}};
+let W=Object.assign({},PRE.hunt), RES=null, cacheKey='';
+const st={N:5,S:8,B:105,K:2,A:3,leg:false,shin:true,ban:['제압']};
+let raT=0;const ra=()=>{clearTimeout(raT);raT=setTimeout(renderAlloc,180)};
+function load(){try{const j=JSON.parse(localStorage.getItem('kn-build3')||'null');if(j){Object.assign(st,j.st||{});if(j.W)W=j.W;}}catch(e){}}
+function save(){try{localStorage.setItem('kn-build3',JSON.stringify({st,W}))}catch(e){}}
+load();
+/* 슬라이더 */
+$b('#btW').innerHTML=Object.keys(CN).map(k=>`<label class="bt-opt"><span>${CN[k]} <b id="btWv-${k}">${W[k]}</b></span><input type="range" id="btW-${k}" min="0" max="100" step="5" value="${W[k]}"></label>`).join('');
+function syncCtl(){Object.keys(CN).forEach(k=>{$b('#btW-'+k).value=W[k];$b('#btWv-'+k).textContent=W[k]});
+  $b('#btN').value=st.N;$b('#btNv').textContent=st.N;$b('#btS').value=st.S;$b('#btSv').textContent=st.S;$b('#btB').value=st.B;$b('#btBv').textContent=st.B;$b('#btK').value=st.K;$b('#btKv').textContent=st.K;
+  $b('#btA').value=st.A;$b('#btAv').textContent=st.A;
+  document.querySelectorAll('#btBan button').forEach(b=>b.setAttribute('aria-pressed',st.ban.includes(b.dataset.s)));
+  $b('#btLeg').checked=st.leg;$b('#btShin').checked=st.shin;
+  document.querySelectorAll('#v-build .bt-presets button').forEach(b=>{const p=PRE[b.dataset.p];b.setAttribute('aria-pressed',Object.keys(p).every(k=>p[k]===W[k]))});}
+$b('#btBan').innerHTML=E.STYLES.map(s=>`<button type="button" data-s="${s}" aria-pressed="false"><i style="background:${col(s)}"></i>${s}</button>`).join('');
+syncCtl();
+$b('#btBan').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const s=b.dataset.s;st.ban=st.ban.includes(s)?st.ban.filter(x=>x!==s):st.ban.concat([s]);syncCtl();save();compute()});
+document.querySelector('#v-build .bt-presets').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;W=Object.assign({},PRE[b.dataset.p]);syncCtl();save();ra()});
+Object.keys(CN).forEach(k=>$b('#btW-'+k).addEventListener('input',e=>{W[k]=+e.target.value;syncCtl();save();ra()}));
+[['#btB','B'],['#btK','K']].forEach(([id,k])=>$b(id).addEventListener('input',e=>{st[k]=+e.target.value;syncCtl();save();ra()}));
+[['#btN','N'],['#btS','S'],['#btA','A']].forEach(([id,k])=>$b(id).addEventListener('change',e=>{st[k]=+e.target.value;syncCtl();save();compute()}));
+[['#btN','N'],['#btS','S'],['#btA','A']].forEach(([id,k])=>$b(id).addEventListener('input',e=>{$b(id+'v').textContent=e.target.value}));
+$b('#btLeg').addEventListener('change',e=>{st.leg=e.target.checked;save();compute()});
+$b('#btShin').addEventListener('change',e=>{st.shin=e.target.checked;save();compute()});
+const memo={};let BASE=null,PURE=null;
+function stTxt(x){return `계산 완료 · ${x} · 몹 ${st.N}마리(광역 최대 ${st.A}) · ${st.S}칸${st.ban.length?' · 제외 '+st.ban.join('·'):''} · 전설 ${st.leg?'포함':'제외'} · 신식 ${st.shin?'반영':'미반영'}`}
+const opts=()=>({shin:st.shin,N:st.N,slots:st.S,leg:st.leg,T:60,Tfinal:120,cand:24,aa:100,aoe:st.A,ban:st.ban});
+function compute(){
+  const key=[st.N,st.S,st.A,st.leg,st.shin,st.ban.join(',')].join('|');
+  if(memo[key]){const m=memo[key];RES=m.RES;BASE=m.BASE;PURE=m.PURE;E.REF.F=m.F;E.REF.B=m.B;$b('#btStatus').textContent=stTxt('저장된 결과');renderAll();return}
+  $b('#btStatus').textContent='계산 중… (몇 초 걸립니다)';
+  setTimeout(()=>{const t0=performance.now();const o=opts();
+    RES=E.run(o);BASE=E.baseMetrics(RES,o);PURE=E.pureDecks(o);
+    memo[key]={RES,BASE,PURE,F:E.REF.F,B:E.REF.B};
+    $b('#btStatus').textContent=stTxt(`${Math.round(performance.now()-t0)}ms`);
+    renderAll()},30);
+}
+const chip=n=>{const s=E.BY[n];return `<span class="bt-chip" style="--c:${col(s.st)}"><i></i>${n}${s.u?' <em>궁</em>':''}</span>`};
+const f0=v=>Math.round(v).toLocaleString();
+function renderDecks(){
+  const tot=Object.values(W).reduce((a,c)=>a+c,0)||1;
+  $b('#btDecks').innerHTML=Object.keys(CN).map(k=>{const r=RES[k];const M=r.M;
+    const alts=Object.entries(r.perStyle).sort((a,b)=>b[1].score-a[1].score).slice(0,3);const top=alts[0][1].score||1;
+    const metric=k==='field'?`필드 ${f0(M.F.dps)} (몹 ${st.N})`:k==='boss'?`보스 ${f0(M.B.dps)}`:`PvP 거리 평균 ${f0((k==='siege'?M.Pm:k==='fall'?M.Pf:M.Pd).dps)} · CC ${M.U.cc.toFixed(0)} · 이동 ${M.U.mob.toFixed(0)}`;
+    return `<article class="bt-deck"><div class="top"><h4>${CN[k]}</h4><span class="pill w">비중 ${Math.round(W[k]/tot*100)}%</span></div>
+    <div class="bt-main"><b style="color:${col(r.main)}">${r.main}</b> 주력 · 궁극기 <b>${r.ult}</b></div>
+    <div class="bt-chips">${r.deck.map(chip).join('')}${chip(r.ult)}</div>
+    <div class="bt-met num">${metric}</div>
+    <div class="bt-alt">${alts.map(([s,v],i)=>`<div class="bt-altrow"><span>${i?'':'▸ '}${s}</span><span class="tr"><span style="width:${Math.max(4,v.score/top*100)}%;background:${col(s)}"></span></span><span class="num">${Math.round(v.score/top*100)}</span></div>`).join('')}</div></article>`}).join('');
+}
+function renderUlt(){
+  const rows=E.STYLES.filter(S=>!st.ban.includes(S)).map(S=>{const u=E.BY[E.ULTS[S]];const bs=RES.boss.perStyle[S],fs=RES.field.perStyle[S];return {S,u,b:bs?bs.score:0,f:fs?fs.score:0}}).sort((a,b)=>b.b-a.b);
+  const mb=Math.max(...rows.map(r=>r.b)),mf=Math.max(...rows.map(r=>r.f));
+  $b('#btUlt').innerHTML=rows.map(({S,u,b,f})=>`<tr><td><span class="bt-dot" style="background:${col(S)}"></span><b>${u.n}</b> <span class="st">${S}</span></td><td>${u.cd}초</td><td>${u.rg}m</td><td>${u.ux?u.ux[0]:''}</td><td>${f0(u.pve+(u.ex?u.ex[0]:0))}%</td><td>${Math.round((u.pvp+(u.ex?u.ex[1]:0))/(u.pve+(u.ex?u.ex[0]:0))*100)}%</td><td class="w">${SHIN[S]}</td><td class="${b===mb?'good':''}">${b?f0(b):'-'}</td><td class="${f===mf?'good':''}">${f?f0(f):'-'}</td></tr>`).join('');
+}
+function renderData(){
+  $b('#btData').innerHTML=SK.slice().sort((a,b)=>E.STYLES.indexOf(a.st)-E.STYLES.indexOf(b.st)||b.u-a.u||b.pve/b.cd-a.pve/a.cd).map(s=>`<tr><td><b>${s.n}</b>${s.u?' <em class="ult">궁</em>':''}${s.leg?' <span class="tag">전설</span>':''}</td><td><span class="bt-dot" style="background:${col(s.st)}"></span>${s.st}</td><td>${s.pve?f0(s.pve)+'%':'-'}</td><td>${s.cd}초${s.ch>1?' ×'+s.ch:''}</td><td>${s.pve?(s.pve/s.cd).toFixed(1):'-'}</td><td class="${s.pve&&s.pvp/s.pve<.3?'bad':''}">${s.pve?Math.round(s.pvp/s.pve*100)+'%':'-'}${s.anom?' *':''}</td><td>${s.rg}m</td><td>${s.cap>1?(s.cap===1.5?'+1':'최대 '+s.cap):''}</td></tr>`).join('');
+}
+const pct=v=>(v>0?'+':'')+(v*100).toFixed(1)+'%';
+function pickPlan(P){const c=[P.one[0]];if(st.K>=2&&P.two[0])c.push(P.two[0]);if(st.K>=3&&P.three)c.push(P.three);return c.filter(Boolean).sort((a,b)=>b.w-a.w)[0]}
+function lvChips(lv){return Object.entries(lv).filter(([s,v])=>v>0).sort((a,b)=>b[1]-a[1]).map(([s,v])=>`<span class="bt-lv" style="--c:${col(s)}">${s} Lv${v}</span>`).join(' ')}
+function renderAlloc(){
+  if(!RES||!BASE)return;
+  const o=opts();
+  const P=E.plan(RES,W,st.B,o,BASE);const best=pickPlan(P);
+  const uses=s=>Object.keys(CN).filter(k=>RES[k].deck.concat([RES[k].ult]).some(n=>E.BY[n].st===s)).map(k=>CN[k]);
+  $b('#btTree').innerHTML=`<p><b>요령서 ${st.B}권 →</b> ${lvChips(best.lv)||'투자할 계열이 없습니다'} <span class="note">(${best.books}권 사용)</span></p>
+   <ul class="bt-why">${Object.entries(best.lv).filter(([s,v])=>v).map(([s])=>`<li><b style="color:${col(s)}">${s}</b> — ${uses(s).join(' · ')||'—'} 덱에 들어갑니다</li>`).join('')}</ul>
+   <p class="note">피해: ${Object.keys(CN).map(k=>`${CN[k]} ${pct(best.g[k])}`).join(' · ')} · 전투력(필드 덱) ${pct(best.cps.field)} · 개방 재화 요혼석 ${best.open[0]} / 엽전 ${best.open[1]}만 · 투자 계열 ${st.K}개까지 중 가장 높은 조합</p>`;
+  // 비교표
+  const pure=Object.keys(PURE||{}).map(S=>E.evalPure(PURE,S,st.B,o,BASE)).sort((a,b)=>b.g.field-a.g.field).slice(0,3);
+  const rows=[['3계열 분산',[P.three]],['2계열 집중',P.two.slice(0,2)],['1계열 집중 (덱은 섞음)',P.one.slice(0,2)],['덱 몰빵 (한 계열 8칸)',pure]];
+  const cb=v=>{const w=Math.min(50,Math.abs(v*100)/60*50);return `<div class="bt-cb"><span class="t"><span class="${v>=0?'pos':'neg'}" style="${v>=0?`left:50%;width:${w}%`:`right:50%;width:${w}%`}"></span></span><span class="num ${v<0?'bad':''}">${pct(v)}</span></div>`};
+  let h='';const bw=Math.max(...[P.three].concat(P.two,P.one).filter(Boolean).map(r=>r.w));
+  rows.forEach(([g,rs])=>{rs=rs.filter(Boolean);if(!rs.length)return;h+=`<tr class="grp"><td colspan="7">${g}</td></tr>`;
+    rs.forEach(r=>{h+=`<tr${r===best?' class="pick"':''}><td><b>${r.name}</b></td><td class="l">${lvChips(r.lv)}</td><td>${cb(r.g.field)}</td><td>${cb(r.g.boss)}</td><td class="${r.w===bw?'good':''}">${r.w==null?'-':pct(r.w)}</td><td>${pct(r.cps.field)}</td><td class="num">${r.open[0]} / ${r.open[1]}</td></tr>`})});
+  $b('#btCmp').innerHTML=h;
+  // 권수별
+  const BUD=[18,36,60,105,150,210,360];if(!BUD.includes(st.B))BUD.push(st.B);BUD.sort((a,b)=>a-b);
+  $b('#btAlloc').innerHTML=BUD.map(b=>{const p=pickPlan(E.plan(RES,W,b,o,BASE));const segs=Object.entries(p.lv).filter(([s,v])=>v>0).sort((x,y)=>y[1]-x[1]);
+    return `<div class="arow${b===st.B?' cur':''}"><div class="lab">${b}권<span>${b===st.B?'선택한 권수':'가중 '+pct(p.w)}</span></div><div class="bar" style="width:${Math.max(40,b/360*100)}%">${segs.map(([s,v])=>{const c=E.booksFor(v);return `<div class="seg" style="flex:${Math.max(c,2)};background:${col(s)}" title="${s} Lv${v} (${c}권)">${c>=10?s+' '+v:(c>=5?v:'')}</div>`}).join('')}</div></div>`}).join('');
+}
+function renderAll(){renderDecks();renderUlt();renderAlloc();}
+renderData();
+const GD=[
+ {id:'bd-gidong',k:'A',t:'광역 기동',use:'몹 몰이 필드 · 스펙 여유',likes:704,src:'유튜브 맛나는꼬꼬 · 10/14',
+  ord:['영혼 소용돌이','연속 쇄도','사격','쇠뇌 사격','이중 사격','공간 결계','쌍검 가르기','도약 찌르기','휩쓸어 베기'],
+  tips:['피가 말리면 쇠뇌 사격·이중 사격 자리를 힐 도술로(작성자)','기동 신식: 도술마다 영력 15, 귀보 30. 가득 차면 궁극기 쿨 초기화 + 10초간 궁극기 피해 +50%(작성자 설명)'],
+  alt:'월식이 있으면 도약 찌르기 자리에(작성자). 생존이 부족하면 방패 치기 + 후퇴 사격을 넣은 변형(미남용사·스텝튜브 덱)',
+  get:'<b>기동 도술은 상점에 없음</b>(드랍·상자) · 공간 결계·영혼 소용돌이 금전 상점 · 사격·쇠뇌·이중 사격 엽전 상점',
+  cond:'해월2: "공격력 22K 이상일 때 15K 이하 사냥터에서 고점, 스펙이 낮으면 기여도를 뺏김". 19만 전투력 15K 황무지 노물약 덱 있음. 투즈TV 황무지 측정 기동 약 4.0~4.2만 엽전/h, 파멸 약 3.4~3.5만(영상, 미검증)'},
+ {id:'bd-pamyeol',k:'B',t:'파멸 저격',use:'비경 · 몰이 필드',likes:66,src:'쌀먹왕 ver2 · 10/16 · 공략 영상 추천',ultSep:true,
+  ord:['연쇄 번개','검기 폭발','요기 폭발','화염구','얼음화살','폭발하는 화살','쐐기 화살','밀쳐내는 화살','대폭발'],
+  tips:['궁극기 대폭발: 작성자가 "궁 순서 중요"라고만 적어 위치는 확인 안 됨','피가 밀리면 폭발하는 화살 → 생명의 흐름(힐+ 버전, "다른 힐로 바꾸면 안 됨"). 더 밀리면 저스펙 쿨초 버전','힐을 넣으면 체력 조건을 끄라고 함(켜 두면 겹사 때 쿨 초기화가 꼬인다는 설명)','공략 영상: 비경 3단계 시간당 엽전 약 19,000·영웅 비법서 약 27개, 단일 저격보다 약 40% 효율 <span class="tag">[영상]</span>'],
+  alt:'요기 폭발이 없으면 하늘의 심판(둘 다 파멸 상점 전설). 겹사가 심하면 해월2 파멸+저격 하이브리드("겹사방지", 추천 94: 쇠뇌 사격·밀쳐내는 화살·쐐기 화살 포함)',
+  get:'연쇄 번개·요기 폭발(전설)·얼음화살 파멸 상점, 검기 폭발 강타 상점, 저격 3종 저격 상점(모두 엽전) · <b>화염구·생명의 흐름은 상점에 없음</b>',
+  cond:'변형별 작성자 표기(단위 미표기): 힐+ 버전 "중스펙, 황무지 4.2~4.5/h", 저스펙 쿨초 버전 "황무지 3.6/h". 10/16에 올라와 추천 수가 덜 쌓인 덱'},
+ {id:'bd-yeonta',k:'C',t:'연타 광역 (물약 없이)',use:'몹 몰이 필드 · 자동 사냥',likes:205,src:'135k 150k 연타 광역 무적덱 · 10/14',
+  ord:['생명의 축복','생명의 흐름','영혼 소용돌이','난타','검기 폭발','회전 난격','폭주','번개 폭풍','연쇄 타격'],
+  tips:['체력 조건: 생명의 축복 95%, 생명의 흐름 90%(작성자)','번개 폭풍으로 몹 1초 CC, 검기 폭발로 방어력 상승(작성자)','폭주는 모션이 길어 꺼 두고 쓰는 사람도 있음(뜨뜨뜨뜨 덱)'],
+  alt:'힐 1개 버전: 생명의 축복 + 얼음화살·연쇄 번개(뜨뜨뜨뜨 광역사냥덱, 추천 279). 비경 노물약 변형(쵸튜브, 무과금 16.8만): 공간 결계·난타·검기 폭발·영혼 소용돌이·얼음화살·내려치기·회전 난격·연쇄 타격 + 폭주 <span class="tag">[영상·2차 정리]</span>',
+  get:'난타(전설)·회전 난격·연쇄 타격 연타 상점, 검기 폭발 강타 상점, 번개 폭풍 파멸 상점(모두 엽전) · 영혼 소용돌이·생명의 축복 금전 상점 · <b>생명의 흐름은 상점에 없음</b>',
+  cond:'덱 이름 "135k 150k … 물약x" — 권장 전투력 135K·150K 사냥터에서 물약 없이로 읽힘. 공격력 21K·방어력 15K로 150K 사냥터 물약 분당 1개 사례(다른 덱)'},
+ {id:'bd-dan',k:'D',t:'절명 + 저격 단일',use:'한 마리씩 · 띄엄띄엄 몹',likes:111,src:'저격+절명 닥사빌드 · 10/14',
+  ord:['암습','사격','쇠뇌 사격','이중 사격','삼단 찌르기','연속 찌르기','내려찍기','생명의 흐름','생명의 축복'],
+  tips:['쿨 짧은 순서로 배치해 암습을 자주 씀. "반드시 도술 설정에서 순서를 맞춰야 함"(작성자)','황무지 기준 포션 거의 안 씀(작성자)'],
+  alt:'힐 1개 버전(뜨뜨뜨뜨 단일 1힐, 추천 113): 주먹 지르기·찌르기 포함',
+  get:'<b>절명 도술은 상점에 없음</b>(드랍·상자) · 저격 도술 엽전 상점 · 생명의 축복 금전 상점 · 생명의 흐름 상점에 없음',
+  cond:'작성자 권장 강화 비율 "저격 2 : 절명 1, 후반엔 비슷하게"'},
+ {id:'bd-boss',k:'E',t:'절명 + 저격 극딜',use:'보스 · 레이드',likes:225,src:'뜨뜨뜨뜨 단일 극딜 · 10/14',
+  ord:['꿰뚫는 저격','암습','사격','쇠뇌 사격','이중 사격','주먹 지르기','내려찍기','삼단 찌르기','찌르기'],
+  tips:['꿰뚫는 저격을 먼저 쓴 뒤 암습(작성자 순서)','D 덱을 쓰던 사람은 힐 2개를 밀쳐내는 화살·꿰뚫는 저격으로 바꾸면 레이드용(D 작성자)'],
+  alt:'게임플 기사형: 절명 3 + 저격 3 + 휘둘러 내려치기 + 요혼격(받는 피해 +10%). 문파 실측 사례: 절명3 + 파멸2 + 연타2(요혼격 포함) 허수아비 2,694',
+  get:'꿰뚫는 저격(전설) 저격 상점 · 주먹 지르기 연타 상점(모두 엽전) · <b>절명 도술은 상점에 없음</b>',
+  cond:'보스는 절명 암습이 낫다는 기사(게임플 10/12)·유저 측정·문파 실측이 같은 방향 <span class="tag">[기사]</span>'}
+];
+const BOOK=[
+ ['A. 광역 기동','기동','저격','기동 74~81% · 저격 11~16%','"강화는 중요하지 않음. 골드 여유 있으면 기동 강화 시 사냥 속도 상향"'],
+ ['B. 파멸 저격','파멸','저격','파멸 67~70% · 저격 14~16%','—(다른 파멸 덱: 파멸 30강으로 비경 3단계 노포션)'],
+ ['C. 연타 광역','연타','파멸 또는 강타','연타 59~77%','—'],
+ ['D·E. 절명 + 저격','절명 <small>(계산)</small> / 저격 <small>(작성자)</small>','—','절명 68~73% · 저격 17~19%','"저격 2 : 절명 1, 후반엔 비슷하게" — 계산과 반대'],
+];
+const GAP=[['이전 가이드 사냥 덱 (제압 포함)',1094,0],['A. 광역 기동',818,704],['C. 연타 광역 (뜨뜨뜨뜨)',715,279],['B. 파멸 저격',669,66],['C. 연타 광역 (물약 없이)',520,205]];
+$b('#btGuideDecks').innerHTML=GD.map(d=>{const o=d.ultSep?d.ord.filter(n=>!E.BY[n].u):d.ord;const u=d.ultSep?d.ord.find(n=>E.BY[n].u):null;
+ return `<article class="bt-rdeck" id="${d.id}"><div class="top"><h4><span class="k">${d.k}</span>${d.t}</h4><span class="pill g">${d.use}</span></div>
+<div class="bt-chips">${o.map((n,i)=>chip(n).replace('<i></i>',`<i></i><small class="num">${i+1}</small>`)).join('')}${u?chip(u).replace('<i></i>','<i></i><small class="num">?</small>'):''}</div>
+<ul class="bt-tips">${d.tips.map(x=>`<li>${x}</li>`).join('')}</ul>
+<dl class="bt-dl"><dt>없으면</dt><dd>${d.alt}</dd><dt>구하는 곳</dt><dd>${d.get} <span class="tag">[깨비 상점표]</span></dd><dt>조건·근거</dt><dd>${d.cond} <span class="tag">[유저]</span></dd></dl>
+<p class="bt-src">♥ ${d.likes} · ${d.src}</p></article>`}).join('');
+$b('#btBookRows').innerHTML=BOOK.map(r=>`<tr><td>${r[0]}</td><td><b>${r[1]}</b></td><td>${r[2]}</td><td>${r[3]}</td><td class="w">${r[4]}</td></tr>`).join('');
+const gmx=Math.max(...GAP.map(g=>g[1])),lmx=Math.max(...GAP.map(g=>g[2]));
+$b('#btGap').innerHTML=`<div class="bt-gaplg"><span><i class="c"></i>계산상 화력 (몹 5마리, 강화 0)</span><span><i class="l"></i>깨비지지 추천 수 (인기 지표)</span></div>`+GAP.map(([n,d,l])=>`<div class="bt-gaprow"><div class="nm">${n}</div><div class="bars"><div class="b c" style="width:${d/gmx*100}%"><span class="num">${d.toLocaleString()}</span></div><div class="b l" style="width:${Math.max(l/lmx*100,0.5)}%"><span class="num">${l?'♥ '+l:'목록에 없음'}</span></div></div></div>`).join('');
+
+function deckOf(h){if(h.deck)return h.deck;const m=/\[덱: ([^\]]+)\]/.exec(h.items||"");return m?m[1]:""}
+function renderMeasure(){const el=document.getElementById('btMeasure');if(!el)return;
+  const mine=(typeof myHunts!=='undefined'&&Array.isArray(myHunts)?myHunts:[]).filter(h=>!h.submitted);
+  const rows=HUNTS.concat(mine).filter(h=>deckOf(h)&&h.minutes>0);
+  if(!rows.length){el.innerHTML='<p class="note" style="margin:0">아직 덱이 기록된 사냥이 없습니다. 첫 기록을 남겨 주세요. 같은 사냥터·비슷한 전투력에서 덱만 바꿔 30분 이상씩 기록하면 비교가 정확해집니다.</p>';return}
+  const g={};rows.forEach(h=>{const k=deckOf(h)+'|'+(h.zone||'');const o=g[k]=g[k]||{deck:deckOf(h),zone:h.zone,n:0,min:0,coin:0,dan:0,cps:[]};o.n++;o.min+=h.minutes;o.coin+=h.coin||0;o.dan+=h.dan||0;if(h.cp)o.cps.push(h.cp)});
+  const L=Object.values(g).sort((a,b)=>(a.zone>b.zone?1:-1)||b.coin/b.min-a.coin/a.min);
+  el.innerHTML=`<div class="tw"><table><thead><tr><th>사냥터</th><th>덱</th><th>기록</th><th>총 시간</th><th>엽전/시간</th><th>정기단/시간</th><th>전투력</th></tr></thead><tbody>${L.map(o=>`<tr><td>${esc(o.zone)}</td><td>${esc(o.deck)}</td><td class="num">${o.n}</td><td class="num">${(o.min/60).toFixed(1)}h</td><td class="num">${Math.round(o.coin/o.min*60).toLocaleString()}</td><td class="num">${(o.dan/o.min*60).toFixed(1)}</td><td class="num">${o.cps.length?Math.round(Math.min(...o.cps)/1000)+'K~'+Math.round(Math.max(...o.cps)/1000)+'K':'—'}</td></tr>`).join('')}</tbody></table></div><p class="note">총 시간 2시간 미만인 줄은 오차가 큽니다 <span class="tag">[문파 실측]</span></p>`}
+renderMeasure();window.renderMeasure=renderMeasure;
+let started=false;
+function start(){if(started)return;started=true;compute()}
+const calc=document.getElementById('btCalc');
+if(calc)calc.addEventListener('toggle',()=>{if(calc.open)start()});
+})();
+
 /* ----- 시작 ----- */
 renderDeadlines();renderFilters();renderTimeline();renderOpt();renderMyHunts();renderRoster();renderCoupons();setupCouponApply();watchTables();
 let savedPlan="free";try{savedPlan=localStorage.getItem("kn-plan")||"free"}catch(e){}
