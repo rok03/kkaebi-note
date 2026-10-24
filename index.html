@@ -567,7 +567,7 @@ nav.tabs i.dk{font-style:normal}
       <button role="tab" id="tab-gear" aria-selected="false" data-tab="gear"><svg class="ic" aria-hidden="true"><use href="#i-up"/></svg><span>성장<i class="dk"> 가이드</i></span></button>
       <button role="tab" id="tab-opt" aria-selected="false" data-tab="opt"><svg class="ic" aria-hidden="true"><use href="#i-sword"/></svg><span>내 장비</span></button>
       <button role="tab" id="tab-drop" aria-selected="false" data-tab="drop"><svg class="ic" aria-hidden="true"><use href="#i-pouch"/></svg><span><i class="dk">사냥 </i>드랍률</span></button>
-      <button role="tab" id="tab-report" aria-selected="false" data-tab="report"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span><i class="dk">성장 </i>리포트</span></button>
+      <button role="tab" id="tab-report" aria-selected="false" data-tab="report"><svg class="ic" aria-hidden="true"><use href="#i-flag"/></svg><span><i class="dk">주간 문파 </i>기여도</span></button>
       <button role="tab" id="tab-build" aria-selected="false" data-tab="build"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg><span>도술 빌드</span></button>
       <button role="tab" id="tab-coupon" aria-selected="false" data-tab="coupon"><svg class="ic" aria-hidden="true"><use href="#i-ticket"/></svg><span>쿠폰</span></button>
     </nav>
@@ -640,7 +640,7 @@ nav.tabs i.dk{font-style:normal}
           </div>
           <div class="tablewrap"><table id="loadout-table"></table></div>
         </div>
-        <p class="src">근거: <a href="https://forum.kakaogames.com/dokkaebi/postView/?code=prob&id=18494" target="_blank" rel="noopener">공식 확률 정보 — 장비 등급별 추가 효과 부여 수 확률 (2026-10-15 09:00 기준)</a>, 부위 구성은 공식 게임 가이드 ‘성장’. 장비는 이 브라우저에만 저장되니 기기를 바꿀 땐 성장 리포트 탭의 ‘백업 복사’를 쓰세요.</p>
+        <p class="src">근거: <a href="https://forum.kakaogames.com/dokkaebi/postView/?code=prob&id=18494" target="_blank" rel="noopener">공식 확률 정보 — 장비 등급별 추가 효과 부여 수 확률 (2026-10-15 09:00 기준)</a>, 부위 구성은 공식 게임 가이드 ‘성장’. 장비는 이 브라우저에만 저장되니 기기를 바꿀 땐 주간 문파 기여도 탭의 ‘백업 복사’를 쓰세요.</p>
       </div>
     </section>
 
@@ -1124,9 +1124,23 @@ PvP 점수 = 거리 2~8m에서 사거리가 닿는 도술의 초당 계수(돌�
       
     </section>
 
-    <!-- 성장 리포트 -->
+    <!-- 주간 문파 기여도 -->
     <section id="v-report" class="view hidden" aria-labelledby="tab-report">
-      <div class="panel" style="display:grid;gap:12px">
+      <div class="panel" id="guild-week" style="display:grid;gap:12px">
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:end">
+          <div><div class="eyebrow" id="gw-asof">주간 문파 기여도</div><h2><svg class="ic" aria-hidden="true"><use href="#i-flag"/></svg>문파 주간 기여도 순위</h2></div>
+          <div class="form-row"><div class="field"><label for="me">나는</label><select id="me"></select></div><div class="field"><label for="gw-week">주차</label><select id="gw-week"></select></div></div>
+        </div>
+        <div class="gw-rules">
+          <div><span class="k">상시 · 분신 가능</span>요신 토벌령 · 결계지 방어<br>직접 <b>10점</b> / 분신 <b>5점</b></div>
+          <div><span class="k">주 1회 고정 시간</span>미혹의 정원 · 신기 쟁탈전<br>참여 <b>20점</b></div>
+          <div><span class="k">매일 최대 20회</span>문파 임무<br>완료 1회당 <b>1점</b></div>
+        </div>
+        <p class="src" id="gw-sum"></p>
+        <div class="tablewrap"><table id="gw-table"></table></div>
+        <p class="src">● 직접 참여 · ▲ 분신으로만 참여 · – 미참여. 게임 내 문파 콘텐츠 참여 내역(묘로롱)을 문주가 매주 화요일 밤에 정리합니다. 주는 수요일 05:00에 초기화됩니다.</p>
+      </div>
+      <div class="panel" style="margin-top:18px;display:grid;gap:12px">
         <div>
           <div class="eyebrow">캡처 분석 · 맞춤 추천</div>
           <h2><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg>내 캐릭터 성장 리포트</h2>
@@ -1140,20 +1154,6 @@ PvP 점수 = 거리 2~8m에서 사거리가 닿는 도술의 초당 계수(돌�
           </ol>
         </div>
         
-      </div>
-      <div class="panel" id="guild-week" style="margin-top:18px;display:grid;gap:12px">
-        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:end">
-          <div><div class="eyebrow" id="gw-asof">주간 문파 기여도</div><h2><svg class="ic" aria-hidden="true"><use href="#i-flag"/></svg>문파 주간 기여도 순위</h2></div>
-          <div class="form-row"><div class="field"><label for="me">나는</label><select id="me"></select></div><div class="field"><label for="gw-week">주차</label><select id="gw-week"></select></div></div>
-        </div>
-        <div class="gw-rules">
-          <div><span class="k">상시 · 분신 가능</span>요신 토벌령 · 결계지 방어<br>직접 <b>10점</b> / 분신 <b>5점</b></div>
-          <div><span class="k">주 1회 고정 시간</span>미혹의 정원 · 신기 쟁탈전<br>참여 <b>20점</b></div>
-          <div><span class="k">매일 최대 20회</span>문파 임무<br>완료 1회당 <b>1점</b></div>
-        </div>
-        <p class="src" id="gw-sum"></p>
-        <div class="tablewrap"><table id="gw-table"></table></div>
-        <p class="src">● 직접 참여 · ▲ 분신으로만 참여 · – 미참여. 게임 내 문파 콘텐츠 참여 내역(묘로롱)을 문주가 매주 화요일 밤에 정리합니다. 주는 수요일 05:00에 초기화됩니다.</p>
       </div>
       <div class="panel" style="margin-top:18px;display:grid;gap:10px">
         <div class="eyebrow">내 기기 저장 데이터</div>
@@ -1384,7 +1384,7 @@ function renderGearSubmit(){
   const who=me,r=ROSTER.find(x=>x[0]===who),filled=SLOTS.filter(([s])=>loadout[s].grade).length;
   if(MODE!=="guild"||!GEAR_URL){el.innerHTML="";return}
   if(example){el.innerHTML='<span class="src">예시 장비는 제출할 수 없습니다. 내 장비로 수정한 뒤 제출하세요.</span>';return}
-  if(!who){el.innerHTML='<span class="src">성장 리포트 탭에서 ‘나는’을 먼저 고르면 문파에 제출할 수 있습니다.</span>';return}
+  if(!who){el.innerHTML='<span class="src">주간 문파 기여도 탭에서 ‘나는’을 먼저 고르면 문파에 제출할 수 있습니다.</span>';return}
   if(!filled){el.innerHTML="";return}
   const summary=SLOTS.map(([s])=>slotText(s)).filter(Boolean).join("\n");
   const cp=store.get("kn-cp","")||(r?r[1]:"");
