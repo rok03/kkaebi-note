@@ -1141,18 +1141,10 @@ PvP 점수 = 거리 2~8m에서 사거리가 닿는 도술의 초당 계수(돌�
         </div>
         
       </div>
-      <div class="panel" style="margin-top:18px;display:grid;gap:12px">
-        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:end">
-          <div><div class="eyebrow">문파 현황 · 10/16 02:00 게임 화면 기준</div><h2><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>짐승특공대 전투력</h2></div>
-          <div class="field"><label for="me">나는</label><select id="me"></select></div>
-        </div>
-        <p class="src" id="roster-sum"></p>
-        <div class="tablewrap"><table id="roster-table"></table></div>
-      </div>
       <div class="panel" id="guild-week" style="margin-top:18px;display:grid;gap:12px">
         <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:end">
           <div><div class="eyebrow" id="gw-asof">주간 문파 기여도</div><h2><svg class="ic" aria-hidden="true"><use href="#i-flag"/></svg>문파 주간 기여도 순위</h2></div>
-          <div class="field"><label for="gw-week">주차</label><select id="gw-week"></select></div>
+          <div class="form-row"><div class="field"><label for="me">나는</label><select id="me"></select></div><div class="field"><label for="gw-week">주차</label><select id="gw-week"></select></div></div>
         </div>
         <div class="gw-rules">
           <div><span class="k">상시 · 분신 가능</span>요신 토벌령 · 결계지 방어<br>직접 <b>10점</b> / 분신 <b>5점</b></div>
@@ -1481,6 +1473,7 @@ function renderRoster(){
   sel.innerHTML='<option value="">선택</option>'+ROSTER.map(r=>`<option ${r[0]===me?"selected":""}>${esc(r[0])}</option>`).join("");
   sel.onchange=()=>{me=sel.value;store.set("kn-me",me);applyMe();renderRoster();renderGearSubmit();renderGuildWeek();};
   document.getElementById("roster-list").innerHTML=ROSTER.map(r=>`<option value="${esc(r[0])}">`).join("");
+  if(!document.getElementById("roster-table"))return;
   const sent=store.get("kn-cp-sent",null);
   const rows=ROSTER.map(r=>({name:r[0],cp:r[1],role:r[2],at:r[3]?new Date(r[3]):null,src:r[4]||"게임 화면",prev:r[5]??null,pending:false}));
   if(sent&&sent.who){const x=rows.find(y=>y.name===sent.who);const sa=new Date(sent.at);if(x&&(!x.at||sa>x.at)){x.prev=x.cp;x.cp=sent.cp;x.at=sa;x.src="본인 제출";x.pending=true;}}
